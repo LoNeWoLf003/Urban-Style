@@ -9,7 +9,7 @@ class splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    home_controller.load_items(context);
+    home_controller.navigate(context);
     return Scaffold(
       body: Stack(
         children: [

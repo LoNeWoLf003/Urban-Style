@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
+import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/pages/splash/splash.dart';
 
 void main() async{
@@ -34,7 +35,7 @@ class engine extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
 
       ),
-      home: splash(),
+      home: home(),
     );
   }
 }

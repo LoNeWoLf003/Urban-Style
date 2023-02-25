@@ -7,19 +7,10 @@ import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/widgets/chains.dart';
 
 class home_controller {
-  static var products = [];
 
-  static var caps = [];
-  static var chains = [];
-  static var glasses = [];
-  static var rings = [];
-  static var t_shirt = [];
-  static var makeup = [];
-  static var pant = [];
-  static var shoes = [];
-  static var sleeper = [];
-  static var electronics = [];
-
+  static navigate(context){
+    return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+  }
 
 
 
@@ -31,9 +22,7 @@ class home_controller {
 
     if (apiResponse.success && apiResponse.results != null) {
       var data = apiResponse.results;
-      products = data!;
-      print(products);
-      load_caps(context);
+      return data ;
     } else {
 
       return [];
@@ -54,10 +43,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        caps = data!;
-        print(caps);
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
-
+        return data;
 
       }
     }
@@ -77,8 +63,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        glasses = data!;
-        print(glasses);
+        return data;
 
       }
     }
@@ -98,9 +83,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        rings = data!;
-        print(rings);
-
+        return data;
       }
     }
   }
@@ -119,8 +102,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        chains = data!;
-        print(chains);
+        return data;
 
       }
     }
@@ -140,8 +122,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        t_shirt = data!;
-        print(t_shirt);
+        return data;
 
       }
     }
@@ -161,8 +142,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        makeup = data!;
-        print(makeup);
+        return data;
 
       }
     }
@@ -182,8 +162,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        pant = data!;
-        print(pant);
+        return data;
 
       }
     }
@@ -203,8 +182,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        shoes = data!;
-        print(shoes);
+        return data;
 
       }
     }
@@ -224,8 +202,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        sleeper = data!;
-        print(sleeper);
+        return data ;
 
       }
     }
@@ -245,9 +222,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       for (var o in apiResponse.results!) {
         var data = apiResponse.results;
-        electronics = data!;
-        print(electronics);
-
+        return data ;
       }
     }
   }
