@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
+import 'package:urban_style/controllers/engine/engine_controller.dart';
 
 import '../constrants/color.dart';
 import '../staful widgets/cart btn.dart';
@@ -14,7 +15,9 @@ class product_info extends StatelessWidget {
       required this.price,
       required this.image,
       required this.stock,
-      required this.des})
+      required this.des,
+      required this.lat,
+      required this.long})
       : super(key: key);
   final title;
 
@@ -25,6 +28,10 @@ class product_info extends StatelessWidget {
   final image;
 
   final stock;
+
+  final lat;
+
+  final long;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +73,15 @@ class product_info extends StatelessWidget {
           )),
           Container(
             child: stock == "In Stock"
-                ? null
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Text(
+                        "Product expected to be delivered under ${engine_controller().calculate_minute(double.parse(lat), double.parse(long))} minutes",
+                        style: TextStyle(color: ColorHelper.color[1]),
+                      ),
+                    ))
                 : Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -155,7 +170,8 @@ class product_info extends StatelessWidget {
                               color: ColorHelper.color[2]),
                         )),
                   ),
-                  Expanded(child: Align(
+                  Expanded(
+                      child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
@@ -166,21 +182,25 @@ class product_info extends StatelessWidget {
                               height: 70,
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                                color: ColorHelper.color[3],
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: ColorHelper.color[3],
-                                    blurRadius: 20.0
-                                  )
-                                ]
-                              ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  color: ColorHelper.color[3],
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: ColorHelper.color[3],
+                                        blurRadius: 20.0)
+                                  ]),
                               child: Center(
-                                child: Text("Buy Now !",style: TextStyle(color: ColorHelper.color[0]),),
+                                child: Text(
+                                  "Buy Now",
+                                  style: TextStyle(color: ColorHelper.color[0]),
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          SizedBox(
+                            width: 10,
+                          ),
                           cart_button()
                         ],
                       ),

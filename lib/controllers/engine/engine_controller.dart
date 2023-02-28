@@ -69,8 +69,6 @@ class engine_controller{
     user.lat = position.latitude;
     user.long = position.longitude ;
     print(position);
-    // var dist = calculateDistance(user.lat , user.long , 23.389278 , 85.340560);
-    // print(dist);
     List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude , position.longitude);
     user.location = placemarks;
     user.sublocality = placemarks[0].subLocality;
@@ -82,6 +80,13 @@ class engine_controller{
 
   }
 
+  calculate_minute(lat , long){
+    var dist = calculateDistance(user.lat , user.long , lat , long);
+    var minute = dist * 2 + 10;
+    print(minute.toStringAsFixed(0));
+    return minute.toStringAsFixed(0);
+  }
+
   double calculateDistance(lat1, lon1, lat2, lon2){
     var p = 0.017453292519943295;
     var c = cos;
@@ -90,6 +95,7 @@ class engine_controller{
             (1 - c((lon2 - lon1) * p))/2;
     return 12742 * asin(sqrt(a));
   }
+
 
 
 }

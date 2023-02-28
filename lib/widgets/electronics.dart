@@ -37,7 +37,7 @@ class electronics extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"],)));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(lat: snapshot.data[index]["lat"],long: snapshot.data[index]["long"],title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"],)));
                 },
                 child: Container(
                   decoration: BoxDecoration(
