@@ -7,6 +7,7 @@ import 'package:urban_style/controllers/assets/assets.dart';
 import 'package:urban_style/controllers/home/home_controller.dart';
 import 'package:urban_style/staful%20widgets/like_btn.dart';
 import 'package:urban_style/widgets/product_info.dart';
+import 'package:urban_style/widgets/shimmer%20loader.dart';
 
 class caps extends StatelessWidget {
   const caps({Key? key}) : super(key: key);
@@ -17,8 +18,9 @@ class caps extends StatelessWidget {
         future: home_controller.load_caps(context),
         builder: (context , AsyncSnapshot snapshot){
           if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(
-              child: CircularProgressIndicator(),
+            return Padding(
+              padding: const EdgeInsets.only(top: 50,left: 0,right: 0),
+              child: shimmer_loader(),
             );
           }else if(snapshot.hasError){
             return Center(

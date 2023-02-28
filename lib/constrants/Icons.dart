@@ -19,6 +19,7 @@ class IconHelper{
     Icons.home_filled,
     Icons.track_changes,
     MdiIcons.heartOutline,
-    MdiIcons.heart
+    MdiIcons.heart,
+    Icons.add_photo_alternate_outlined
   ];
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/widgets/product_info.dart';
+import 'package:urban_style/widgets/shimmer%20loader.dart';
 
 import '../constrants/color.dart';
 import '../controllers/assets/assets.dart';
@@ -17,8 +18,9 @@ class glasses extends StatelessWidget {
         future: home_controller.load_glasses(context),
         builder: (context , AsyncSnapshot snapshot){
       if(snapshot.connectionState == ConnectionState.waiting){
-        return Center(
-          child: CircularProgressIndicator(),
+        return Padding(
+          padding: const EdgeInsets.only(top: 50,left: 0,right: 0),
+          child: shimmer_loader(),
         );
       }else if(snapshot.hasError){
         return Center(

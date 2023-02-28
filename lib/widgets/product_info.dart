@@ -1,6 +1,7 @@
 import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 
 import '../constrants/color.dart';
@@ -80,11 +81,11 @@ class product_info extends StatelessWidget {
             height: 30,
           ),
           Container(
-            height: 300,
-            width: 300,
+            height: context.isPhone ? 500 : 300,
+            width: context.isPhone ? double.infinity : 300,
             child: Image.memory(
               image,
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
             ),
           ),
           Expanded(
