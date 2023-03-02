@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
+import 'package:urban_style/staful%20widgets/ring%20size.dart';
 
 import '../constrants/color.dart';
 import '../staful widgets/cart btn.dart';
@@ -17,7 +18,7 @@ class product_info extends StatelessWidget {
       required this.stock,
       required this.des,
       required this.lat,
-      required this.long})
+      required this.long, this.cat})
       : super(key: key);
   final title;
 
@@ -32,6 +33,8 @@ class product_info extends StatelessWidget {
   final lat;
 
   final long;
+
+  final cat;
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +99,11 @@ class product_info extends StatelessWidget {
             height: 30,
           ),
           Container(
-            height: context.isPhone ? 500 : 300,
+            height: context.isPhone ? cat == null ? 500  : 400 : cat == null ? 300 : 240,
             width: context.isPhone ? double.infinity : 300,
             child: Image.memory(
               image,
-              fit: BoxFit.fitWidth,
+              fit: context.isPhone ?BoxFit.fitWidth : BoxFit.fitHeight,
             ),
           ),
           Expanded(
@@ -170,6 +173,8 @@ class product_info extends StatelessWidget {
                               color: ColorHelper.color[2]),
                         )),
                   ),
+                  cat != null ?SizedBox(height: 15,) : SizedBox(height: 0,),
+                  cat != null ?rings_size() : SizedBox(height: 0,),
                   Expanded(
                       child: Align(
                     alignment: Alignment.bottomCenter,
