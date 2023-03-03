@@ -8,6 +8,8 @@ import 'package:urban_style/staful%20widgets/ring%20size.dart';
 
 import '../constrants/color.dart';
 import '../staful widgets/cart btn.dart';
+import '../staful widgets/shirt_size.dart';
+import '../staful widgets/shoe size.dart';
 
 class product_info extends StatelessWidget {
   const product_info(
@@ -174,7 +176,9 @@ class product_info extends StatelessWidget {
                         )),
                   ),
                   cat != null ?SizedBox(height: 15,) : SizedBox(height: 0,),
-                  cat != null ?rings_size() : SizedBox(height: 0,),
+                  // cat == "Rings" ?rings_size() : SizedBox(height: 0,),
+                  cat == "T-Shirt" ?shirt_size() : SizedBox(height: 0,),
+                  cat == "Shoes" ?shoe_size() : SizedBox(height: 0,),
                   Expanded(
                       child: Align(
                     alignment: Alignment.bottomCenter,
