@@ -20,7 +20,7 @@ class chains extends StatelessWidget {
       if(snapshot.connectionState == ConnectionState.waiting){
         return Padding(
           padding: const EdgeInsets.only(top: 50,left: 0,right: 0),
-          child: shimmer_loader(),
+          child: shimmer_loader(context.isPhone),
         );
       }else if(snapshot.hasError){
         return Center(
