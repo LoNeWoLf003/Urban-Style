@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
+import 'package:urban_style/pages/account/account.dart';
+import 'package:urban_style/pages/accounts/sign%20up/sign%20up.dart';
+import 'package:urban_style/pages/cart/cart.dart';
+import 'package:urban_style/pages/help_support/help_support.dart';
+import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/all.dart';
 import 'package:urban_style/widgets/electronics.dart';
 import 'package:urban_style/widgets/glasses.dart';
@@ -12,6 +17,7 @@ import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
 
 import '../../staful widgets/category.dart';
+import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
 import '../../widgets/chains.dart';
 import '../../widgets/makeup.dart';
@@ -78,34 +84,68 @@ class _homeState extends State<home> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 40),
                 ),
-                Text(
-                  "Home",
-                  style: TextStyle(
-                    color: ColorHelper.color[0]),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
+                  },
+                  child: Container(
+                    child: Text(
+                      "Home",
+                      style: TextStyle(
+                        color: ColorHelper.color[0],),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
                 ),
-                Text(
-                  "Account",
-                  style: TextStyle(
-                    color: ColorHelper.color[0],),
+                InkWell(
+                  onTap: (){
+                    if(user.is_login == true){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
+
+                    }else{
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => sign_up()));
+
+                    }
+                  },
+                  child: Container(
+                    child: Text(
+                      "Account",
+                      style: TextStyle(
+                        color: ColorHelper.color[0],),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
                 ),
-                Text(
-                  "Track Order",
-                  style: TextStyle(
-                    color: ColorHelper.color[0],),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
+                  },
+                  child: Container(
+                    child: Text(
+                      "Help & Support",
+                      style: TextStyle(
+                        color: ColorHelper.color[0],),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
                 ),
-                Text(
-                  "Cart",
-                  style: TextStyle(
-                    color: ColorHelper.color[0],),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
+                  },
+                  child: Container(
+                    child: Text(
+                      "Cart",
+                      style: TextStyle(
+                        color: ColorHelper.color[0],),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
@@ -157,14 +197,19 @@ class _homeState extends State<home> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10,top: 5),
                   child: SafeArea(
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(60)),
-                      ),
-                      child: Center(
-                        child: Icon(IconHelper.icons[10],color: ColorHelper.color[2],),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => search()));
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(60)),
+                        ),
+                        child: Center(
+                          child: Icon(IconHelper.icons[10],color: ColorHelper.color[2],),
+                        ),
                       ),
                     ),
                   ),

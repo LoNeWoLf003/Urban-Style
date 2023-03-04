@@ -41,6 +41,13 @@ class engine_controller{
           user.password = data[0]["password"];
           user.location = data[0]["location"];
           user.cart = data[0]["cart"];
+          user.obj_id = data[0]["objectId"];
+          user.profile_photo = data[0]["profile_photo"];
+          if(user.profile_photo == null){
+            user.has_profile_photo = false;
+          }else{
+            user.has_profile_photo = true;
+          }
           print("/////////////////////////////////////////////////");
           print("PRINTING USER DETAILS");
           print("user cart - " + "${user.cart}");
@@ -48,12 +55,14 @@ class engine_controller{
           print("user username - " + "${user.username}");
           print("user email - " + "${user.email}");
           print("user password - " + "${user.password}");
+          print("user profile - " + "${user.profile_photo}");
         }
       }else{
         Get.snackbar(
           "Account Not Found",
           "Please create new Account",
         );
+        user.is_login = false;
         prefs.remove("login");
         prefs.remove("name");
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => sign_up()), (route) => false);

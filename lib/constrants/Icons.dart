@@ -20,6 +20,7 @@ class IconHelper{
     Icons.track_changes,
     MdiIcons.heartOutline,
     MdiIcons.heart,
-    Icons.add_photo_alternate_outlined
+    Icons.add_photo_alternate_outlined,
+    Icons.edit
   ];
 }

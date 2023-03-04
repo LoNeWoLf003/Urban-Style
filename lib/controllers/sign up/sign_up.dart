@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:urban_style/main.dart';
 import 'package:urban_style/user/user.dart';
 
 import '../../pages/home/home.dart';
+import '../engine/engine_controller.dart';
 
 class sign_up_controller {
   static TextEditingController user_nane = new TextEditingController();
@@ -64,6 +66,7 @@ class sign_up_controller {
             user.username = user_nane.text;
             user.cart = [];
             print("Account Created !!!");
+            engine_controller().user_logged_in(context);
             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
 
           }

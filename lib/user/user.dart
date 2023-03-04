@@ -3,6 +3,9 @@ class user{
   static var location  = [];
   static var lat ;
   static var long ;
+  static bool has_profile_photo = false;
+  static var obj_id ;
+  static var profile_photo ;
   static var sublocality ;
   static var locality ;
   static var postal_code ;
