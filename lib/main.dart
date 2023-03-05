@@ -35,7 +35,7 @@ class engine extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
 
       ),
-      home: home(),
+      home: splash(),
     );
   }
 }

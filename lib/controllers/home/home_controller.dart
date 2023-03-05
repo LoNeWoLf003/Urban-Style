@@ -8,11 +8,24 @@ import 'package:urban_style/widgets/chains.dart';
 
 class home_controller {
 
-  static navigate(context){
-    return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+  static var all_item = [];
+
+
+
+  static load_item_for_search(context) async {
+    QueryBuilder<ParseObject> queryTodo =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    final ParseResponse apiResponse = await queryTodo.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      var data = apiResponse.results;
+      all_item = data!;
+      return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+    } else {
+
+      return [];
+    }
   }
-
-
 
 
   static load_items(context) async {
