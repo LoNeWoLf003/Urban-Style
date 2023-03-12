@@ -13,5 +13,6 @@ class user{
   static var email ;
   static var password ;
   static var cart = [];
+  static int cart_price = 0;
 
 }

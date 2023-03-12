@@ -210,7 +210,7 @@ class product_info extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart_button()
+                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat,)
                         ],
                       ),
                     ),

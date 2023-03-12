@@ -16,6 +16,7 @@ import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
 
+import '../../controllers/cart/cart controller.dart';
 import '../../staful widgets/category.dart';
 import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
@@ -137,6 +138,7 @@ class _homeState extends State<home> {
                 ),
                 InkWell(
                   onTap: (){
+
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                   },
                   child: Container(

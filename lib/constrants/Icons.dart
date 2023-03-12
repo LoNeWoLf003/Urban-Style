@@ -21,6 +21,9 @@ class IconHelper{
     MdiIcons.heartOutline,
     MdiIcons.heart,
     Icons.add_photo_alternate_outlined,
-    Icons.edit
+    Icons.edit,
+    Icons.delete,
+    Icons.logout,
+    Icons.add_circle,
   ];
 }
