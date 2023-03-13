@@ -59,7 +59,7 @@ class shoes extends StatelessWidget {
                           snapshot.data[index]["stock"] == "In Stock"
                               ? Text("")
                               : Text("* out of stock",style: TextStyle(color: ColorHelper.color[4]),),
-                          Expanded(child: like_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], )),
+                          Expanded(child: like_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], cat: "Shoes",size: "default",)),
                         ],
                       ),
                       Container(

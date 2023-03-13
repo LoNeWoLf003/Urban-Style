@@ -14,5 +14,6 @@ class user{
   static var password ;
   static var cart = [];
   static int cart_price = 0;
-
+  static var selected_size ;
+  static var selected_shirt_size ;
 }

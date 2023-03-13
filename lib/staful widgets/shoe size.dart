@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constrants/color.dart';
+import '../user/user.dart';
+
 
 class shoe_size extends StatefulWidget {
-  const shoe_size({Key? key}) : super(key: key);
+  shoe_size({Key? key, }) : super(key: key);
 
   @override
   State<shoe_size> createState() => _shoe_sizeState();
@@ -12,6 +14,169 @@ class shoe_size extends StatefulWidget {
 
 class _shoe_sizeState extends State<shoe_size> {
   @override
+  void initState() {
+    super.initState();
+    if(user.selected_size == null){
+      return ;
+    }else{
+      selected_size = user.selected_size;
+      if(user.selected_size == "UK1"){
+        uk1 = true;
+        uk2 = false;
+        uk3 = false;
+        uk4 = false;
+        uk5 = false;
+        uk6 = false;
+        uk7 = false;
+        uk8 = false;
+        uk9 = false;
+        uk10 = false;
+        uk11 = false;
+      }else{
+        if(user.selected_size == "UK2"){
+          uk1 = false;
+          uk2 = true;
+          uk3 = false;
+          uk4 = false;
+          uk5 = false;
+          uk6 = false;
+          uk7 = false;
+          uk8 = false;
+          uk9 = false;
+          uk10 = false;
+          uk11 = false;
+        }else{
+          if(user.selected_size == "UK3"){
+            uk1 = false;
+            uk2 = false;
+            uk3 = true;
+            uk4 = false;
+            uk5 = false;
+            uk6 = false;
+            uk7 = false;
+            uk8 = false;
+            uk9 = false;
+            uk10 = false;
+            uk11 = false;
+          }else{
+            if(user.selected_size == "UK4"){
+              uk1 = false;
+              uk2 = false;
+              uk3 = false;
+              uk4 = true;
+              uk5 = false;
+              uk6 = false;
+              uk7 = false;
+              uk8 = false;
+              uk9 = false;
+              uk10 = false;
+              uk11 = false;
+            }else{
+              if(user.selected_size == "UK5"){
+                uk1 = false;
+                uk2 = false;
+                uk3 = false;
+                uk4 = false;
+                uk5 = true;
+                uk6 = false;
+                uk7 = false;
+                uk8 = false;
+                uk9 = false;
+                uk10 = false;
+                uk11 = false;
+              }else{
+                if(user.selected_size == "UK6"){
+                  uk1 = false;
+                  uk2 = false;
+                  uk3 = false;
+                  uk4 = false;
+                  uk5 = false;
+                  uk6 = true;
+                  uk7 = false;
+                  uk8 = false;
+                  uk9 = false;
+                  uk10 = false;
+                  uk11 = false;
+                }else{
+                  if(user.selected_size == "UK7"){
+                    uk1 = false;
+                    uk2 = false;
+                    uk3 = false;
+                    uk4 = false;
+                    uk5 = false;
+                    uk6 = false;
+                    uk7 = true;
+                    uk8 = false;
+                    uk9 = false;
+                    uk10 = false;
+                    uk11 = false;
+                  }else{
+                    if(user.selected_size == "UK8"){
+                      uk1 = false;
+                      uk2 = false;
+                      uk3 = false;
+                      uk4 = false;
+                      uk5 = false;
+                      uk6 = false;
+                      uk7 = false;
+                      uk8 = true;
+                      uk9 = false;
+                      uk10 = false;
+                      uk11 = false;
+                    }else{
+                      if(user.selected_size == "UK9"){
+                        uk1 = false;
+                        uk2 = false;
+                        uk3 = false;
+                        uk4 = false;
+                        uk5 = false;
+                        uk6 = false;
+                        uk7 = false;
+                        uk8 = false;
+                        uk9 = true;
+                        uk10 = false;
+                        uk11 = false;
+                      }else{
+                        if(user.selected_size == "UK10"){
+                          uk1 = false;
+                          uk2 = false;
+                          uk3 = false;
+                          uk4 = false;
+                          uk5 = false;
+                          uk6 = false;
+                          uk7 = false;
+                          uk8 = false;
+                          uk9 = false;
+                          uk10 = true;
+                          uk11 = false;
+                        }else{
+                          if(user.selected_size == "UK11"){
+                            uk1 = false;
+                            uk2 = false;
+                            uk3 = false;
+                            uk4 = false;
+                            uk5 = false;
+                            uk6 = false;
+                            uk7 = false;
+                            uk8 = false;
+                            uk9 = false;
+                            uk10 = false;
+                            uk11 = true;
+                          }else{
+                            return ;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   bool uk1 = true;
   bool uk2 = false;
   bool uk3 = false;
@@ -38,6 +203,8 @@ class _shoe_sizeState extends State<shoe_size> {
   bool uk24 = false;
   bool uk25 = false;
   bool uk26 = false;
+
+  var selected_size = "UK1";
   Widget build(BuildContext context) {
     return Container(
         height: 80,
@@ -75,6 +242,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK1";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -125,6 +294,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK2";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -175,6 +346,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK3";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -225,6 +398,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK4";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -275,6 +450,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK5";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -325,6 +502,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK6";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -375,6 +554,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK7";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -425,6 +606,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK8";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -475,6 +658,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK9";
+                user.selected_size = selected_size;
               });
             },
             child: Container(
@@ -525,6 +710,8 @@ class _shoe_sizeState extends State<shoe_size> {
                 uk24 = false;
                 uk25 = false;
                 uk26 = false;
+                selected_size = "UK10";
+                user.selected_size = selected_size;
               });
             },
             child: Container(

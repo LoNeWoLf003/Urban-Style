@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../constrants/Icons.dart';
 import '../constrants/color.dart';
+import '../controllers/cart/cart controller.dart';
 import '../user/user.dart';
 
 class like_btn extends StatefulWidget {
-  const like_btn({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat}) : super(key: key);
+  const like_btn({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size}) : super(key: key);
   final title;
 
   final des;
@@ -22,6 +23,8 @@ class like_btn extends StatefulWidget {
   final long;
 
   final cat;
+
+  final size;
   @override
   State<like_btn> createState() => _like_btnState();
 }
@@ -50,9 +53,19 @@ class _like_btnState extends State<like_btn> {
             onTap: (){
               print("Changed");
               setState(() {
+                var prev_price = user.cart_price;
                 like = false;
-                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat};
-                user.cart.remove(product);
+                user.cart.removeWhere((element) => element["title"] == widget.title);
+                user.cart.removeWhere((element) => element["des"] == widget.des);
+                user.cart.removeWhere((element) => element["price"] == widget.price);
+                user.cart.removeWhere((element) => element["image"] == widget.image);
+                user.cart.removeWhere((element) => element["stock"] == widget.stock);
+                user.cart.removeWhere((element) => element["long"] == widget.long);
+                user.cart.removeWhere((element) => element["lat"] == widget.lat);
+                user.cart.removeWhere((element) => element["cat"] == widget.cat);
+                user.cart.removeWhere((element) => element["size"] == widget.size);
+                user.cart_price = prev_price - int.parse(widget.price);
+                cart_controller.cart_update();
               });
             },
             child: Container(
@@ -65,10 +78,12 @@ class _like_btnState extends State<like_btn> {
               print("Changed");
               setState(() {
                 like = true;
-                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat};
+                print("Cat - ${widget.cat}");
+                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null};
                 user.cart.add(product);
                 var prev_price = user.cart_price;
                 user.cart_price = prev_price + int.parse(widget.price);
+                cart_controller.cart_update();
               });
             },
             child: Container(

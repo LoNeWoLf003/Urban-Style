@@ -59,7 +59,7 @@ class sign_up_controller {
 
             user.is_login = true;
             print(user.location);
-            final todo = ParseObject('users')..set('username', user_nane.text)..set('email', email.text)..set('password', password.text)..set('cart', [])..set('location', user.location);
+            final todo = ParseObject('users')..set('username', user_nane.text)..set('email', email.text)..set('password', password.text)..set('cart', [])..set('price', 0)..set('location', user.location);
             await todo.save();
             user.email = email.text;
             user.password = password.text;

@@ -43,6 +43,7 @@ class login_controller{
             user.password = data[0]["password"];
             user.location = data[0]["location"];
             user.cart = data[0]["cart"];
+            user.cart_price = data[0]["price"];
             user.obj_id = data[0]["objectId"];
             user.profile_photo = data[0]["profile_photo"];
             if(user.profile_photo == null){

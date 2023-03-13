@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constrants/color.dart';
+import '../user/user.dart';
 
 class shirt_size extends StatefulWidget {
-  const shirt_size({Key? key}) : super(key: key);
+  shirt_size({Key? key,}) : super(key: key);
 
   @override
   State<shirt_size> createState() => _shirt_sizeState();
@@ -12,6 +13,121 @@ class shirt_size extends StatefulWidget {
 
 class _shirt_sizeState extends State<shirt_size> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if(user.selected_shirt_size == null){
+      return ;
+    }else{
+      size = user.selected_shirt_size;
+      if(size == "XL"){
+        uk1 = true;
+        uk2 = false;
+         uk3 = false;
+         uk4 = false;
+         uk5 = false;
+         uk6 = false;
+         uk7 = false;
+         uk8 = false;
+         uk9 = false;
+         uk10 = false;
+         uk11 = false;
+
+      }else {
+        if(size == "S"){
+           uk1 = false;
+           uk2 = true;
+           uk3 = false;
+           uk4 = false;
+           uk5 = false;
+           uk6 = false;
+           uk7 = false;
+           uk8 = false;
+           uk9 = false;
+           uk10 = false;
+           uk11 = false;
+
+        }else {
+          if(size == "M"){
+             uk1 = false;
+             uk2 = false;
+             uk3 = true;
+             uk4 = false;
+             uk5 = false;
+             uk6 = false;
+             uk7 = false;
+             uk8 = false;
+             uk9 = false;
+             uk10 = false;
+             uk11 = false;
+
+          }else {
+            if(size == "L"){
+               uk1 = false;
+               uk2 = false;
+               uk3 = false;
+               uk4 = false;
+               uk5 = true;
+               uk6 = false;
+               uk7 = false;
+               uk8 = false;
+               uk9 = false;
+               uk10 = false;
+               uk11 = false;
+
+            }else {
+              if(size == "XL"){
+                 uk1 = false;
+                 uk2 = false;
+                 uk3 = false;
+                 uk4 = false;
+                 uk5 = false;
+                 uk6 = false;
+                 uk7 = true;
+                 uk8 = false;
+                 uk9 = false;
+                 uk10 = false;
+                 uk11 = false;
+
+              }else {
+                if(size == "XXL"){
+                   uk1 = false;
+                   uk2 = false;
+                   uk3 = false;
+                   uk4 = false;
+                   uk5 = false;
+                   uk6 = false;
+                   uk7 = false;
+                   uk8 = false;
+                   uk9 = true;
+                   uk10 = false;
+                   uk11 = false;
+
+                }else {
+                  if(size == "XXXL"){
+                     uk1 = false;
+                     uk2 = false;
+                     uk3 = false;
+                     uk4 = false;
+                     uk5 = false;
+                     uk6 = false;
+                     uk7 = false;
+                     uk8 = false;
+                     uk9 = false;
+                     uk10 = false;
+                     uk11 = true;
+
+                  }else {
+                    return ;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   bool uk1 = true;
   bool uk2 = false;
   bool uk3 = false;
@@ -23,6 +139,8 @@ class _shirt_sizeState extends State<shirt_size> {
   bool uk9 = false;
   bool uk10 = false;
   bool uk11 = false;
+
+  var size = "XS";
   Widget build(BuildContext context) {
     return Container(
         height: 80,
@@ -45,6 +163,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = false;
+                size = "XS";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(
@@ -80,6 +200,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = false;
+                size = "S";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(
@@ -115,6 +237,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = false;
+                size = "M";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(
@@ -135,41 +259,7 @@ class _shirt_sizeState extends State<shirt_size> {
               ),
             ),
           ),
-          SizedBox(width: 8,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                uk1 = false;
-                uk2 = false;
-                uk3 = false;
-                uk4 = true;
-                uk5 = false;
-                uk6 = false;
-                uk7 = false;
-                uk8 = false;
-                uk9 = false;
-                uk10 = false;
-                uk11 = false;
-              });
-            },
-            child: Container(
-              height: 50,
-              width: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: uk4 ?ColorHelper.color[8] : ColorHelper.color[0],
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorHelper.color[1],
-                        blurRadius: 10.0
-                    )
-                  ]
-              ),
-              child: Center(
-                child: Text("M1",style: TextStyle(color: uk4 ?ColorHelper.color[0] : ColorHelper.color[2]),),
-              ),
-            ),
-          ),
+
           SizedBox(width: 8,),
           InkWell(
             onTap: (){
@@ -185,7 +275,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = false;
-
+                size = "L";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(
@@ -206,42 +297,7 @@ class _shirt_sizeState extends State<shirt_size> {
               ),
             ),
           ),
-          SizedBox(width: 8,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                uk1 = false;
-                uk2 = false;
-                uk3 = false;
-                uk4 = false;
-                uk5 = false;
-                uk6 = true;
-                uk7 = false;
-                uk8 = false;
-                uk9 = false;
-                uk10 = false;
-                uk11 = false;
 
-              });
-            },
-            child: Container(
-              height: 50,
-              width: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: uk6 ?ColorHelper.color[8] : ColorHelper.color[0],
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorHelper.color[1],
-                        blurRadius: 10.0
-                    )
-                  ]
-              ),
-              child: Center(
-                child: Text("L1",style: TextStyle(color: uk6 ?ColorHelper.color[0] : ColorHelper.color[2]),),
-              ),
-            ),
-          ),
           SizedBox(width: 8,),
           InkWell(
             onTap: (){
@@ -257,7 +313,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = false;
-
+                size = "XL";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(
@@ -278,42 +335,7 @@ class _shirt_sizeState extends State<shirt_size> {
               ),
             ),
           ),
-          SizedBox(width: 8,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                uk1 = false;
-                uk2 = false;
-                uk3 = false;
-                uk4 = false;
-                uk5 = false;
-                uk6 = false;
-                uk7 = false;
-                uk8 = true;
-                uk9 = false;
-                uk10 = false;
-                uk11 = false;
 
-              });
-            },
-            child: Container(
-              height: 50,
-              width: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: uk8 ?ColorHelper.color[8] : ColorHelper.color[0],
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorHelper.color[1],
-                        blurRadius: 10.0
-                    )
-                  ]
-              ),
-              child: Center(
-                child: Text("XL1",style: TextStyle(color: uk8 ?ColorHelper.color[0] : ColorHelper.color[2]),),
-              ),
-            ),
-          ),
           SizedBox(width: 8,),
           InkWell(
             onTap: (){
@@ -329,6 +351,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = true;
                 uk10 = false;
                 uk11 = false;
+                size = "XXL";
+                user.selected_shirt_size = size;
 
               });
             },
@@ -350,42 +374,7 @@ class _shirt_sizeState extends State<shirt_size> {
               ),
             ),
           ),
-          SizedBox(width: 8,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                uk1 = false;
-                uk2 = false;
-                uk3 = false;
-                uk4 = false;
-                uk5 = false;
-                uk6 = false;
-                uk7 = false;
-                uk8 = false;
-                uk9 = false;
-                uk10 = true;
-                uk11 = false;
 
-              });
-            },
-            child: Container(
-              height: 50,
-              width: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: uk10 ?ColorHelper.color[8] : ColorHelper.color[0],
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorHelper.color[1],
-                        blurRadius: 10.0
-                    )
-                  ]
-              ),
-              child: Center(
-                child: Text("XXL1",style: TextStyle(color: uk10 ?ColorHelper.color[0] : ColorHelper.color[2]),),
-              ),
-            ),
-          ),
           SizedBox(width: 8,),
           InkWell(
             onTap: (){
@@ -401,7 +390,8 @@ class _shirt_sizeState extends State<shirt_size> {
                 uk9 = false;
                 uk10 = false;
                 uk11 = true;
-
+                size = "XXXL";
+                user.selected_shirt_size = size;
               });
             },
             child: Container(

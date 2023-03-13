@@ -11,7 +11,8 @@ class ColorHelper{
     Colors.orange,
     Colors.deepOrange,
     Colors.green,
-    Colors.blueGrey
+    Colors.blueGrey,
+    Colors.redAccent
   ];
 
   static var mixture = [

@@ -1,17 +1,22 @@
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/cart/cart%20controller.dart';
 import 'package:urban_style/pages/cart/cart.dart';
 import 'package:urban_style/staful%20widgets/cart_bottom.dart';
+import 'package:urban_style/staful%20widgets/cart_delete_btn.dart';
 import 'package:urban_style/widgets/product_info.dart';
 
 import '../user/user.dart';
 
 class cart_item_card extends StatefulWidget {
-  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat}) : super(key: key);
+  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.selected_size, required this.index, }) : super(key: key);
   final title;
 
   final des;
@@ -27,6 +32,11 @@ class cart_item_card extends StatefulWidget {
   final long;
 
   final cat;
+
+  final selected_size ;
+
+  final index ;
+
   @override
   State<cart_item_card> createState() => _cart_item_cardState();
 }
@@ -37,6 +47,7 @@ class _cart_item_cardState extends State<cart_item_card> {
     // TODO: implement initState
     super.initState();
     price = widget.price;
+    print(widget.image["base64"]);
   }
   bool delete = false;
   late int price ;
@@ -46,27 +57,27 @@ class _cart_item_cardState extends State<cart_item_card> {
       onTap: (){
         if(delete == false){
           print(widget.cat);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat,)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size,)));
         }else{
           setState(() {
             delete = false;
-            cart_controller.delete_btn_color = false;
+
           });
         }
       },
       onDoubleTap: (){
         setState(() {
           delete = true;
-          cart_controller.delete_btn_color = true;
         });
       },
       onLongPress: (){
         setState(() {
+
           delete = true;
-          cart_controller.delete_btn_color = true;
         });
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 500),
         height: 130,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -98,7 +109,9 @@ class _cart_item_cardState extends State<cart_item_card> {
                               : ColorHelper.color[4].withOpacity(0.85)
                       ),
                       child: Center(
-                        child: Image.memory(widget.image,fit: BoxFit.fill,),
+                        child: user.is_login
+                        ?Image.memory(base64Decode(widget.image["base64"]),fit: BoxFit.fill,)
+                        :Image.memory(widget.image,fit: BoxFit.fill,),
                       ),
                     ),
                   )
@@ -170,8 +183,18 @@ class _cart_item_cardState extends State<cart_item_card> {
                 ],
               ),
             ),
-            SizedBox(width: 8,)
-            ]
+            SizedBox(width: 8,),
+            delete ? InkWell(
+                onTap: (){
+                  user.cart.removeAt(widget.index);
+                  var prev_price = user.cart_price;
+                  user.cart_price = prev_price - price;
+                  cart_controller.cart_update();
+                  Get.snackbar("Cart Updated" , "Cart Updated .. ");
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
+                },
+                child: Icon(IconHelper.icons[19],size: 44,color: ColorHelper.color[10],)) : SizedBox()
+          ]
         ),
       ),
     );

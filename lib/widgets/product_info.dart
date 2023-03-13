@@ -10,6 +10,7 @@ import '../constrants/color.dart';
 import '../staful widgets/cart btn.dart';
 import '../staful widgets/shirt_size.dart';
 import '../staful widgets/shoe size.dart';
+import '../user/user.dart';
 
 class product_info extends StatelessWidget {
   const product_info(
@@ -20,7 +21,7 @@ class product_info extends StatelessWidget {
       required this.stock,
       required this.des,
       required this.lat,
-      required this.long, this.cat})
+      required this.long, this.cat, this.selected_size})
       : super(key: key);
   final title;
 
@@ -37,6 +38,8 @@ class product_info extends StatelessWidget {
   final long;
 
   final cat;
+
+  final selected_size ;
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +213,7 @@ class product_info extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat,)
+                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_size)
                         ],
                       ),
                     ),

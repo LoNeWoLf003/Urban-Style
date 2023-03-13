@@ -5,6 +5,7 @@ import '../../constrants/Icons.dart';
 import '../../constrants/color.dart';
 import '../../controllers/cart/cart controller.dart';
 import '../../staful widgets/cart_bottom.dart';
+import '../../staful widgets/cart_delete_btn.dart';
 import '../../staful widgets/cart_item_card.dart';
 import '../../staful widgets/search.dart';
 import '../../user/user.dart';
@@ -167,11 +168,7 @@ class cart extends StatelessWidget {
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 18, top: 50,right: 18),
-                      child: SafeArea(
-                          child: Icon(IconHelper.icons[19],color: cart_controller.delete_btn_color == false ? ColorHelper.color[1] : ColorHelper.color[4],)),
-                    ),
+                    child: cart_delete_btn()
                   ),
                 ),
               ],
