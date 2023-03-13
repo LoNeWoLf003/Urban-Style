@@ -65,7 +65,9 @@ class _like_btnState extends State<like_btn> {
                 user.cart.removeWhere((element) => element["cat"] == widget.cat);
                 user.cart.removeWhere((element) => element["size"] == widget.size);
                 user.cart_price = prev_price - int.parse(widget.price);
-                cart_controller.cart_update();
+                print(user.cart);
+                print(user.cart.length);
+                // cart_controller.cart_update();
               });
             },
             child: Container(
@@ -83,7 +85,9 @@ class _like_btnState extends State<like_btn> {
                 user.cart.add(product);
                 var prev_price = user.cart_price;
                 user.cart_price = prev_price + int.parse(widget.price);
-                cart_controller.cart_update();
+                print(user.cart);
+                print(user.cart.length);
+                // cart_controller.cart_update();
               });
             },
             child: Container(

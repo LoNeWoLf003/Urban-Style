@@ -47,7 +47,6 @@ class _cart_item_cardState extends State<cart_item_card> {
     // TODO: implement initState
     super.initState();
     price = widget.price;
-    print(widget.image["base64"]);
   }
   bool delete = false;
   late int price ;
@@ -109,9 +108,7 @@ class _cart_item_cardState extends State<cart_item_card> {
                               : ColorHelper.color[4].withOpacity(0.85)
                       ),
                       child: Center(
-                        child: user.is_login
-                        ?Image.memory(base64Decode(widget.image["base64"]),fit: BoxFit.fill,)
-                        :Image.memory(widget.image,fit: BoxFit.fill,),
+                        child: Image.memory(widget.image,fit: BoxFit.fill,),
                       ),
                     ),
                   )
@@ -189,7 +186,7 @@ class _cart_item_cardState extends State<cart_item_card> {
                   user.cart.removeAt(widget.index);
                   var prev_price = user.cart_price;
                   user.cart_price = prev_price - price;
-                  cart_controller.cart_update();
+                  // cart_controller.cart_update();
                   Get.snackbar("Cart Updated" , "Cart Updated .. ");
                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                 },

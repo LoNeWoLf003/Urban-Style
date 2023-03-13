@@ -55,7 +55,7 @@ class _cart_buttonState extends State<cart_button> {
             user.cart.add(product);
             var prev_price = user.cart_price;
             user.cart_price = prev_price + int.parse(price);
-            cart_controller.cart_update();
+            // cart_controller.cart_update();
           }else{
             var price = widget.price.split(" ")[1];
             var prev_price = user.cart_price;
@@ -71,7 +71,7 @@ class _cart_buttonState extends State<cart_button> {
             user.cart.removeWhere((element) => element["cat"] == widget.cat);
             user.cart.removeWhere((element) => element["size"] == widget.size);
             user.cart_price = prev_price - int.parse(price);
-            cart_controller.cart_update();
+            // cart_controller.cart_update();
           }
 
         });
