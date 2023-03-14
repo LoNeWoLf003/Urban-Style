@@ -25,5 +25,6 @@ class IconHelper{
     Icons.delete,
     Icons.logout,
     Icons.add_circle,
+    Icons.send_rounded
   ];
 }

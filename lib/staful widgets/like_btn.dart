@@ -87,7 +87,7 @@ class _like_btnState extends State<like_btn> {
                 user.cart_price = prev_price + int.parse(widget.price);
                 print(user.cart);
                 print(user.cart.length);
-                // cart_controller.cart_update();
+                cart_controller.cart_update();
               });
             },
             child: Container(
