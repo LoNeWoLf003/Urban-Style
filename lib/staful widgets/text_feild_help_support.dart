@@ -1,3 +1,4 @@
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../constrants/Icons.dart';
@@ -13,6 +14,7 @@ class text_feild_help_support extends StatefulWidget {
 
 class _text_feild_help_supportState extends State<text_feild_help_support> {
   @override
+
   var message = new TextEditingController();
   Widget build(BuildContext context) {
     return Container(
@@ -46,15 +48,20 @@ class _text_feild_help_supportState extends State<text_feild_help_support> {
           )),
           InkWell(
             onTap: (){
-              messageBody.setState(() {
-                messageBody.messages.add({"message" : message.text , "type" : "user"});
-              });
-              setState(() {
-                message.text = "";
+              if(message.text == ""){
 
-              });
-              messageBody.scrollDown();
+              }else{
+                messageBody.setState(() {
+                  messageBody.messages.add({"message" : message.text , "type" : "user"});
+                });
+                messageBody.sendMessage(message.text);
+                setState(() {
+                  message.text = "";
 
+                });
+
+
+              }
             },
             child: Container(
               width: 40,

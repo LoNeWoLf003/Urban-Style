@@ -1,3 +1,4 @@
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,30 @@ class message_body extends StatefulWidget {
 
 class _message_bodyState extends State<message_body> {
   @override
+  void initState() {
+    DialogFlowtter.fromFile().then((instance) => dialogflowtter = instance);
+    super.initState();
+
+  }
+
+  late DialogFlowtter dialogflowtter ;
+
+  sendMessage(String text) async {
+    if (text.isEmpty) {
+      print('Message is empty');
+    } else {
+      scrollDown();
+      DetectIntentResponse response = await dialogflowtter.detectIntent(
+          queryInput: QueryInput(text: TextInput(text: text)));
+      if (response.message?.text == null) return;
+      setState(() {
+        messages.add({'message': "${response.message!.text!.text![0]}", 'type': "service"});
+        scrollDown();
+      });
+    }
+  }
+
+
   final ScrollController _controller = ScrollController();
   void scrollDown() {
     _controller.animateTo(
