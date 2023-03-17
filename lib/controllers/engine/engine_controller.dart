@@ -83,6 +83,7 @@ class engine_controller{
     user.location = placemarks;
     user.sublocality = placemarks[0].subLocality;
     user.locality = placemarks[0].locality;
+    user.state = placemarks[1].administrativeArea;
     user.postal_code = placemarks[0].postalCode;
     print(placemarks);
 

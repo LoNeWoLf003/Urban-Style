@@ -25,6 +25,18 @@ class IconHelper{
     Icons.delete,
     Icons.logout,
     Icons.add_circle,
-    Icons.send_rounded
+    Icons.send_rounded,
+    MdiIcons.package,
+    Icons.payment_outlined,
+    MdiIcons.truckDelivery,
+  ];
+
+  static var assets_image = [
+    "assets/razorpay_icon.png",
+    "assets/Stripe.jpg",
+    "assets/Braintee.png",
+    "assets/google pay.png",
+    "assets/phonepe.jpg",
+
   ];
 }

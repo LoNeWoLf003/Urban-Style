@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
+import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
+import 'package:urban_style/pages/order_confirmation/order_confirmation.dart';
 import 'package:urban_style/staful%20widgets/ring%20size.dart';
 
 import '../constrants/color.dart';
@@ -190,22 +192,38 @@ class product_info extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              height: 70,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  color: ColorHelper.color[3],
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: ColorHelper.color[3],
-                                        blurRadius: 20.0)
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  "Buy Now",
-                                  style: TextStyle(color: ColorHelper.color[0]),
+                            child: InkWell(
+                              onTap : (){
+                                if(user.is_login == true){
+                                  checkout_controller.name.text = user.username;
+                                }
+                                if(context.isPhone){
+                                  checkout_controller.locality.text = user.locality;
+                                  checkout_controller.pincode.text = user.postal_code;
+                                  checkout_controller.city.text = user.locality;
+                                  checkout_controller.state.text = user.state;
+                                  checkout_controller.state.text = user.sublocality;
+                                }
+                                var pricE = price.split(" ")[1];
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size}])));
+                    },
+                              child: Container(
+                                height: 70,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    color: ColorHelper.color[3],
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: ColorHelper.color[3],
+                                          blurRadius: 20.0)
+                                    ]),
+                                child: Center(
+                                  child: Text(
+                                    "Buy Now",
+                                    style: TextStyle(color: ColorHelper.color[0]),
+                                  ),
                                 ),
                               ),
                             ),
@@ -213,7 +231,7 @@ class product_info extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_size)
+                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size)
                         ],
                       ),
                     ),

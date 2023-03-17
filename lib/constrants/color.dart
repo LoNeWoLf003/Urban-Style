@@ -12,7 +12,8 @@ class ColorHelper{
     Colors.deepOrange,
     Colors.green,
     Colors.blueGrey,
-    Colors.redAccent
+    Colors.redAccent,
+    Colors.purple
   ];
 
   static var mixture = [
@@ -24,6 +25,9 @@ class ColorHelper{
     Color(0xFFfff3d0),
     Color(0xFFf7f7f7),
     Color(0xFF4c41a3),
-    Color(0xFF1f186f)
+    Color(0xFF1f186f),
+    Color(0xFFFBFBFB),
+    Color(0xFFE2D7D7),
+    Color(0xFFF2F1F1),
   ];
 }

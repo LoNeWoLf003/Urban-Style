@@ -7,6 +7,7 @@ class user{
   static var obj_id ;
   static var profile_photo ;
   static var sublocality ;
+  static var state ;
   static var locality ;
   static var postal_code ;
   static var username ;

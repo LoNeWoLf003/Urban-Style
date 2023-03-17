@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:urban_style/pages/order_confirmation/order_confirmation.dart';
 
 import '../constrants/Icons.dart';
 import '../constrants/color.dart';
@@ -70,27 +72,32 @@ class _cart_bottomState extends State<cart_bottom> {
                     TextStyle(fontWeight: FontWeight.bold, fontSize: 24,letterSpacing: 1),),
                     Expanded(child: Align(
                       alignment: Alignment.centerRight,
-                      child: Container(
-                        height: 55,
-                        width: 130,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(60)),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: ColorHelper.r_g_b[3],
-                                  blurRadius: 20.0
-                              )
-                            ],
-                            color: ColorHelper.r_g_b[3]
-                        ),
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(width: 10,),
-                              Icon(IconHelper.icons[20],color: ColorHelper.color[0],size: 22,),
-                              SizedBox(width: 4,),
-                              Text("Check Out",style: TextStyle(color: ColorHelper.color[0],fontSize: 13),)
-                            ],
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: user.cart)));
+                        },
+                        child: Container(
+                          height: 55,
+                          width: 130,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(60)),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: ColorHelper.r_g_b[3],
+                                    blurRadius: 20.0
+                                )
+                              ],
+                              color: ColorHelper.r_g_b[3]
+                          ),
+                          child: Center(
+                            child: Row(
+                              children: [
+                                SizedBox(width: 10,),
+                                Icon(IconHelper.icons[20],color: ColorHelper.color[0],size: 22,),
+                                SizedBox(width: 4,),
+                                Text("Check Out",style: TextStyle(color: ColorHelper.color[0],fontSize: 13),)
+                              ],
+                            ),
                           ),
                         ),
                       ),
