@@ -4,16 +4,22 @@ import 'package:urban_style/constrants/color.dart';
 
 import 'order_confirmation_body.dart';
 
+late _checkout_status_barState check_status_Bar ;
 class checkout_status_bar extends StatefulWidget {
   const checkout_status_bar({Key? key}) : super(key: key);
 
   @override
-  State<checkout_status_bar> createState() => _checkout_status_barState();
+  State<checkout_status_bar> createState() {
+    check_status_Bar = _checkout_status_barState();
+    return check_status_Bar;
+  }
 }
 
 class _checkout_status_barState extends State<checkout_status_bar> {
   @override
-
+  bool part_1 = false;
+  bool part_2 = false;
+  bool part_3 = false;
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 28,left: MediaQuery.of(context).size.width * 0.30/4,right: 18),
@@ -30,7 +36,9 @@ class _checkout_status_barState extends State<checkout_status_bar> {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                  color: ColorHelper.color[1],
+                  color: part_1 == true
+                    ?ColorHelper.color[8]
+                      :ColorHelper.color[1],
                   borderRadius: BorderRadius.all(Radius.circular(60))
                 ),
                 child: Center(
@@ -41,7 +49,9 @@ class _checkout_status_barState extends State<checkout_status_bar> {
             Container(
               height: 1,
               width: MediaQuery.of(context).size.width * 1.1/4,
-              color: ColorHelper.color[1],
+              color: part_1 == true
+                  ?ColorHelper.color[8]
+                  :ColorHelper.color[1],
             ),
             InkWell(
               onTap: (){
@@ -53,7 +63,9 @@ class _checkout_status_barState extends State<checkout_status_bar> {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                    color: ColorHelper.color[1],
+                    color: part_2 == true
+                        ?ColorHelper.color[8]
+                        :ColorHelper.color[1],
                     borderRadius: BorderRadius.all(Radius.circular(60))
                 ),
                 child: Center(
@@ -64,7 +76,9 @@ class _checkout_status_barState extends State<checkout_status_bar> {
             Container(
               height: 1,
               width: MediaQuery.of(context).size.width * 1.1/4,
-              color: ColorHelper.color[1],
+              color: part_2 == true
+                  ?ColorHelper.color[8]
+                  :ColorHelper.color[1],
             ),
             InkWell(
               onTap: (){
@@ -76,7 +90,9 @@ class _checkout_status_barState extends State<checkout_status_bar> {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                    color: ColorHelper.color[1],
+                    color: part_3 == true
+                        ?ColorHelper.color[8]
+                        :ColorHelper.color[1],
                     borderRadius: BorderRadius.all(Radius.circular(60))
                 ),
                 child: Center(

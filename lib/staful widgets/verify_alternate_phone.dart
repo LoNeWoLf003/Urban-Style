@@ -1,38 +1,36 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:urban_style/constrants/Icons.dart';
-import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 
+import '../constrants/Icons.dart';
 import '../constrants/color.dart';
+import '../controllers/checkout/checkout_controller.dart';
 
-class verify_phone extends StatefulWidget {
-  const verify_phone({Key? key}) : super(key: key);
+class verify_alternate_phone extends StatefulWidget {
+  const verify_alternate_phone({Key? key}) : super(key: key);
 
   @override
-  State<verify_phone> createState() => _verify_phoneState();
+  State<verify_alternate_phone> createState() => _verify_alternate_phoneState();
 }
 
-class _verify_phoneState extends State<verify_phone> {
+class _verify_alternate_phoneState extends State<verify_alternate_phone> {
   @override
   bool clicked = false;
   bool send_otp = false;
   Widget build(BuildContext context) {
-
     return InkWell(
       onTap: ()async{
         setState(() {
           clicked = true;
         });
         if(clicked == true){
-          print('${checkout_controller.country_code}${checkout_controller.phone}');
+          print('${checkout_controller.country_code}${checkout_controller.alternate_phone}');
           await FirebaseAuth.instance.verifyPhoneNumber(
-            phoneNumber: '${checkout_controller.country_code.text}${checkout_controller.phone.text}',
+            phoneNumber: '${checkout_controller.country_code.text}${checkout_controller.alternate_phone.text}',
             verificationCompleted: (PhoneAuthCredential credential) {},
             verificationFailed: (FirebaseAuthException e) {},
             codeSent: (String verificationId, int? resendToken) {
               setState(() {
-                checkout_controller.verification_id = verificationId;
+                checkout_controller.verification_id_2 = verificationId;
                 send_otp = true;
               });
             },
@@ -56,14 +54,14 @@ class _verify_phoneState extends State<verify_phone> {
         child: Center(
           child: clicked
               ? send_otp
-          ? Row(
+              ? Row(
             children: [
               SizedBox(width: 13,),
               Text("Otp Send ",style: TextStyle(color: ColorHelper.color[0]),),
               Icon(IconHelper.icons[11],color: ColorHelper.color[0],)
             ],
           )
-          :Center(
+              :Center(
             child: CircularProgressIndicator(color: ColorHelper.color[0],),
           )
               :Text(

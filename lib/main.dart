@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -8,10 +9,12 @@ import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
 import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/pages/splash/splash.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async{
   EasyLoading.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   final keyApplicationId = '8fFAky14KWuFrjlKontoTQ4P8mKKNbRz2IIsOXkb';
   final keyClientKey = 'ms2So5j1rzucZ6ojWlYrKLMxzg6whB5Wx35lV7w3';
   final keyParseServerUrl = 'https://parseapi.back4app.com';
