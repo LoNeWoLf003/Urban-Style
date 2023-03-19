@@ -170,51 +170,53 @@ class _homeState extends State<home> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: ColorHelper.r_g_b[2],
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 18,top: 50),
-                  child: SafeArea(
-                    child: Row(
-                      children: [
-                        Text("Our Products !",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 24),),
-                        Expanded(child: Align(
-                          alignment: Alignment.topRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 10,top: 5),
-                            child: SafeArea(
-                              child: InkWell(
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => search()));
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(60)),
-                                  ),
-                                  child: Center(
-                                    child: Icon(IconHelper.icons[10],color: ColorHelper.color[2],),
-                                  ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 18,top: 50),
+                child: SafeArea(
+                  child: Row(
+                    children: [
+                      Text("Our Products !",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 24),),
+                      Expanded(child: Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10,top: 5),
+                          child: SafeArea(
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => search()));
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(60)),
+                                ),
+                                child: Center(
+                                  child: Icon(IconHelper.icons[10],color: ColorHelper.color[2],),
                                 ),
                               ),
                             ),
                           ),
-                        ),)
-                      ],
-                    ),
+                        ),
+                      ),)
+                    ],
                   ),
                 ),
-                SizedBox(height: 10,),
-                category(),
-                SizedBox(height: 10,),
-                categories[index_],
+              ),
+              SizedBox(height: 10,),
+              category(),
+              SizedBox(height: 10,),
+              Expanded(child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                child: categories[index_],
+              ))
 
 
 
-              ],
-            ),
+            ],
           ),
         ),
       )
