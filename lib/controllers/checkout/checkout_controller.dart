@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:urban_style/user/user.dart';
 
 
 class checkout_controller{
@@ -23,61 +25,7 @@ class checkout_controller{
   static var verification_id ;
   static var verification_id_2 ;
 
-  static verify_all()async{
-    alternate_phone.text = "999944443333";
-    alternate_phone_otp.text = "000333";
-    verify_otp();
-    // verify_otp_alternate();
-    if(name.text.isEmpty){
-      Get.snackbar("Name not valid", "Please Enter Correct Name to continue");
-    }else{
-      if(country_code.text.isEmpty){
-        Get.snackbar("Country Code not valid", "Please Enter Correct Country Code to continue");
-      }else{
-        if(phone.text.isEmpty){
-          Get.snackbar("Phone Number not valid", "Please Enter Correct Phone Number to continue");
-        }else{
-          if(otp.text.isEmpty){
-            Get.snackbar("Otp not valid", "Please Enter Correct Otp to continue");
-          }else{
-            if(alternate_phone.text.isEmpty){
-              Get.snackbar("Alternate Phone Number not valid", "Please Enter Correct Alternate Phone Number to continue");
-            }else{
-              if(alternate_phone_otp.text.isEmpty){
-                Get.snackbar("Alternate Phone Otp not valid", "Please Enter Correct Alternate Phone Otp to continue");
-              }else{
-                if(landmark.text.isEmpty){
-                  Get.snackbar("Landmark not valid", "Please Enter Correct Landmark to continue");
-                }else{
-                  if(locality.text.isEmpty){
-                    Get.snackbar("Locality not valid", "Please Enter Correct Locality to continue");
-                  }else{
-                    if(pincode.text.isEmpty){
-                      Get.snackbar("Pincode not valid", "Please Enter Correct Pincode to continue");
-                    }else{
-                      if(city.text.isEmpty){
-                        Get.snackbar("City not valid", "Please Enter Correct City to continue");
-                      }else{
-                        if(state.text.isEmpty){
-                          Get.snackbar("State not valid", "Please Enter Correct State to continue");
-                        }else{
-                          if(brief_address.text.isEmpty){
-                            Get.snackbar("Brief Address not valid", "Please Enter Correct Brief Address to continue");
-                          }else{
-                            return "All Okay";
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+
 
   static verify_otp()async{
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -109,6 +57,36 @@ class checkout_controller{
         Get.snackbar("Wrong Alternate Phone OTP ", "Please Enter Correct Alternate Phone OTP to continue");
       }
     }
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet was selected
+  }
+
+  open_razorpay(amount , title){
+    var _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    var options = {
+      'key': 'rzp_test_BkBJbDxdJzYeW6',
+      'amount': 100,
+      'name': '${user.username == null ?"Default" : user.username}',
+      'description': '${title}}',
+      'prefill': {
+        'contact': '8888888888',
+        'email': 'test@razorpay.com'
+      }
+    };
+    _razorpay.open(options);
   }
 
 }

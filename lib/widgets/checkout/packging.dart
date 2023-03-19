@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:urban_style/constrants/color.dart';
+import 'package:urban_style/staful%20widgets/checkout/verify_second_page.dart';
 import 'package:urban_style/staful%20widgets/order_confirmation_body.dart';
 import 'package:urban_style/widgets/checkout/packaging_product_item_card.dart';
 
@@ -27,31 +28,7 @@ class packging extends StatelessWidget {
                 );
           }),
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Container(
-              height: 70,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius:
-                  BorderRadius.all(Radius.circular(20)),
-                  color: ColorHelper.color[3],
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorHelper.color[3],
-                        blurRadius: 20.0)
-                  ]),
-              child: Center(
-                child: Text(
-                  "Next",
-                  style: TextStyle(color: ColorHelper.color[0]),
-                ),
-              ),
-            ),
-          ),
-        )
+        verify_second_page()
       ],
     );
   }

@@ -6,11 +6,15 @@ import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 
 import '../constrants/color.dart';
 
+late _verify_phoneState verifyPhone;
 class verify_phone extends StatefulWidget {
   const verify_phone({Key? key}) : super(key: key);
 
   @override
-  State<verify_phone> createState() => _verify_phoneState();
+  State<verify_phone> createState() {
+    verifyPhone = _verify_phoneState();
+    return verifyPhone;
+  }
 }
 
 class _verify_phoneState extends State<verify_phone> {
