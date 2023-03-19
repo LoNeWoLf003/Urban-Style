@@ -18,10 +18,7 @@ class shoes extends StatelessWidget {
         future: home_controller.load_shoes(context),
         builder: (context , AsyncSnapshot snapshot){
       if(snapshot.connectionState == ConnectionState.waiting){
-        return Padding(
-          padding: const EdgeInsets.only(top: 50,left: 0,right: 0),
-          child: shimmer_loader(context.isPhone),
-        );
+        return shimmer_loader(context.isPhone);
       }else if(snapshot.hasError){
         return Center(
           child: Text("Something went wrong"),
