@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
+import 'package:urban_style/staful%20widgets/checkout_status_bar.dart';
 import 'package:urban_style/widgets/gradient_button.dart';
 import 'package:urban_style/widgets/payment_success.dart';
 
@@ -31,11 +32,13 @@ class _payment_optionsState extends State<payment_options> {
               // 27
               InkWell(
                 onTap: (){
-                  setState(() {
-                    is_cash_on_delivery = true;
-                    is_google_pay = false;
-                    is_phone_pay = false;
-                  });
+                  if(check_status_Bar.part_1 == true){
+                    setState(() {
+                      is_cash_on_delivery = true;
+                      is_google_pay = false;
+                      is_phone_pay = false;
+                    });
+                  }
                 },
                 child: Container(
                   height: 30,
@@ -67,11 +70,15 @@ class _payment_optionsState extends State<payment_options> {
               // 27
               InkWell(
                 onTap: (){
-                  setState(() {
-                    is_cash_on_delivery = false;
-                    is_google_pay = true;
-                    is_phone_pay = false;
-                  });
+
+                  if(check_status_Bar.part_1 == true){
+                    setState(() {
+                      is_cash_on_delivery = false;
+                      is_google_pay = true;
+                      is_phone_pay = false;
+                    });
+                  }
+
                 },
                 child: Container(
                   height: 30,
@@ -103,11 +110,13 @@ class _payment_optionsState extends State<payment_options> {
               // 27
               InkWell(
                 onTap: (){
-                  setState(() {
-                    is_cash_on_delivery = false;
-                    is_google_pay = false;
-                    is_phone_pay = true;
-                  });
+                  if(check_status_Bar.part_1 == true){
+                    setState(() {
+                      is_cash_on_delivery = false;
+                      is_google_pay = false;
+                      is_phone_pay = true;
+                    });
+                  }
                 },
                 child: Container(
                   height: 30,

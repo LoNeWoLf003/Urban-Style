@@ -34,7 +34,27 @@ bool okay = false;
           });
           checkout_controller.alternate_phone.text = "999944443333";
           checkout_controller.alternate_phone_otp.text = "000333";
-          checkout_controller.verify_otp();
+          final FirebaseAuth auth = FirebaseAuth.instance;
+          if(checkout_controller.otp.text.isEmpty){
+            Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
+          }else{
+            try{
+              PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: checkout_controller.verification_id, smsCode: checkout_controller.otp.text);
+
+              // Sign the user in (or link) with the credential
+              await auth.signInWithCredential(credential);
+            }catch(e){
+              Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
+              setState(() {
+                check_status_Bar.setState(() {
+                  check_status_Bar.part_1 = false;
+                });
+                checkout_bodY.setState(() {
+                  checkout_bodY.index = 0;
+                });
+              });
+            }
+          }
           // verify_otp_alternate();
           if(checkout_controller.name.text.isEmpty){
             Get.snackbar("Name not valid", "Please Enter Correct Name to continue");
@@ -81,6 +101,7 @@ bool okay = false;
                     verifyPhone.clicked = false;
                     verifyPhone.send_otp = false;
                   });
+
                   checkout_controller.otp.text = "";
 
                 }else{
