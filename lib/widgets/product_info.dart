@@ -106,11 +106,11 @@ class product_info extends StatelessWidget {
             height: 30,
           ),
           Container(
-            height: context.isPhone ? cat == null ? 470  : 400 : cat == null ? 320 : 200,
+            height: context.isPhone ? cat == null ? 320  : 200 : cat == null ? 320 : 240,
             width: context.isPhone ? double.infinity : 300,
             child: Image.memory(
               image,
-              fit: context.isPhone ?BoxFit.fitWidth :BoxFit.fitHeight,
+              fit: context.isPhone ?BoxFit.fitHeight :BoxFit.fitHeight,
             ),
           ),
           Expanded(
