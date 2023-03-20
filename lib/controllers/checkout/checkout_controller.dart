@@ -78,7 +78,7 @@ class checkout_controller{
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     var options = {
       'key': 'rzp_test_BkBJbDxdJzYeW6',
-      'amount': 100,
+      'amount': amount * 100,
       'name': '${user.username == null ?"Default" : user.username}',
       'description': '${title}}',
       'prefill': {

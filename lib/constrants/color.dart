@@ -29,5 +29,6 @@ class ColorHelper{
     Color(0xFFFBFBFB),
     Color(0xFFE2D7D7),
     Color(0xFFF2F1F1),
+    Color(0xFF12c06a)
   ];
 }

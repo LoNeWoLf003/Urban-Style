@@ -29,6 +29,8 @@ class IconHelper{
     MdiIcons.package,
     Icons.payment_outlined,
     MdiIcons.truckDelivery,
+    Icons.radio_button_off,
+    Icons.radio_button_checked,
   ];
 
   static var assets_image = [

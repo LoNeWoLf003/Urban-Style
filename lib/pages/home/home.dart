@@ -207,7 +207,6 @@ class _homeState extends State<home> {
               ),
               SizedBox(height: 10,),
               category(),
-              SizedBox(height: 10,),
               Expanded(child: Container(
                 height: double.infinity,
                 width: double.infinity,

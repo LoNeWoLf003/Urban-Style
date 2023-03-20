@@ -15,10 +15,6 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async{
   EasyLoading.init();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: FirebaseOptions(apiKey: "AIzaSyD2booaGafuilDBIVG8M4Ml7FcBTHBNcMc", appId: "1:779807127457:web:8e9722b0f0974440f5fde0", messagingSenderId: "779807127457", projectId: "phone-firebase-86703")
-  );
-
   final keyApplicationId = '8fFAky14KWuFrjlKontoTQ4P8mKKNbRz2IIsOXkb';
   final keyClientKey = 'ms2So5j1rzucZ6ojWlYrKLMxzg6whB5Wx35lV7w3';
   final keyParseServerUrl = 'https://parseapi.back4app.com';

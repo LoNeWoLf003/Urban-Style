@@ -11,8 +11,8 @@ import 'package:urban_style/pages/accounts/sign%20up/sign%20up.dart';
 import 'package:urban_style/user/user.dart';
 import 'dart:io' show Platform;
 import 'dart:math';
-
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../../pages/accounts/login/login.dart';
 
 class engine_controller{
@@ -105,6 +105,16 @@ class engine_controller{
         c(lat1 * p) * c(lat2 * p) *
             (1 - c((lon2 - lon1) * p))/2;
     return 12742 * asin(sqrt(a));
+  }
+
+  static initilize_firebase(phone)async{
+    if(phone == true){
+      await Firebase.initializeApp();
+    }else{
+      await Firebase.initializeApp(
+          options: FirebaseOptions(apiKey: "AIzaSyD2booaGafuilDBIVG8M4Ml7FcBTHBNcMc", appId: "1:779807127457:web:8e9722b0f0974440f5fde0", messagingSenderId: "779807127457", projectId: "phone-firebase-86703")
+      );
+    }
   }
 
 

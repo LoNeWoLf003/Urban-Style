@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../controllers/assets/assets.dart';
+import '../../controllers/engine/engine_controller.dart';
 import '../../controllers/home/home_controller.dart';
 
 class splash extends StatelessWidget {
@@ -9,6 +11,7 @@ class splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    engine_controller.initilize_firebase(context.isPhone);
     home_controller.load_item_for_search(context);
     return Scaffold(
       body: Stack(
