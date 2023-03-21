@@ -1,18 +1,18 @@
 import 'package:animated_drawer/views/animated_drawer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:urban_style/widgets/my_order_cart.dart';
 
 import '../../constrants/color.dart';
-import '../../staful widgets/message_body.dart';
-import '../../staful widgets/text_feild_help_support.dart';
 import '../../user/user.dart';
 import '../account/account.dart';
 import '../accounts/sign up/sign up.dart';
 import '../cart/cart.dart';
+import '../help_support/help_support.dart';
 import '../home/home.dart';
-import '../my_orders/my order.dart';
 
-class help_support extends StatelessWidget {
-  const help_support({Key? key}) : super(key: key);
+class my_order extends StatelessWidget {
+  const my_order({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -159,23 +159,29 @@ class help_support extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 18, top: 50),
                         child: SafeArea(
                             child: Text(
-                              "Help & Support",
+                              "My Orders",
                               style:
                               TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                             )),
                       ),
                     ),
-              ],
+
+                  ],
                 ),
-                Expanded(child: message_body()),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: text_feild_help_support(),
-                  ),
-                )
-            ]
+                SizedBox(height: 0,),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: user.my_orders.length,
+                      itemBuilder: (context , index){
+                        print(user.my_orders.length);
+                        print(user.my_orders);
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 18,right: 18,bottom: 0,top: 10),
+                      child: my_order_card(index: index),
+                    );
+                  }),
+                ),
+              ],
             ),
           ),
         ));

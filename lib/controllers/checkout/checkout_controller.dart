@@ -1,12 +1,16 @@
 
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:urban_style/user/user.dart';
-
+import 'package:urban_style/widgets/payment_success.dart';
+import 'package:http/http.dart' as http;
 
 class checkout_controller{
   static TextEditingController name = new TextEditingController();
@@ -24,6 +28,8 @@ class checkout_controller{
 
   static var verification_id ;
   static var verification_id_2 ;
+
+  var paymentIntent ;
 
 
 
@@ -59,8 +65,8 @@ class checkout_controller{
     }
   }
 
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
+  _handlePaymentSuccess(context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -71,16 +77,16 @@ class checkout_controller{
     // Do something when an external wallet was selected
   }
 
-  open_razorpay(amount , title){
+  open_razorpay(amount , context){
     var _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess(context));
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     var options = {
       'key': 'rzp_test_BkBJbDxdJzYeW6',
       'amount': amount * 100,
       'name': '${user.username == null ?"Default" : user.username}',
-      'description': '${title}}',
+      'description': '',
       'prefill': {
         'contact': '8888888888',
         'email': 'test@razorpay.com'
@@ -88,5 +94,9 @@ class checkout_controller{
     };
     _razorpay.open(options);
   }
+
+
+
+
 
 }

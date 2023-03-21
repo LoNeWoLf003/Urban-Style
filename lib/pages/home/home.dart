@@ -23,6 +23,7 @@ import '../../widgets/caps.dart';
 import '../../widgets/chains.dart';
 import '../../widgets/makeup.dart';
 import '../../widgets/rings.dart';
+import '../my_orders/my order.dart';
 
 late _homeState home_page_state ;
 class home extends StatefulWidget {
@@ -159,10 +160,17 @@ class _homeState extends State<home> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
                 ),
-                Text(
-                  "Logout ",
-                  style: TextStyle(
-                    color: ColorHelper.color[0],),),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                  },
+                  child: Text(
+                    "My Orders",
+                    style: TextStyle(
+                      color: ColorHelper.color[0],
+                    ),
+                  ),
+                ),
               ],),
           ),
         ),

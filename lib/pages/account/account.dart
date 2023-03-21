@@ -12,6 +12,7 @@ import '../../widgets/textfeild.dart';
 import '../cart/cart.dart';
 import '../help_support/help_support.dart';
 import '../home/home.dart';
+import '../my_orders/my order.dart';
 
 class account extends StatelessWidget {
   const account({Key? key}) : super(key: key);
@@ -117,10 +118,17 @@ class account extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                   ),
-                  Text(
-                    "Logout ",
-                    style: TextStyle(
-                      color: ColorHelper.color[0],),),
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                    },
+                    child: Text(
+                      "My Orders",
+                      style: TextStyle(
+                        color: ColorHelper.color[0],
+                      ),
+                    ),
+                  ),
                 ],),
             ),
           ),

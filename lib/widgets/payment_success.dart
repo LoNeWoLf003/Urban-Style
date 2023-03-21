@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/assets/assets.dart';
+import 'package:urban_style/staful%20widgets/order_confirmation_body.dart';
+import 'package:urban_style/user/user.dart';
+
+import '../pages/my_orders/my order.dart';
 
 class payment_success extends StatelessWidget {
   const payment_success({Key? key}) : super(key: key);
@@ -15,7 +19,12 @@ class payment_success extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("< Go to My Orders",style: TextStyle(color: ColorHelper.color[0]),),
+              child: SafeArea(child: InkWell(
+                  onTap: (){
+                    user.my_orders.add(checkout_bodY.widget.products);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                  },
+                  child: Text("< Go to My Orders",style: TextStyle(color: ColorHelper.color[0]),))),
             ),
           ),
           Align(
@@ -38,7 +47,13 @@ class payment_success extends StatelessWidget {
                 color: ColorHelper.color[0]
               ),
               child: Center(
-                child: Text("Go to My Orders",style: TextStyle(color: ColorHelper.r_g_b[8]),),
+                child: InkWell(
+                    onTap: (){
+                      user.my_orders.add(checkout_bodY.widget.products);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+
+                    },
+                    child: Text("Go to My Orders",style: TextStyle(color: ColorHelper.r_g_b[8]),)),
               ),
             ),
           )

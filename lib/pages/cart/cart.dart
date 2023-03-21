@@ -13,6 +13,7 @@ import '../account/account.dart';
 import '../accounts/sign up/sign up.dart';
 import '../help_support/help_support.dart';
 import '../home/home.dart';
+import '../my_orders/my order.dart';
 
 class cart extends StatelessWidget {
   const cart({Key? key}) : super(key: key);
@@ -135,10 +136,15 @@ class cart extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: 20),
               ),
-              Text(
-                "Logout ",
-                style: TextStyle(
-                  color: ColorHelper.color[0],
+              InkWell(
+                onTap: (){
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                },
+                child: Text(
+                  "My Orders",
+                  style: TextStyle(
+                    color: ColorHelper.color[0],
+                  ),
                 ),
               ),
             ],
