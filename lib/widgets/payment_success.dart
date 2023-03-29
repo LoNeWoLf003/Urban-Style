@@ -11,6 +11,10 @@ class payment_success extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prev_items = user.my_orders;
+    print("////////////////////////////////////////////////////////////////");
+    print(checkout_bodY.widget.products.length);
+    user.my_orders = checkout_bodY.widget.products;
     return Scaffold(
       backgroundColor: ColorHelper.r_g_b[8],
       body: Column(
@@ -21,7 +25,7 @@ class payment_success extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SafeArea(child: InkWell(
                   onTap: (){
-                    user.my_orders.add(checkout_bodY.widget.products);
+
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                   },
                   child: Text("< Go to My Orders",style: TextStyle(color: ColorHelper.color[0]),))),

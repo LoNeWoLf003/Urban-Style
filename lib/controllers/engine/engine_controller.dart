@@ -117,6 +117,11 @@ class engine_controller{
     }
   }
 
+  static extract_location(lat,long) async{
+    List<Placemark> placemarks = await placemarkFromCoordinates(lat , long);
+    return placemarks[0].name;
+  }
+
 
 
 }

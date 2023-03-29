@@ -12,13 +12,14 @@ import 'package:urban_style/pages/splash/splash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'controllers/checkout/checkout_controller.dart';
+
 void main() async{
   EasyLoading.init();
   WidgetsFlutterBinding.ensureInitialized();
   final keyApplicationId = '8fFAky14KWuFrjlKontoTQ4P8mKKNbRz2IIsOXkb';
   final keyClientKey = 'ms2So5j1rzucZ6ojWlYrKLMxzg6whB5Wx35lV7w3';
   final keyParseServerUrl = 'https://parseapi.back4app.com';
-
   await Parse().initialize(keyApplicationId, keyParseServerUrl,
       clientKey: keyClientKey, autoSendSessionId: true);
   print('done');

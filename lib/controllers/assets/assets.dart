@@ -15,4 +15,5 @@ class assets{
   static final rings = "assets/rings.png";
   static final nothing_found = "assets/Something went wrong.png";
   static final payment_successfull = "assets/payment_successfull.gif";
+  static final loading = "assets/loading.gif";
 }

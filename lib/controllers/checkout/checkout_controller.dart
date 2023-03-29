@@ -7,10 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/payment_success.dart';
 import 'package:http/http.dart' as http;
+import 'dart:math';
+
+import '../../main.dart';
+
+
 
 class checkout_controller{
   static TextEditingController name = new TextEditingController();
@@ -30,6 +35,8 @@ class checkout_controller{
   static var verification_id_2 ;
 
   var paymentIntent ;
+
+  static bool is_payment_done = false;
 
 
 
@@ -65,38 +72,68 @@ class checkout_controller{
     }
   }
 
-  _handlePaymentSuccess(context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    // Do something when an external wallet was selected
-  }
 
   open_razorpay(amount , context){
-    var _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess(context));
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    var options = {
-      'key': 'rzp_test_BkBJbDxdJzYeW6',
-      'amount': amount * 100,
-      'name': '${user.username == null ?"Default" : user.username}',
-      'description': '',
-      'prefill': {
-        'contact': '8888888888',
-        'email': 'test@razorpay.com'
-      }
-    };
-    _razorpay.open(options);
+
+
   }
 
 
 
 
+  verify_all(lat , long) async{
+    print("Process Started");
+    print(is_payment_done);
+    while(is_payment_done == true){
+      print(is_payment_done);
+      double meters = 500;
 
+      double coef = meters / 111320.0;
+
+      double new_lat = lat + coef;
+
+      double new_long = long + coef / cos(lat * 0.01745);
+      QueryBuilder<ParseObject> queryTodo =
+      QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
+      final ParseResponse apiResponse = await queryTodo.query();
+
+      if (apiResponse.success && apiResponse.results != null) {
+        for (var boy in apiResponse.results !) {
+          print(boy);
+          bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
+          print(avail);
+        }
+      } else {
+        return [];
+      }
+    }
+  }
+
+
+
+  bool isPersonAvailable(Person person, double startLat, double startLong, double endLat, double endLong, double maxDistance) {
+    const double earthRadius = 6371.0; // Earth's radius in km
+    double latDiff = (endLat - startLat) * pi / 180.0;
+    double longDiff = (endLong - startLong) * pi / 180.0;
+    double startLatRad = startLat * pi / 180.0;
+    double endLatRad = endLat * pi / 180.0;
+
+    double a = sin(latDiff / 2) * sin(latDiff / 2) +
+        sin(longDiff / 2) * sin(longDiff / 2) *
+            cos(startLatRad) * cos(endLatRad);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double distance = earthRadius * c;
+
+    return distance <= maxDistance;
+  }
+
+
+
+}
+
+class Person {
+  double latitude;
+  double longitude;
+
+  Person({required this.latitude, required this.longitude});
 }

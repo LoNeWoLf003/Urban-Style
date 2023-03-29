@@ -11,7 +11,7 @@ import '../../widgets/checkout/payment.dart';
 
 class order_confirmation extends StatelessWidget {
   order_confirmation({Key? key, required this.products}) : super(key: key);
-final products ;
+final List products ;
 
   @override
   Widget build(BuildContext context) {
