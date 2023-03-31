@@ -183,9 +183,13 @@ class _payment_optionsState extends State<payment_options> {
                 onError: (data){
                   Get.snackbar("Payment Failed.", "Payment Failed. Try Again");
                   },
-                onPaymentResult: (data){
+                onPressed: (){
                   print("data");
+                  checkout_controller.is_payment_done = true;
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => check_ok()));
+                },
+                onPaymentResult: (data){
+
                 },
                 loadingIndicator: const Center(
                   child: CircularProgressIndicator(),

@@ -113,6 +113,22 @@ class my_order_info extends StatelessWidget {
                 child: Image.memory(image,fit: BoxFit.fitHeight,height: 500,width: 500,),
               ),
             ),
+
+            Divider(color: ColorHelper.color[1],),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  SizedBox(width: 5,),
+                  Icon(IconHelper.icons[12],color: ColorHelper.color[1],size: 24,),
+                  SizedBox(width: 5,),
+                  Text("Track Delivery Boy",style: TextStyle(color: ColorHelper.color[1]),),
+                  SizedBox(width: 5,),
+                  Expanded(child: Divider(color: ColorHelper.color[1],))
+
+                ],
+              ),
+            ),
             // Align(
             //   alignment: Alignment.bottomCenter,
             //   child: Padding(
@@ -146,6 +162,7 @@ class my_order_info extends StatelessWidget {
             //   padding: const EdgeInsets.all(18.0),
             //   child: out_of_stock(index: index, title: name, context: con,stock: stock,),
             // )
+            SizedBox(height: 50,)
           ],
         ),
       ),

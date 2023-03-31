@@ -14,6 +14,8 @@ import 'package:http/http.dart' as http;
 import 'dart:math';
 
 import '../../main.dart';
+import '../../pages/my_orders/my order.dart';
+import '../../widgets/check_everything_assign.dart';
 
 
 
@@ -81,10 +83,12 @@ class checkout_controller{
 
 
 
-  verify_all(lat , long) async{
+  verify_all(lat , long , context) async{
+    var la_t = lat;
+    var lon_g = long;
     print("Process Started");
     print(is_payment_done);
-    while(is_payment_done == true){
+    if(is_payment_done == true){
       print(is_payment_done);
       double meters = 500;
 
@@ -102,11 +106,24 @@ class checkout_controller{
           print(boy);
           bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
           print(avail);
+          if(avail == true){
+            var todo = ParseObject('deliveryBoy')
+              ..objectId = boy["objectId"]
+              ..set('is_active', true);
+            await todo.save();
+            print("Statues Saved");
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+          }
+
         }
       } else {
         return [];
       }
+
+    }else{
+      verify_all(la_t, lon_g , context);
     }
+
   }
 
 

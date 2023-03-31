@@ -13,6 +13,7 @@ import 'dart:io' show Platform;
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:urban_style/widgets/my_order_cart.dart';
 import '../../pages/accounts/login/login.dart';
 
 class engine_controller{
@@ -118,7 +119,9 @@ class engine_controller{
   }
 
   static extract_location(lat,long) async{
-    List<Placemark> placemarks = await placemarkFromCoordinates(lat , long);
+    List<Placemark> placemarks = await placemarkFromCoordinates(double.parse(lat) , double.parse(long));
+    print(placemarks[0].name);
+    loc = placemarks[0].name;
     return placemarks[0].name;
   }
 

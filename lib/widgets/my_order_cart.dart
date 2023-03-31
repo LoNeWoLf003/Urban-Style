@@ -10,6 +10,7 @@ import '../constrants/color.dart';
 import '../staful widgets/order_confirmation_body.dart';
 import '../user/user.dart';
 
+var loc ;
 class my_order_card extends StatelessWidget {
   my_order_card(
       {Key? key,
@@ -20,12 +21,13 @@ class my_order_card extends StatelessWidget {
 
   int index;
 
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        var loc = engine_controller.extract_location(user.my_orders[index]["lat"], user.my_orders[index]["long"]);
-        Future.delayed(Duration(seconds: 2),(){
+        engine_controller.extract_location(user.my_orders[index]["lat"], user.my_orders[index]["long"]);
+        Future.delayed(Duration(seconds: 4),(){
           print(user.my_orders[index]["title"]);
           print(user.my_orders[index]["price"]);
           print(user.my_orders[index]["des"]);

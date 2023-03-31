@@ -10,7 +10,7 @@ class check_ok extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    checkout_controller().verify_all(user.lat , user.long);
+    checkout_controller().verify_all(user.lat , user.long , context);
     return Scaffold(
       backgroundColor: ColorHelper.r_g_b[9],
       body: Center(
