@@ -34,7 +34,7 @@ class t_shirts extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(lat: snapshot.data[index]["lat"],long: snapshot.data[index]["long"],title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"],cat: "T-Shirt",)));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(lat: snapshot.data[index]["lat"],long: snapshot.data[index]["long"],title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"],cat: "T-Shirt", token: snapshot.data[index]["token"])));
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -56,7 +56,7 @@ class t_shirts extends StatelessWidget {
                           snapshot.data[index]["stock"] == "In Stock"
                               ? Text("")
                               : Text("* out of stock",style: TextStyle(color: ColorHelper.color[4]),),
-                          Expanded(child: like_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], cat: "T-Shirt",size: "default",)),
+                          Expanded(child: like_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], cat: "T-Shirt",size: "default", token: snapshot.data[index]["token"])),
                         ],
                       ),
                       Container(

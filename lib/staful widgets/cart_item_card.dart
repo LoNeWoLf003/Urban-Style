@@ -16,7 +16,7 @@ import 'package:urban_style/widgets/product_info.dart';
 import '../user/user.dart';
 
 class cart_item_card extends StatefulWidget {
-  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.selected_size, required this.index, }) : super(key: key);
+  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.selected_size, required this.index, required this.token, }) : super(key: key);
   final title;
 
   final des;
@@ -32,6 +32,8 @@ class cart_item_card extends StatefulWidget {
   final long;
 
   final cat;
+
+  final token;
 
   final selected_size ;
 
@@ -56,7 +58,7 @@ class _cart_item_cardState extends State<cart_item_card> {
       onTap: (){
         if(delete == false){
           print(widget.cat);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size,)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size, token: widget.token,)));
         }else{
           setState(() {
             delete = false;

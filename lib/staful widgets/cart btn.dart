@@ -7,7 +7,7 @@ import 'package:urban_style/user/user.dart';
 import '../controllers/cart/cart controller.dart';
 
 class cart_button extends StatefulWidget {
-  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size}) : super(key: key);
+  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token}) : super(key: key);
   final title;
 
   final des;
@@ -15,6 +15,8 @@ class cart_button extends StatefulWidget {
   final price;
 
   final image;
+
+  final token;
 
   final stock;
 
@@ -51,7 +53,7 @@ class _cart_buttonState extends State<cart_button> {
             var price = widget.price.split(" ")[1];
             print(price);
             print("Cat - ${widget.cat}");
-            var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size};
+            var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token};
             user.cart.add(product);
             var prev_price = user.cart_price;
             user.cart_price = prev_price + int.parse(price);

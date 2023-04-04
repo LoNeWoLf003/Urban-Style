@@ -163,6 +163,7 @@ class _searchState extends State<search> {
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => product_info(
+                                        token: _foundUsers[index]["token"],
                                             title: _foundUsers[index]["title"],
                                             price:
                                                 "₹ ${_foundUsers[index]["price"]}",
@@ -201,7 +202,7 @@ class _searchState extends State<search> {
                                                       color:
                                                           ColorHelper.color[4]),
                                                 ),
-                                          Expanded(child: like_btn(title: _foundUsers[index]["title"], des: _foundUsers[index]["des"], price: _foundUsers[index]["price"], image: _foundUsers[index]["image"], stock: _foundUsers[index]["stock"], lat: _foundUsers[index]["lat"], long: _foundUsers[index]["long"] )),
+                                          Expanded(child: like_btn(title: _foundUsers[index]["title"], des: _foundUsers[index]["des"], price: _foundUsers[index]["price"], image: _foundUsers[index]["image"], stock: _foundUsers[index]["stock"], lat: _foundUsers[index]["lat"], long: _foundUsers[index]["long"], token: _foundUsers[index]["token"], )),
                                         ],
                                       ),
                                       Container(

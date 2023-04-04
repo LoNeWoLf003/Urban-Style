@@ -45,7 +45,7 @@ class _cart_bottomState extends State<cart_bottom> {
                   itemBuilder: (context, index){
                     return Padding(
                       padding: const EdgeInsets.only(left: 18,right: 18,bottom: 0,top: 10),
-                      child: cart_item_card(title: user.cart[index.toInt()]['title'], des: user.cart[index.toInt()]['des'], price: int.parse(user.cart[index.toInt()]['price']), image: user.cart[index.toInt()]['image'], stock: user.cart[index.toInt()]['stock'], lat: user.cart[index.toInt()]['lat'], long: user.cart[index.toInt()]['long'], cat: user.cart[index.toInt()]['cat'], selected_size: user.cart[index.toInt()]['size'], index: index.toInt(),),
+                      child: cart_item_card(title: user.cart[index.toInt()]['title'], des: user.cart[index.toInt()]['des'], price: int.parse(user.cart[index.toInt()]['price']), image: user.cart[index.toInt()]['image'], stock: user.cart[index.toInt()]['stock'], lat: user.cart[index.toInt()]['lat'], long: user.cart[index.toInt()]['long'], cat: user.cart[index.toInt()]['cat'], selected_size: user.cart[index.toInt()]['size'], index: index.toInt(), token: user.cart[index.toInt()]['token'],),
                     );
                   }),
             ),

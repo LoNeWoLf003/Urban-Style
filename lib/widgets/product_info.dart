@@ -2,6 +2,7 @@ import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
@@ -23,9 +24,12 @@ class product_info extends StatelessWidget {
       required this.stock,
       required this.des,
       required this.lat,
+      required this.token,
       required this.long, this.cat, this.selected_size})
       : super(key: key);
   final title;
+
+  final token;
 
   final des;
 
@@ -193,7 +197,7 @@ class product_info extends StatelessWidget {
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap : (){
+                              onTap : ()async{
                                 if(user.is_login == true){
                                   checkout_controller.name.text = user.username;
                                 }
@@ -205,7 +209,13 @@ class product_info extends StatelessWidget {
                                   checkout_controller.state.text = user.sublocality;
                                 }
                                 var pricE = price.split(" ")[1];
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size}])));
+                                var otp = engine_controller.getInteger(6);
+                                print("Otp - ${otp}");
+                                var todo = ParseObject('otp')
+                                  ..set('otp', otp)
+                                  ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
+                                await todo.save();
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : ''}])));
                     },
                               child: Container(
                                 height: 70,
@@ -231,7 +241,7 @@ class product_info extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size)
+                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size , token: token,)
                         ],
                       ),
                     ),

@@ -17,6 +17,10 @@ import 'package:urban_style/widgets/my_order_cart.dart';
 import '../../pages/accounts/login/login.dart';
 
 class engine_controller{
+
+  static const MaxNumericDigits = 17;
+  static final _random = Random();
+
   user_logged_in(context )async{
     getCurrentLocation();
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -123,6 +127,20 @@ class engine_controller{
     print(placemarks[0].name);
     loc = placemarks[0].name;
     return placemarks[0].name;
+  }
+
+
+  static int getInteger(int digitCount) {
+    if (digitCount > MaxNumericDigits || digitCount < 1) throw new RangeError.range(0, 1, MaxNumericDigits, "Digit Count");
+    var digit = _random.nextInt(9) + 1;  // first digit must not be a zero
+    int n = digit;
+
+    for (var i = 0; i < digitCount - 1; i++) {
+      digit = _random.nextInt(10);
+      n *= 10;
+      n += digit;
+    }
+    return n;
   }
 
 

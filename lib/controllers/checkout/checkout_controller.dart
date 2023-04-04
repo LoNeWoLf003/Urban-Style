@@ -15,6 +15,7 @@ import 'dart:math';
 
 import '../../main.dart';
 import '../../pages/my_orders/my order.dart';
+import '../../staful widgets/order_confirmation_body.dart';
 import '../../widgets/check_everything_assign.dart';
 
 
@@ -107,14 +108,26 @@ class checkout_controller{
           bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
           print(avail);
           if(avail == true){
-            var todo = ParseObject('deliveryBoy')
-              ..objectId = boy["objectId"]
-              ..set('is_active', true);
-            await todo.save();
-            print("Statues Saved");
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
-          }
+            if(boy["is_active"] == true){
+              if(boy["order"].isEmpty){
 
+                var todo = ParseObject('deliveryBoy')
+                  ..objectId = boy["objectId"]
+                  ..set('order', [checkout_bodY.widget.products]);
+                await todo.update();
+                print("Statues Saved");
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+              }else{
+                print(boy["order"]);
+                print("Boy Doesn't have value");
+                verify_all(la_t, lon_g , context);
+              }
+            }else{
+              verify_all(la_t, lon_g , context);
+            }
+          }else{
+            verify_all(la_t, lon_g , context);
+          }
         }
       } else {
         return [];

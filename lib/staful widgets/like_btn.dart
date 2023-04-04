@@ -7,7 +7,7 @@ import '../controllers/cart/cart controller.dart';
 import '../user/user.dart';
 
 class like_btn extends StatefulWidget {
-  const like_btn({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size}) : super(key: key);
+  const like_btn({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token}) : super(key: key);
   final title;
 
   final des;
@@ -19,6 +19,8 @@ class like_btn extends StatefulWidget {
   final stock;
 
   final lat;
+
+  final token;
 
   final long;
 
@@ -64,6 +66,7 @@ class _like_btnState extends State<like_btn> {
                 user.cart.removeWhere((element) => element["lat"] == widget.lat);
                 user.cart.removeWhere((element) => element["cat"] == widget.cat);
                 user.cart.removeWhere((element) => element["size"] == widget.size);
+                user.cart.removeWhere((element) => element["token"] == widget.token);
                 user.cart_price = prev_price - int.parse(widget.price);
                 print(user.cart);
                 print(user.cart.length);
@@ -81,7 +84,7 @@ class _like_btnState extends State<like_btn> {
               setState(() {
                 like = true;
                 print("Cat - ${widget.cat}");
-                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null};
+                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token};
                 user.cart.add(product);
                 var prev_price = user.cart_price;
                 user.cart_price = prev_price + int.parse(widget.price);
