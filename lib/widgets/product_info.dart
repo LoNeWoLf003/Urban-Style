@@ -215,7 +215,7 @@ class product_info extends StatelessWidget {
                                   ..set('otp', otp)
                                   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
                                 await todo.save();
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : ''}])));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token}])));
                     },
                               child: Container(
                                 height: 70,
