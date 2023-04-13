@@ -90,12 +90,16 @@ class _homeState extends State<home> {
                   onTap: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
                   },
-                  child: Container(
-                    child: Text(
-                      "Home",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],),
-                    ),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Text(
+                          "Home",
+                          style: TextStyle(
+                            color: ColorHelper.color[0],),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
@@ -111,12 +115,16 @@ class _homeState extends State<home> {
 
                     }
                   },
-                  child: Container(
-                    child: Text(
-                      "Account",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],),
-                    ),
+                  child: Row(
+                    children:[
+                      Container(
+                        child: Text(
+                          "Account",
+                          style: TextStyle(
+                            color: ColorHelper.color[0],),
+                        ),
+                      ),
+                    ]
                   ),
                 ),
                 Padding(
@@ -126,12 +134,16 @@ class _homeState extends State<home> {
                   onTap: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
                   },
-                  child: Container(
-                    child: Text(
-                      "Help & Support",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],),
-                    ),
+                  child: Row(
+                      children:[
+                        Container(
+                          child: Text(
+                            "Help & Support",
+                            style: TextStyle(
+                              color: ColorHelper.color[0],),
+                          ),
+                        ),
+                      ]
                   ),
                 ),
                 Padding(
@@ -142,12 +154,16 @@ class _homeState extends State<home> {
 
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                   },
-                  child: Container(
-                    child: Text(
-                      "Cart",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],),
-                    ),
+                  child: Row(
+                      children:[
+                        Container(
+                          child: Text(
+                            "Cart",
+                            style: TextStyle(
+                              color: ColorHelper.color[0],),
+                          ),
+                        ),
+                      ]
                   ),
                 ),
                 Padding(
@@ -164,11 +180,16 @@ class _homeState extends State<home> {
                   onTap: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                   },
-                  child: Text(
-                    "My Orders",
-                    style: TextStyle(
-                      color: ColorHelper.color[0],
-                    ),
+                  child: Row(
+                      children:[
+                        Container(
+                          child: Text(
+                            "My Orders",
+                            style: TextStyle(
+                              color: ColorHelper.color[0],),
+                          ),
+                        ),
+                      ]
                   ),
                 ),
               ],),

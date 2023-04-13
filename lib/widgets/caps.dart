@@ -24,7 +24,7 @@ class caps extends StatelessWidget {
               child: Text("Something went wrong"),
             );
           }else{
-            return snapshot.data! == null
+            return snapshot.data == null
                 ? Padding(
               padding: const EdgeInsets.only(top: 100),
               child: Image.asset(assets.nothing_found),

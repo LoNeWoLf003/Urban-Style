@@ -6,6 +6,7 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
+import 'package:urban_style/pages/cart/cart.dart';
 import 'package:urban_style/pages/order_confirmation/order_confirmation.dart';
 import 'package:urban_style/staful%20widgets/ring%20size.dart';
 
@@ -73,7 +74,7 @@ class product_info extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => cart()));
                     },
                     child: Container(
                       height: 30,
@@ -109,147 +110,149 @@ class product_info extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Container(
-            height: context.isPhone ? cat == null ? 320  : 200 : cat == null ? 320 : 240,
-            width: context.isPhone ? double.infinity : 300,
-            child: Image.memory(
-              image,
-              fit: context.isPhone ?BoxFit.fitHeight :BoxFit.fitHeight,
-            ),
-          ),
           Expanded(
-              child: Align(
-            alignment: Alignment.bottomCenter,
             child: Container(
               height: double.infinity,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: ColorHelper.color[0],
-                boxShadow: [
-                  BoxShadow(
-                      color: ColorHelper.color[1],
-                      blurRadius: 10.0,
-                      offset: Offset(-2, -2))
-                ],
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40)),
+              // height: context.isPhone ? cat == null ? 320  : 200 : cat == null ? 320 : 240,
+              width: context.isPhone ? double.infinity : 300,
+              child: Image.memory(
+                image,
+                fit: context.isPhone ?BoxFit.fitHeight :BoxFit.fitHeight,
               ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            child: Text(
-                              title,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorHelper.r_g_b[3]),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            price,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: ColorHelper.r_g_b[3]),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+          height: context.isPhone ? cat == null ? 220  : 320 : cat == null ? 320 : 240,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: ColorHelper.color[0],
+            boxShadow: [
+              BoxShadow(
+                  color: ColorHelper.color[1],
+                  blurRadius: 10.0,
+                  offset: Offset(-2, -2))
+            ],
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40),
+                topRight: Radius.circular(40)),
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
                         child: Text(
-                          des,
+                          title,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: ColorHelper.color[2]),
-                        )),
-                  ),
-                  cat != null ?SizedBox(height: 15,) : SizedBox(height: 0,),
-                  // cat == "Rings" ?rings_size() : SizedBox(height: 0,),
-                  cat == "T-Shirt" ?shirt_size() : SizedBox(height: 0,),
-                  cat == "Shoes" ?shoe_size() : SizedBox(height: 0,),
-                  Expanded(
-                      child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: InkWell(
-                              onTap : ()async{
-                                if(user.is_login == true){
-                                  checkout_controller.name.text = user.username;
-                                }
-                                if(context.isPhone){
-                                  checkout_controller.locality.text = user.locality;
-                                  checkout_controller.pincode.text = user.postal_code;
-                                  checkout_controller.city.text = user.locality;
-                                  checkout_controller.state.text = user.state;
-                                  checkout_controller.state.text = user.sublocality;
-                                }
-                                var pricE = price.split(" ")[1];
-                                var otp = engine_controller.getInteger(6);
-                                print("Otp - ${otp}");
-                                var todo = ParseObject('otp')
-                                  ..set('otp', otp)
-                                  ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
-                                await todo.save();
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token}])));
-                    },
-                              child: Container(
-                                height: 70,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    color: ColorHelper.color[3],
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ColorHelper.color[3],
-                                          blurRadius: 20.0)
-                                    ]),
-                                child: Center(
-                                  child: Text(
-                                    "Buy Now",
-                                    style: TextStyle(color: ColorHelper.color[0]),
-                                  ),
-                                ),
+                              color: ColorHelper.r_g_b[3]),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        price,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: ColorHelper.r_g_b[3]),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 18),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      des,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: ColorHelper.color[2]),
+                    )),
+              ),
+              cat != null ?SizedBox(height: 15,) : SizedBox(height: 0,),
+              // cat == "Rings" ?rings_size() : SizedBox(height: 0,),
+              cat == "T-Shirt" ?shirt_size() : SizedBox(height: 0,),
+              cat == "Shoes" ?shoe_size() : SizedBox(height: 0,),
+              Expanded(
+                  child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap : ()async{
+                            if(user.is_login == true){
+                              checkout_controller.name.text = user.username;
+                            }
+                            if(context.isPhone){
+                              checkout_controller.locality.text = user.locality;
+                              checkout_controller.pincode.text = user.postal_code;
+                              checkout_controller.city.text = user.locality;
+                              checkout_controller.state.text = user.state;
+                              checkout_controller.state.text = user.sublocality;
+                            }
+                            var pricE = price.split(" ")[1];
+                            var otp = engine_controller.getInteger(6);
+                            print("Otp - ${otp}");
+                            // var todo = ParseObject('otp')
+                            //   ..set('otp', otp)
+                            //   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
+                            // await todo.save();
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token , 'drop_location_lat' : "${user.lat}" , 'drop_location_long' : "${user.long}"}])));
+                },
+                          child: Container(
+                            height: 70,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                color: ColorHelper.color[3],
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: ColorHelper.color[3],
+                                      blurRadius: 20.0)
+                                ]),
+                            child: Center(
+                              child: Text(
+                                "Buy Now",
+                                style: TextStyle(color: ColorHelper.color[0]),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size , token: token,)
-                        ],
+                        ),
                       ),
-                    ),
-                  ))
-                ],
-              ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size , token: token,)
+                    ],
+                  ),
+                ),
+              ))
+            ],
+          ),
             ),
-          ))
+          )
         ],
       ),
     );

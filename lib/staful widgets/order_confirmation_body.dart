@@ -9,7 +9,7 @@ late _order_confirmation_bodyState checkout_bodY ;
 class order_confirmation_body extends StatefulWidget {
   order_confirmation_body({Key? key, required this.products, }) : super(key: key);
   var price = 0;
-  final List products ;
+  List products ;
   @override
   State<order_confirmation_body> createState() {
     checkout_bodY = _order_confirmation_bodyState();

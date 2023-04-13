@@ -53,7 +53,7 @@ Widget packging_product_item_card(index){
               SizedBox(height: 10,),
               Container(
                   width: double.infinity,
-                  child: Text("${checkout_bodY.widget.products[index]["price"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
+                  child: Text("₹${checkout_bodY.widget.products[index]["price"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
 
             ],
           ),

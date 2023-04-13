@@ -9,6 +9,7 @@ import '../../constrants/Icons.dart';
 import '../../constrants/color.dart';
 import '../../controllers/account/account_controller.dart';
 import '../../widgets/textfeild.dart';
+import '../accounts/sign up/sign up.dart';
 import '../cart/cart.dart';
 import '../help_support/help_support.dart';
 import '../home/home.dart';
@@ -55,12 +56,16 @@ class account extends StatelessWidget {
                     onTap: (){
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Home",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],),
-                      ),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Text(
+                            "Home",
+                            style: TextStyle(
+                              color: ColorHelper.color[0],),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
@@ -68,14 +73,24 @@ class account extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
+                      if(user.is_login == true){
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
+
+                      }else{
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => sign_up()));
+
+                      }
                     },
-                    child: Container(
-                      child: Text(
-                        "Account",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Account",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -85,12 +100,16 @@ class account extends StatelessWidget {
                     onTap: (){
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Help & Support",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Help & Support",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -98,14 +117,19 @@ class account extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
+
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Cart",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Cart",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -122,11 +146,16 @@ class account extends StatelessWidget {
                     onTap: (){
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                     },
-                    child: Text(
-                      "My Orders",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "My Orders",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                 ],),

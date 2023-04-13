@@ -15,7 +15,7 @@ class packging extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text("Total Price - ${checkout_bodY.widget.price}",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: ColorHelper.r_g_b[3]),),
+            child: Text("Total Price - ₹${checkout_bodY.widget.price}",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: ColorHelper.r_g_b[3]),),
           )
         ),
         Expanded(

@@ -1,10 +1,13 @@
 import 'package:animated_drawer/views/animated_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/my_order_cart.dart';
 
 import '../../constrants/color.dart';
 import '../../staful widgets/order_confirmation_body.dart';
+import '../../user/user.dart';
+import '../../user/user.dart';
 import '../../user/user.dart';
 import '../account/account.dart';
 import '../accounts/sign up/sign up.dart';
@@ -21,10 +24,9 @@ class my_order extends StatelessWidget {
         body: AnimatedDrawer(
           shadowColor: Color(0xFF4c41a3),
           backgroundGradient: LinearGradient(
-            colors: [Color(0xFF4c41a3), Color(0xFF1f186f)],
-          ),
+            colors: [Color(0xFF4c41a3), Color(0xFF1f186f)],),
           menuPageContent: Padding(
-            padding: const EdgeInsets.only(top: 100.0, left: 15),
+            padding: const  EdgeInsets.only(top: 100.0, left: 15),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,80 +47,89 @@ class my_order extends StatelessWidget {
                             fontSize: 17,
                             color: Colors.blue[200],
                             fontWeight: FontWeight.bold),
-                      )
-                    ],
+                      )],
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 40),
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => home()));
+                    onTap: (){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Home",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Text(
+                            "Home",
+                            style: TextStyle(
+                              color: ColorHelper.color[0],),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: () {
-                      if (user.is_login == true) {
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => account()));
-                      } else {
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => sign_up()));
+                    onTap: (){
+                      if(user.is_login == true){
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
+
+                      }else{
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => sign_up()));
+
                       }
                     },
-                    child: Container(
-                      child: Text(
-                        "Account",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],
-                        ),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Account",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => help_support()));
+                    onTap: (){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Help & Support",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],
-                        ),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Help & Support",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => cart()));
+                    onTap: (){
+
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                     },
-                    child: Container(
-                      child: Text(
-                        "Cart",
-                        style: TextStyle(
-                          color: ColorHelper.color[0],
-                        ),
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "Cart",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -135,15 +146,19 @@ class my_order extends StatelessWidget {
                     onTap: (){
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                     },
-                    child: Text(
-                      "My Orders",
-                      style: TextStyle(
-                        color: ColorHelper.color[0],
-                      ),
+                    child: Row(
+                        children:[
+                          Container(
+                            child: Text(
+                              "My Orders",
+                              style: TextStyle(
+                                color: ColorHelper.color[0],),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
-                ],
-              ),
+                ],),
             ),
           ),
           homePageContent: Container(
@@ -178,7 +193,7 @@ class my_order extends StatelessWidget {
                         print(user.my_orders);
                     return Padding(
                       padding: const EdgeInsets.only(left: 18,right: 18,bottom: 0,top: 10),
-                      child: my_order_card(index: index),
+                      child: my_order_card(title: user.my_orders[index]["title"], price: user.my_orders[index]["price"], des: user.my_orders[index]["des"], lat: user.my_orders[index]["lat"], long: user.my_orders[index]["long"], stock: user.my_orders[index]["stock"], image: user.my_orders[index]["image"]),
                     );
                   }),
                 ),

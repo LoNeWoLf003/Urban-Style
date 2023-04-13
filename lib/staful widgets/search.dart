@@ -5,6 +5,7 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/home/home_controller.dart';
+import 'package:urban_style/pages/cart/cart.dart';
 
 import '../controllers/assets/assets.dart';
 import '../widgets/product_info.dart';
@@ -121,17 +122,22 @@ class _searchState extends State<search> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      height: double.infinity,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(60)),
-                        color: ColorHelper.color[9],
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(),
-                          child: Icon(IconHelper.icons[6],color: ColorHelper.color[0],size: 17,),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => cart()));
+                      },
+                      child: Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(60)),
+                          color: ColorHelper.color[9],
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(),
+                            child: Icon(IconHelper.icons[6],color: ColorHelper.color[0],size: 17,),
+                          ),
                         ),
                       ),
                     ),

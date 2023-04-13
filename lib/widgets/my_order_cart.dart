@@ -13,28 +13,34 @@ import '../user/user.dart';
 var loc ;
 class my_order_card extends StatelessWidget {
   my_order_card(
-      {Key? key,
+      {Key? key, required this.title, required this.price, required this.des, required this.lat, required this.long, required this.stock, required this.image,
 
-      required this.index})
+      })
       : super(key: key);
 
+final title ;
+final image ;
+final price ;
+final des ;
+final lat ;
+final long ;
+final stock ;
 
-  int index;
 
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        engine_controller.extract_location(user.my_orders[index]["lat"], user.my_orders[index]["long"]);
+        engine_controller.extract_location(lat, long);
         Future.delayed(Duration(seconds: 4),(){
-          print(user.my_orders[index]["title"]);
-          print(user.my_orders[index]["price"]);
-          print(user.my_orders[index]["des"]);
-          print(user.my_orders[index]["lat"]);
-          print(user.my_orders[index]["long"]);
-          print(user.my_orders[index]["stock"]);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => my_order_info(image: user.my_orders[index]["image"], name: user.my_orders[index]["title"], price: user.my_orders[index]["price"], description: user.my_orders[index]["des"], lat: user.my_orders[index]["lat"], long: user.my_orders[index]["long"], stock: user.my_orders[index]["stock"], location: loc)));
+          print(title);
+          print(price);
+          print(des);
+          print(lat);
+          print(long);
+          print(stock);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => my_order_info(image: image, name: title, price: price, description: des , lat : lat,long: long, stock: stock, location: loc)));
 
         });
         },
@@ -67,8 +73,8 @@ class my_order_card extends StatelessWidget {
                     ),
                     child: Center(
                         child: user.is_login
-                            ?Image.memory(base64Decode(user.my_orders[index]["image"]),fit: BoxFit.fill,)
-                            :Image.memory(user.my_orders[index]["image"],fit: BoxFit.fill,)
+                            ?Image.memory(base64Decode(image),fit: BoxFit.fill,)
+                            :Image.memory(image,fit: BoxFit.fill,)
                     ),
                   ),
                 )
@@ -80,11 +86,11 @@ class my_order_card extends StatelessWidget {
                   SizedBox(height: 30,),
                   Container(
                       width: double.infinity,
-                      child: Text("${user.my_orders[index]["title"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[2]),overflow: TextOverflow.ellipsis,)),
+                      child: Text("${title}",style: TextStyle(fontSize: 15,color: ColorHelper.color[2]),overflow: TextOverflow.ellipsis,)),
                   SizedBox(height: 10,),
                   Container(
                       width: double.infinity,
-                      child: Text("${user.my_orders[index]["price"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
+                      child: Text("₹${price}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
 
                 ],
               ),
