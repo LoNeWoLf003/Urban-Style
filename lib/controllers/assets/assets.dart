@@ -1,5 +1,6 @@
 class assets{
-  static final logo = "assets/Urban Style.png";
+  static final logo = "assets/Logo.png";
+  static final splash_logo = "assets/Logo_Splash.png";
   static final login_sign_up_side_image = "assets/login side image.png";
   static final logo_background = "assets/URBAN_background 1.png";
   static final loading_gif = "assets/loading.gif";

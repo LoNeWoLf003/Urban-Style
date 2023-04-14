@@ -111,7 +111,7 @@ class _cart_item_cardState extends State<cart_item_card> {
                       ),
                       child: Center(
                         child: user.is_login
-                            ?Image.memory(base64Decode(widget.image["base64"]),fit: BoxFit.fill,)
+                            ?Image.memory(widget.image,fit: BoxFit.fill,)
                             :Image.memory(widget.image,fit: BoxFit.fill,)
                       ),
                     ),

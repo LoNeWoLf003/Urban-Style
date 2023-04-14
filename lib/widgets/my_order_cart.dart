@@ -72,8 +72,8 @@ final stock ;
                         color: ColorHelper.color[3].withOpacity(0.85)
                     ),
                     child: Center(
-                        child: user.is_login
-                            ?Image.memory(base64Decode(image),fit: BoxFit.fill,)
+                        child: user.new_order
+                            ?Image.memory(base64Decode(image["base64"]),fit: BoxFit.fill,)
                             :Image.memory(image,fit: BoxFit.fill,)
                     ),
                   ),

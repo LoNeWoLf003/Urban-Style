@@ -186,7 +186,7 @@ class _payment_optionsState extends State<payment_options> {
                 onPressed: (){
                   print("data");
                   checkout_controller.is_payment_done = true;
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => check_ok()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
                 },
                 onPaymentResult: (data){
 

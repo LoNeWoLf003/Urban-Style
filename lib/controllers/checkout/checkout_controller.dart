@@ -82,6 +82,15 @@ class checkout_controller{
   }
 
 
+  update_my_orders()async{
+    var todo1 = ParseObject('users')
+      ..objectId = user.obj_id
+      ..set('my_orders', user.my_orders);
+    await todo1.save();
+    print("My Orders Updated");
+ }
+
+
 
 
   verify_all(lat , long , context) async{

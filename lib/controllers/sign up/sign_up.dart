@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:urban_style/main.dart';
+import 'package:urban_style/pages/splash/splash.dart';
 import 'package:urban_style/user/user.dart';
 
 import '../../pages/home/home.dart';
@@ -59,7 +60,7 @@ class sign_up_controller {
 
             user.is_login = true;
             print(user.location);
-            final todo = ParseObject('users')..set('username', user_nane.text)..set('email', email.text)..set('password', password.text)..set('cart', [])..set('price', 0)..set('location', user.location);
+            final todo = ParseObject('users')..set('username', user_nane.text)..set('email', email.text)..set('password', password.text)..set('cart', [])..set('price', 0)..set('location', user.location)..set('my_orders', user.my_orders)..set('my_order_price', user.my_oders_price);
             await todo.save();
             user.email = email.text;
             user.password = password.text;
@@ -67,7 +68,7 @@ class sign_up_controller {
             user.cart = [];
             print("Account Created !!!");
             engine_controller().user_logged_in(context);
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => splash()), (route) => false);
 
           }
         }

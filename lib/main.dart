@@ -17,8 +17,8 @@ import 'controllers/checkout/checkout_controller.dart';
 void main() async{
   EasyLoading.init();
   WidgetsFlutterBinding.ensureInitialized();
-  final keyApplicationId = '8fFAky14KWuFrjlKontoTQ4P8mKKNbRz2IIsOXkb';
-  final keyClientKey = 'ms2So5j1rzucZ6ojWlYrKLMxzg6whB5Wx35lV7w3';
+  final keyApplicationId = 'Ls9jNVEOv7G0VIdt2uZ2Wyh4xuC6RsGKARCZa9gc';
+  final keyClientKey = 'qqORFAiypjaPD7yZCQLg3Bf6MNbVGnItkaew9fD0';
   final keyParseServerUrl = 'https://parseapi.back4app.com';
   await Parse().initialize(keyApplicationId, keyParseServerUrl,
       clientKey: keyClientKey, autoSendSessionId: true);

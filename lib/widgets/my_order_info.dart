@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../constrants/Icons.dart';
 import '../constrants/color.dart';
+import '../user/user.dart';
 
 class my_order_info extends StatelessWidget {
   my_order_info({Key? key, required this.image, required this.name, required this.price, required this.description, required this.lat, required this.stock, required this.location , required this.long}) : super(key: key);
@@ -110,7 +113,9 @@ class my_order_info extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Image.memory(image,fit: BoxFit.fitHeight,height: 500,width: 500,),
+                child: user.new_order
+                  ? Image.memory(base64Decode(image["base64"]),fit: BoxFit.fitHeight,height: 500,width: 500,)
+                    : Image.memory(image,fit: BoxFit.fitHeight,height: 500,width: 500,),
               ),
             ),
 

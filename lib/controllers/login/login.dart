@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:urban_style/pages/splash/splash.dart';
 import 'package:urban_style/user/user.dart';
 
 import '../../pages/home/home.dart';
@@ -45,6 +46,11 @@ class login_controller{
             user.cart = data[0]["cart"];
             user.cart_price = data[0]["price"];
             user.obj_id = data[0]["objectId"];
+            user.my_orders = data[0]["my_orders"];
+            print(user.my_orders);
+            user.my_oders_price = data[0]["my_order_price"];
+            user.cart_price = data[0]["price"];
+            user.obj_id = data[0]["objectId"];
             user.profile_photo = data[0]["profile_photo"];
             if(user.profile_photo == null){
               user.has_profile_photo = false;
@@ -60,7 +66,7 @@ class login_controller{
             print("user password - " + "${user.password}");
             print("user profile - " + "${user.profile_photo}");
             user.is_login = true;
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => splash()), (route) => false);
           }
 
 

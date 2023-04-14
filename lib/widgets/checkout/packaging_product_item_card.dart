@@ -36,7 +36,7 @@ Widget packging_product_item_card(index){
             ),
             child: Center(
                 child: user.is_login
-                    ?Image.memory(base64Decode(checkout_bodY.widget.products[index]["image"]),fit: BoxFit.fill,)
+                    ?Image.memory(checkout_bodY.widget.products[index]["image"],fit: BoxFit.fill,)
                     :Image.memory(checkout_bodY.widget.products[index]["image"],fit: BoxFit.fill,)
             ),
           ),

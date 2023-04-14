@@ -20,4 +20,5 @@ class user{
   static List my_orders = [];
   static int my_oders_price = 0;
   static int my_orders_list = 0;
+  static bool new_order = false;
 }

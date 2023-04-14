@@ -48,6 +48,8 @@ class engine_controller{
           user.cart = data[0]["cart"];
           user.cart_price = data[0]["price"];
           user.obj_id = data[0]["objectId"];
+          user.my_orders = data[0]["my_orders"];
+          print(user.my_orders);
           user.profile_photo = data[0]["profile_photo"];
           if(user.profile_photo == null){
             user.has_profile_photo = false;

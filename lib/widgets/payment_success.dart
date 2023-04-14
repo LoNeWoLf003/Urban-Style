@@ -4,6 +4,7 @@ import 'package:urban_style/controllers/assets/assets.dart';
 import 'package:urban_style/staful%20widgets/order_confirmation_body.dart';
 import 'package:urban_style/user/user.dart';
 
+import '../controllers/checkout/checkout_controller.dart';
 import '../pages/my_orders/my order.dart';
 
 class payment_success extends StatelessWidget {
@@ -11,6 +12,26 @@ class payment_success extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("////////////////////////////////////////////////////////////////");
+    print("////////////////////////////////////////////////////////////////");
+    print(checkout_bodY.widget.products.length);
+    for (var number in checkout_bodY.widget.products) {
+      var title = number["title"];
+      var des = number["des"];
+      var price = number["price"];
+      var image = number["image"];
+      var stock = number["stock"];
+      var lat = number["lat"];
+      var long = number["long"];
+      var cat = number["cat"];
+      var size = number["size"];
+      var token = number["token"];
+      user.my_orders.add({"title" : title , "des" : des , "price" : price , "image" : image , "stock" : stock , "lat" : lat , "long" : long,"cat" : cat , "size" : size , "token" : token });
+    }
+
+    checkout_controller().update_my_orders();
+    checkout_bodY.widget.products = [];
+
     return Scaffold(
       backgroundColor: ColorHelper.r_g_b[8],
       body: Column(
@@ -21,24 +42,7 @@ class payment_success extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SafeArea(child: InkWell(
                   onTap: (){
-                    print("////////////////////////////////////////////////////////////////");
-                    print("////////////////////////////////////////////////////////////////");
-                    print(checkout_bodY.widget.products.length);
-                    for (var number in checkout_bodY.widget.products) {
-                      var title = number["title"];
-                      var des = number["des"];
-                      var price = number["price"];
-                      var image = number["image"];
-                      var stock = number["stock"];
-                      var lat = number["lat"];
-                      var long = number["long"];
-                      var cat = number["cat"];
-                      var size = number["size"];
-                      var token = number["token"];
-                      user.my_orders.add({"title" : title , "des" : des , "price" : price , "image" : image , "stock" : stock , "lat" : lat , "long" : long,"cat" : cat , "size" : size , "token" : token });
-                    }
-
-                    checkout_bodY.widget.products = [];
+                    user.new_order = true;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                   },
                   child: Text("< Go to My Orders",style: TextStyle(color: ColorHelper.color[0]),))),
@@ -66,23 +70,7 @@ class payment_success extends StatelessWidget {
               child: Center(
                 child: InkWell(
                     onTap: (){
-                      print("////////////////////////////////////////////////////////////////");
-                      print(checkout_bodY.widget.products.length);
-                      for (var number in checkout_bodY.widget.products) {
-                        var title = number["title"];
-                        var des = number["des"];
-                        var price = number["price"];
-                        var image = number["image"];
-                        var stock = number["stock"];
-                        var lat = number["lat"];
-                        var long = number["long"];
-                        var cat = number["cat"];
-                        var size = number["size"];
-                        var token = number["token"];
-                        user.my_orders.add({"title" : title , "des" : des , "price" : price , "image" : image , "stock" : stock , "lat" : lat , "long" : long,"cat" : cat , "size" : size , "token" : token });
-                      }
-
-                      checkout_bodY.widget.products = [];
+                      user.new_order = true;
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
 
                     },
