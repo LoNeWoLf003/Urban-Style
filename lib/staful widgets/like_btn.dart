@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../constrants/Icons.dart';
 import '../constrants/color.dart';
 import '../controllers/cart/cart controller.dart';
+import '../pages/accounts/sign up/sign up.dart';
 import '../user/user.dart';
 
 class like_btn extends StatefulWidget {
@@ -54,24 +55,28 @@ class _like_btnState extends State<like_btn> {
               ? InkWell(
             onTap: (){
               print("Changed");
-              setState(() {
-                var prev_price = user.cart_price;
-                like = false;
-                user.cart.removeWhere((element) => element["title"] == widget.title);
-                user.cart.removeWhere((element) => element["des"] == widget.des);
-                user.cart.removeWhere((element) => element["price"] == widget.price);
-                user.cart.removeWhere((element) => element["image"] == widget.image);
-                user.cart.removeWhere((element) => element["stock"] == widget.stock);
-                user.cart.removeWhere((element) => element["long"] == widget.long);
-                user.cart.removeWhere((element) => element["lat"] == widget.lat);
-                user.cart.removeWhere((element) => element["cat"] == widget.cat);
-                user.cart.removeWhere((element) => element["size"] == widget.size);
-                user.cart.removeWhere((element) => element["token"] == widget.token);
-                user.cart_price = prev_price - int.parse(widget.price);
-                print(user.cart);
-                print(user.cart.length);
-                cart_controller.cart_update();
-              });
+              if(user.is_login == true){
+                setState(() {
+                  var prev_price = user.cart_price;
+                  like = false;
+                  user.cart.removeWhere((element) => element["title"] == widget.title);
+                  user.cart.removeWhere((element) => element["des"] == widget.des);
+                  user.cart.removeWhere((element) => element["price"] == widget.price);
+                  user.cart.removeWhere((element) => element["image"] == widget.image);
+                  user.cart.removeWhere((element) => element["stock"] == widget.stock);
+                  user.cart.removeWhere((element) => element["long"] == widget.long);
+                  user.cart.removeWhere((element) => element["lat"] == widget.lat);
+                  user.cart.removeWhere((element) => element["cat"] == widget.cat);
+                  user.cart.removeWhere((element) => element["size"] == widget.size);
+                  user.cart.removeWhere((element) => element["token"] == widget.token);
+                  user.cart_price = prev_price - int.parse(widget.price);
+                  print(user.cart);
+                  print(user.cart.length);
+                  cart_controller.cart_update();
+                });
+              }else{
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
+              }
             },
             child: Container(
                 height: 40,
@@ -81,17 +86,22 @@ class _like_btnState extends State<like_btn> {
               : InkWell(
             onTap: (){
               print("Changed");
-              setState(() {
-                like = true;
-                print("Cat - ${widget.cat}");
-                var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token};
-                user.cart.add(product);
-                var prev_price = user.cart_price;
-                user.cart_price = prev_price + int.parse(widget.price);
-                print(user.cart);
-                print(user.cart.length);
-                cart_controller.cart_update();
-              });
+              if(user.is_login == true){
+                setState(() {
+                  user.new_order = true;
+                  like = true;
+                  print("Cat - ${widget.cat}");
+                  var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token};
+                  user.cart.add(product);
+                  var prev_price = user.cart_price;
+                  user.cart_price = prev_price + int.parse(widget.price);
+                  print(user.cart);
+                  print(user.cart.length);
+                  cart_controller.cart_update();
+                });
+              }else{
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
+              }
             },
             child: Container(
                 height: 40,

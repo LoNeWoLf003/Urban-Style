@@ -1,5 +1,6 @@
 import 'package:animated_drawer/views/animated_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
@@ -16,6 +17,7 @@ import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
 
+import '../../controllers/assets/assets.dart';
 import '../../controllers/cart/cart controller.dart';
 import '../../staful widgets/category.dart';
 import '../../staful widgets/search.dart';
@@ -65,7 +67,11 @@ class _homeState extends State<home> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ///// APNA LOGO /////////////////////////////
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(80)),
+                  child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
+                ),
+                SizedBox(height: 10,),
                 Row(
                   children: [
                     Text(
@@ -83,8 +89,9 @@ class _homeState extends State<home> {
                           fontWeight: FontWeight.bold),
                     )],
                 ),
+
                 Padding(
-                  padding: EdgeInsets.only(bottom: 40),
+                  padding: EdgeInsets.only(bottom: 25),
                 ),
                 InkWell(
                   onTap: (){
@@ -151,7 +158,6 @@ class _homeState extends State<home> {
                 ),
                 InkWell(
                   onTap: (){
-
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                   },
                   child: Row(

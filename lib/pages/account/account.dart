@@ -8,6 +8,7 @@ import 'package:urban_style/widgets/profile.dart';
 import '../../constrants/Icons.dart';
 import '../../constrants/color.dart';
 import '../../controllers/account/account_controller.dart';
+import '../../controllers/assets/assets.dart';
 import '../../widgets/textfeild.dart';
 import '../accounts/sign up/sign up.dart';
 import '../cart/cart.dart';
@@ -31,7 +32,11 @@ class account extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ///// APNA LOGO /////////////////////////////
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(80)),
+                    child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
+                  ),
+                  SizedBox(height: 10,),
                   Row(
                     children: [
                       Text(
@@ -50,7 +55,7 @@ class account extends StatelessWidget {
                       )],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 40),
+                    padding: EdgeInsets.only(bottom: 25),
                   ),
                   InkWell(
                     onTap: (){
@@ -179,7 +184,7 @@ class account extends StatelessWidget {
                                   alignment: Alignment.centerRight,
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.pop(context);
+                                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                                     },
                                     child: Container(
                                       height: 30,

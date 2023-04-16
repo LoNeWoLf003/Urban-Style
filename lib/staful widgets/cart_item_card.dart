@@ -110,9 +110,9 @@ class _cart_item_cardState extends State<cart_item_card> {
                               : ColorHelper.color[4].withOpacity(0.85)
                       ),
                       child: Center(
-                        child: user.is_login
-                            ?Image.memory(widget.image,fit: BoxFit.fill,)
-                            :Image.memory(widget.image,fit: BoxFit.fill,)
+                          child: user.new_order
+                              ?Image.memory(base64Decode(widget.image["base64"]),fit: BoxFit.fill,)
+                              :Image.memory(widget.image,fit: BoxFit.fill,)
                       ),
                     ),
                   )

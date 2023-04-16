@@ -94,57 +94,60 @@ class checkout_controller{
 
 
   verify_all(lat , long , context) async{
-    var la_t = lat;
-    var lon_g = long;
-    print("Process Started");
-    print(is_payment_done);
-    if(is_payment_done == true){
+    for(var times in user.cart){
+      var la_t = lat;
+      var lon_g = long;
+      print("Process Started");
       print(is_payment_done);
-      double meters = 500;
+      if(is_payment_done == true){
+        print(is_payment_done);
+        double meters = 500;
 
-      double coef = meters / 111320.0;
+        double coef = meters / 111320.0;
 
-      double new_lat = lat + coef;
+        double new_lat = lat + coef;
 
-      double new_long = long + coef / cos(lat * 0.01745);
-      QueryBuilder<ParseObject> queryTodo =
-      QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
-      final ParseResponse apiResponse = await queryTodo.query();
+        double new_long = long + coef / cos(lat * 0.01745);
+        QueryBuilder<ParseObject> queryTodo =
+        QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
+        final ParseResponse apiResponse = await queryTodo.query();
 
-      if (apiResponse.success && apiResponse.results != null) {
-        for (var boy in apiResponse.results !) {
-          print(boy);
-          bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
-          print(avail);
-          if(avail == true){
-            if(boy["is_active"] == true){
-              if(boy["order"].isEmpty){
+        if (apiResponse.success && apiResponse.results != null) {
+          for (var boy in apiResponse.results !) {
+            print(boy);
+            bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
+            print(avail);
+            if(avail == true){
+              if(boy["is_active"] == true){
+                if(boy["order"].isEmpty){
 
-                var todo = ParseObject('deliveryBoy')
-                  ..objectId = boy["objectId"]
-                  ..set('order', [checkout_bodY.widget.products]);
-                await todo.update();
-                print("Statues Saved");
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+                  var todo = ParseObject('deliveryBoy')
+                    ..objectId = boy["objectId"]
+                    ..set('order', [checkout_bodY.widget.products]);
+                  await todo.update();
+                  print("Statues Saved");
+                }else{
+                  print(boy["order"]);
+                  print("Boy Doesn't have value");
+                  verify_all(la_t, lon_g , context);
+                }
               }else{
-                print(boy["order"]);
-                print("Boy Doesn't have value");
                 verify_all(la_t, lon_g , context);
               }
             }else{
               verify_all(la_t, lon_g , context);
             }
-          }else{
-            verify_all(la_t, lon_g , context);
           }
+        } else {
+          return [];
         }
-      } else {
-        return [];
-      }
 
-    }else{
-      verify_all(la_t, lon_g , context);
+      }else{
+        verify_all(la_t, lon_g , context);
+      }
     }
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+
 
   }
 

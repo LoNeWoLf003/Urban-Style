@@ -15,4 +15,16 @@ class cart_controller{
     }
   }
 
+  static remove_cart() async{
+    if(user.is_login == true){
+      var todo1 = ParseObject('users')
+        ..objectId = user.obj_id
+        ..set('cart', [])
+        ..set('price', 0);
+      await todo1.save();
+    }else{
+      return ;
+    }
+  }
+
 }

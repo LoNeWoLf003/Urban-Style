@@ -1,11 +1,13 @@
 import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
+import 'package:urban_style/pages/accounts/sign%20up/sign%20up.dart';
 import 'package:urban_style/pages/cart/cart.dart';
 import 'package:urban_style/pages/order_confirmation/order_confirmation.dart';
 import 'package:urban_style/staful%20widgets/ring%20size.dart';
@@ -202,24 +204,34 @@ class product_info extends StatelessWidget {
                         child: InkWell(
                           onTap : ()async{
                             if(user.is_login == true){
-                              checkout_controller.name.text = user.username;
-                            }
-                            if(context.isPhone){
+                              EasyLoading.showProgress(0.30, status: 'Loading...');
+                              if(user.is_login == true){
+                                checkout_controller.name.text = user.username;
+                              }
+                              EasyLoading.showProgress(0.40, status: 'Loading...');
                               checkout_controller.locality.text = user.locality;
                               checkout_controller.pincode.text = user.postal_code;
                               checkout_controller.city.text = user.locality;
                               checkout_controller.state.text = user.state;
-                              checkout_controller.state.text = user.sublocality;
+                              checkout_controller.state.text = user.locality;
+                              EasyLoading.showProgress(0.60, status: 'Loading...');
+                              var pricE = price.split(" ")[1];
+                              EasyLoading.showProgress(0.70, status: 'Loading...');
+                              var otp = engine_controller.getInteger(6);
+                              print("Otp - ${otp}");
+                              EasyLoading.showProgress(0.90, status: 'Loading...');
+                              // var todo = ParseObject('otp')
+                              //   ..set('otp', otp)
+                              //   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
+                              // await todo.save();
+                              EasyLoading.showProgress(0.100, status: 'Loading...');
+                              EasyLoading.dismiss();
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token , 'drop_location_lat' : "${user.lat}" , 'drop_location_long' : "${user.long}"}])));
+
+                            }else{
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
                             }
-                            var pricE = price.split(" ")[1];
-                            var otp = engine_controller.getInteger(6);
-                            print("Otp - ${otp}");
-                            // var todo = ParseObject('otp')
-                            //   ..set('otp', otp)
-                            //   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
-                            // await todo.save();
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token , 'drop_location_lat' : "${user.lat}" , 'drop_location_long' : "${user.long}"}])));
-                },
+                            },
                           child: Container(
                             height: 70,
                             width: double.infinity,

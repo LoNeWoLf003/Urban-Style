@@ -5,6 +5,7 @@ import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/user/user.dart';
 
 import '../controllers/cart/cart controller.dart';
+import '../pages/accounts/sign up/sign up.dart';
 
 class cart_button extends StatefulWidget {
   const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token}) : super(key: key);
@@ -50,30 +51,40 @@ class _cart_buttonState extends State<cart_button> {
         setState(() {
           is_added = !is_added;
           if(is_added == true){
-            var price = widget.price.split(" ")[1];
-            print(price);
-            print("Cat - ${widget.cat}");
-            var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token};
-            user.cart.add(product);
-            var prev_price = user.cart_price;
-            user.cart_price = prev_price + int.parse(price);
-            cart_controller.cart_update();
+            if(user.is_login == true){
+              user.new_order = true;
+              var price = widget.price.split(" ")[1];
+              print(price);
+              print("Cat - ${widget.cat}");
+              var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token};
+              user.cart.add(product);
+              var prev_price = user.cart_price;
+              user.cart_price = prev_price + int.parse(price);
+              cart_controller.cart_update();
+            }else{
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
+            }
           }else{
-            var price = widget.price.split(" ")[1];
-            var prev_price = user.cart_price;
-            print(price);
-            print("Cat - ${widget.cat}");
-            user.cart.removeWhere((element) => element["title"] == widget.title);
-            user.cart.removeWhere((element) => element["des"] == widget.des);
-            user.cart.removeWhere((element) => element["price"] == price);
-            user.cart.removeWhere((element) => element["image"] == widget.image);
-            user.cart.removeWhere((element) => element["stock"] == widget.stock);
-            user.cart.removeWhere((element) => element["long"] == widget.long);
-            user.cart.removeWhere((element) => element["lat"] == widget.lat);
-            user.cart.removeWhere((element) => element["cat"] == widget.cat);
-            user.cart.removeWhere((element) => element["size"] == widget.size);
-            user.cart_price = prev_price - int.parse(price);
-            cart_controller.cart_update();
+            if(user.is_login == true){
+              var price = widget.price.split(" ")[1];
+              var prev_price = user.cart_price;
+              print(price);
+              print("Cat - ${widget.cat}");
+              user.cart.removeWhere((element) => element["title"] == widget.title);
+              user.cart.removeWhere((element) => element["des"] == widget.des);
+              user.cart.removeWhere((element) => element["price"] == price);
+              user.cart.removeWhere((element) => element["image"] == widget.image);
+              user.cart.removeWhere((element) => element["stock"] == widget.stock);
+              user.cart.removeWhere((element) => element["long"] == widget.long);
+              user.cart.removeWhere((element) => element["lat"] == widget.lat);
+              user.cart.removeWhere((element) => element["cat"] == widget.cat);
+              user.cart.removeWhere((element) => element["size"] == widget.size);
+              user.cart_price = prev_price - int.parse(price);
+              cart_controller.cart_update();
+            }else{
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
+
+            }
           }
 
         });

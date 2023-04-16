@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constrants/Icons.dart';
 import '../../constrants/color.dart';
+import '../../controllers/assets/assets.dart';
 import '../../controllers/cart/cart controller.dart';
 import '../../staful widgets/cart_bottom.dart';
 import '../../staful widgets/cart_delete_btn.dart';
@@ -33,7 +34,11 @@ class cart extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ///// APNA LOGO /////////////////////////////
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(80)),
+                    child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
+                  ),
+                  SizedBox(height: 10,),
                   Row(
                     children: [
                       Text(
@@ -52,7 +57,7 @@ class cart extends StatelessWidget {
                       )],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 40),
+                    padding: EdgeInsets.only(bottom: 25),
                   ),
                   InkWell(
                     onTap: (){

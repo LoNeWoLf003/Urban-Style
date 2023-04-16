@@ -5,6 +5,7 @@ import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/my_order_cart.dart';
 
 import '../../constrants/color.dart';
+import '../../controllers/assets/assets.dart';
 import '../../staful widgets/order_confirmation_body.dart';
 import '../../user/user.dart';
 import '../../user/user.dart';
@@ -31,7 +32,11 @@ class my_order extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ///// APNA LOGO /////////////////////////////
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(80)),
+                    child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
+                  ),
+                  SizedBox(height: 10,),
                   Row(
                     children: [
                       Text(
@@ -50,7 +55,7 @@ class my_order extends StatelessWidget {
                       )],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 40),
+                    padding: EdgeInsets.only(bottom: 25),
                   ),
                   InkWell(
                     onTap: (){

@@ -15,7 +15,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'controllers/checkout/checkout_controller.dart';
 
 void main() async{
-  EasyLoading.init();
   WidgetsFlutterBinding.ensureInitialized();
   final keyApplicationId = '8fFAky14KWuFrjlKontoTQ4P8mKKNbRz2IIsOXkb';
   final keyClientKey = 'ms2So5j1rzucZ6ojWlYrKLMxzg6whB5Wx35lV7w3';
@@ -29,7 +28,6 @@ void main() async{
 
 class engine extends StatelessWidget {
   const engine({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     engine_controller().user_logged_in(context);
@@ -40,6 +38,7 @@ class engine extends StatelessWidget {
 
       ),
       home: splash(),
+      builder: EasyLoading.init(),
     );
   }
 }

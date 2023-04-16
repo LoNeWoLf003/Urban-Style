@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:urban_style/pages/accounts/sign%20up/sign%20up.dart';
 import 'package:urban_style/pages/order_confirmation/order_confirmation.dart';
 
 import '../constrants/Icons.dart';
@@ -85,7 +86,12 @@ class _cart_bottomState extends State<cart_bottom> {
                       alignment: Alignment.centerRight,
                       child: InkWell(
                         onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: user.cart)));
+                          if(user.is_login == false){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
+                          }else{
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: user.cart)));
+
+                          }
                         },
                         child: Container(
                           height: 55,
