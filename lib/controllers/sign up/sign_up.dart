@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -17,24 +18,29 @@ class sign_up_controller {
   static TextEditingController password = new TextEditingController();
 
   static validate(context) async {
+    EasyLoading.showProgress(0.30 , status: "Validating Account");
     if (user_nane.text == "") {
       Get.snackbar(
         "User Name not Valid",
         "Please Enter Valid User Name to continue",
       );
+      EasyLoading.dismiss();
     } else {
       if (email.text == "") {
         Get.snackbar(
           "Email not Valid",
           "Please Enter Valid Email to continue",
         );
+        EasyLoading.dismiss();
       } else {
         if (password.text == "") {
           Get.snackbar(
             "Password not Valid",
             "Please Enter Valid Password to continue",
           );
+          EasyLoading.dismiss();
         } else {
+          EasyLoading.showProgress(0.50 , status: "Creating Account");
           final QueryBuilder<ParseObject> parseQuery =
           QueryBuilder<ParseObject>(ParseObject('users'));
           // `whereContains` is a basic query method that checks if string field
@@ -53,7 +59,9 @@ class sign_up_controller {
                 "Please enter different username",
               );
             }
+            EasyLoading.dismiss();
           }else{
+            EasyLoading.showProgress(0.60 , status: "Creating Account");
             SharedPreferences prefs = await SharedPreferences.getInstance();
             prefs.setString("login", "true");
             prefs.setString("name", user_nane.text);
@@ -67,7 +75,9 @@ class sign_up_controller {
             user.username = user_nane.text;
             user.cart = [];
             print("Account Created !!!");
+            EasyLoading.showProgress(0.90 , status: "Creating Account");
             engine_controller().user_logged_in(context);
+            EasyLoading.dismiss();
             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => splash()), (route) => false);
 
           }
