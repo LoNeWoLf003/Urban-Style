@@ -5,6 +5,8 @@ import 'package:urban_style/controllers/assets/assets.dart';
 import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/user/user.dart';
 
+import '../staful widgets/order_confirmation_body.dart';
+
 class check_ok extends StatelessWidget {
   const check_ok({Key? key}) : super(key: key);
 

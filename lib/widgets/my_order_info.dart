@@ -119,54 +119,6 @@ class my_order_info extends StatelessWidget {
               ),
             ),
 
-            Divider(color: ColorHelper.color[1],),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  SizedBox(width: 5,),
-                  Icon(IconHelper.icons[12],color: ColorHelper.color[1],size: 24,),
-                  SizedBox(width: 5,),
-                  Text("Track Delivery Boy",style: TextStyle(color: ColorHelper.color[1]),),
-                  SizedBox(width: 5,),
-                  Expanded(child: Divider(color: ColorHelper.color[1],))
-
-                ],
-              ),
-            ),
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(18.0),
-            //     child: InkWell(
-            //       onTap: (){
-            //         // Product_Controller.discoutinue(index, name , con);
-            //       },
-            //       child: Container(
-            //         height: 80,
-            //         width: double.infinity,
-            //         decoration: BoxDecoration(
-            //             color: ColorHelper.color[4],
-            //             borderRadius: BorderRadius.all(Radius.circular(20)),
-            //             boxShadow: [
-            //               BoxShadow(
-            //                   color: ColorHelper.color[1],
-            //                   blurRadius: 30.0,
-            //                   offset: Offset(0,20)
-            //               )
-            //             ]
-            //         ),
-            //         child: Center(
-            //           child: Text("Discontinue",style: TextStyle(color: ColorHelper.color[0]),),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(18.0),
-            //   child: out_of_stock(index: index, title: name, context: con,stock: stock,),
-            // )
             SizedBox(height: 50,)
           ],
         ),

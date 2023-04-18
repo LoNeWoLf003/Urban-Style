@@ -194,8 +194,6 @@ class my_order extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: user.my_orders.length,
                       itemBuilder: (context , index){
-                        print(user.my_orders.length);
-                        print(user.my_orders);
                     return Padding(
                       padding: const EdgeInsets.only(left: 18,right: 18,bottom: 0,top: 10),
                       child: my_order_card(title: user.my_orders[index]["title"], price: user.my_orders[index]["price"], des: user.my_orders[index]["des"], lat: user.my_orders[index]["lat"], long: user.my_orders[index]["long"], stock: user.my_orders[index]["stock"], image: user.my_orders[index]["image"]),

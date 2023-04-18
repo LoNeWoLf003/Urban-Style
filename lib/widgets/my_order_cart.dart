@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:urban_style/controllers/engine/engine_controller.dart';
 import 'package:urban_style/main.dart';
 import 'package:urban_style/widgets/my_order_info.dart';
@@ -32,14 +33,18 @@ final stock ;
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
+        EasyLoading.showProgress(0.30,status: "Opening ... ");
         engine_controller.extract_location(lat, long);
+        EasyLoading.showProgress(0.70,status: "Opening ... ");
         Future.delayed(Duration(seconds: 4),(){
+          EasyLoading.showProgress(0.90,status: "Opening ... ");
           print(title);
           print(price);
           print(des);
           print(lat);
           print(long);
           print(stock);
+          EasyLoading.dismiss();
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => my_order_info(image: image, name: title, price: price, description: des , lat : lat,long: long, stock: stock, location: loc)));
 
         });

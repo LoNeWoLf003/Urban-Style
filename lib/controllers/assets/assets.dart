@@ -17,4 +17,6 @@ class assets{
   static final nothing_found = "assets/Something went wrong.png";
   static final payment_successfull = "assets/payment_successfull.gif";
   static final loading = "assets/loading.gif";
+  static final breathe = "assets/breathe.riv";
+  static final timer = "assets/timer.riv";
 }

@@ -20,7 +20,9 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var data = apiResponse.results;
       all_item = data!;
-      return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+      print(all_item);
+      print("Loaded All Data");
+      // return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
     } else {
 
       return [];

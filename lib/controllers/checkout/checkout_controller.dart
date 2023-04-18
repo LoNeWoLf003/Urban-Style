@@ -1,13 +1,14 @@
-
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:urban_style/staful%20widgets/checkout/verify_second_page.dart';
 import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/payment_success.dart';
 import 'package:http/http.dart' as http;
@@ -18,15 +19,14 @@ import '../../pages/my_orders/my order.dart';
 import '../../staful widgets/order_confirmation_body.dart';
 import '../../widgets/check_everything_assign.dart';
 
-
-
-class checkout_controller{
+class checkout_controller {
   static TextEditingController name = new TextEditingController();
   static TextEditingController country_code = new TextEditingController();
   static TextEditingController phone = new TextEditingController();
   static TextEditingController otp = new TextEditingController();
   static TextEditingController alternate_phone = new TextEditingController();
-  static TextEditingController alternate_phone_otp = new TextEditingController();
+  static TextEditingController alternate_phone_otp =
+      new TextEditingController();
   static TextEditingController landmark = new TextEditingController();
   static TextEditingController locality = new TextEditingController();
   static TextEditingController pincode = new TextEditingController();
@@ -34,126 +34,215 @@ class checkout_controller{
   static TextEditingController state = new TextEditingController();
   static TextEditingController brief_address = new TextEditingController();
 
-  static var verification_id ;
-  static var verification_id_2 ;
+  static var verification_id;
 
-  var paymentIntent ;
+  static var verification_id_2;
+
+  var paymentIntent;
 
   static bool is_payment_done = false;
 
-
-
-  static verify_otp()async{
+  static verify_otp() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
-    if(otp.text.isEmpty){
+    if (otp.text.isEmpty) {
       Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
-    }else{
-      try{
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: checkout_controller.verification_id, smsCode: checkout_controller.otp.text);
+    } else {
+      try {
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+            verificationId: checkout_controller.verification_id,
+            smsCode: checkout_controller.otp.text);
 
         // Sign the user in (or link) with the credential
         await auth.signInWithCredential(credential);
-      }catch(e){
+      } catch (e) {
         Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
       }
     }
   }
 
-  static verify_otp_alternate()async{
+  static verify_otp_alternate() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
-    if(alternate_phone_otp.text.isEmpty){
+    if (alternate_phone_otp.text.isEmpty) {
       Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
-    }else{
-      try{
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: checkout_controller.verification_id_2, smsCode: checkout_controller.alternate_phone_otp.text);
+    } else {
+      try {
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+            verificationId: checkout_controller.verification_id_2,
+            smsCode: checkout_controller.alternate_phone_otp.text);
 
         // Sign the user in (or link) with the credential
         await auth.signInWithCredential(credential);
-      }catch(e){
-        Get.snackbar("Wrong Alternate Phone OTP ", "Please Enter Correct Alternate Phone OTP to continue");
+      } catch (e) {
+        Get.snackbar("Wrong Alternate Phone OTP ",
+            "Please Enter Correct Alternate Phone OTP to continue");
       }
     }
   }
 
+  open_razorpay(amount, context) {}
 
-  open_razorpay(amount , context){
-
-
-  }
-
-
-  update_my_orders()async{
+  update_my_orders() async {
     var todo1 = ParseObject('users')
       ..objectId = user.obj_id
       ..set('my_orders', user.my_orders);
     await todo1.save();
     print("My Orders Updated");
- }
-
-
-
-
-  verify_all(lat , long , context) async{
-    for(var times in user.cart){
-      var la_t = lat;
-      var lon_g = long;
-      print("Process Started");
-      print(is_payment_done);
-      if(is_payment_done == true){
-        print(is_payment_done);
-        double meters = 500;
-
-        double coef = meters / 111320.0;
-
-        double new_lat = lat + coef;
-
-        double new_long = long + coef / cos(lat * 0.01745);
-        QueryBuilder<ParseObject> queryTodo =
-        QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
-        final ParseResponse apiResponse = await queryTodo.query();
-
-        if (apiResponse.success && apiResponse.results != null) {
-          for (var boy in apiResponse.results !) {
-            print(boy);
-            bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
-            print(avail);
-            if(avail == true){
-              if(boy["is_active"] == true){
-                if(boy["order"].isEmpty){
-
-                  var todo = ParseObject('deliveryBoy')
-                    ..objectId = boy["objectId"]
-                    ..set('order', [checkout_bodY.widget.products]);
-                  await todo.update();
-                  print("Statues Saved");
-                }else{
-                  print(boy["order"]);
-                  print("Boy Doesn't have value");
-                  verify_all(la_t, lon_g , context);
-                }
-              }else{
-                verify_all(la_t, lon_g , context);
-              }
-            }else{
-              verify_all(la_t, lon_g , context);
-            }
-          }
-        } else {
-          return [];
-        }
-
-      }else{
-        verify_all(la_t, lon_g , context);
-      }
-    }
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
-
-
   }
 
+  verify_all(lat, long, context) async {
+    var num_ = checkout_bodY.widget.products.length;
+    var numbers = 0;
+    if (is_payment_done == true) {
+      for (var number in checkout_bodY.widget.products) {
+        print(number);
+        List loc = await get_seller_location(number["token"]);
+        print(number["token"]);
+        print(loc);
+        if (loc != null) {
+          print(loc);
+          var boy = await choose_delivery_boy(loc[0], loc[1] , number , number["price"]);
+          print(boy);
+          if (boy != null) {
+            numbers = numbers+1;
+          }
+        }
+      }
+      while(numbers == num_){
+        await Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => payment_success()),
+                (route) => false);
+      }
+    } else {
+      verify_all(lat, long, context);
+    }
+  }
 
+  choose_delivery_boy(lat, long , order , price) async {
+    bool founded = false;
+    while (founded == false) {
+      double meters = 500;
+      double coef = meters / 111320.0;
+      double new_lat = lat + coef;
+      double new_long = long + coef / cos(lat * 0.01745);
+      //////////////////////////////////////////////////////////
+      QueryBuilder<ParseObject> queryTodo =
+      QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
+      final ParseResponse apiResponse = await queryTodo.query();
+      if (apiResponse.success && apiResponse.results != null) {
+        for (var boy in apiResponse.results!) {
+          print(boy);
+          bool avail = isPersonAvailable(
+              Person(latitude: boy["lat"], longitude: boy["long"]), user.lat,
+              user.long, new_lat, new_long, 1);
+          print(avail);
+          if (avail == true) {
+            if (boy["is_active"] == true) {
+              print(double.parse(
+                  checkout_bodY.widget.products[0]["price"]) *
+                  0.1);
+              print("////////////////////////////////////////////////////////////////");
+              print(int.parse(price) * 0.1);
+              var todo = ParseObject('payment')
+                ..set('delivery_boy_price', "${int.parse(price) * 0.1}")
+                ..set('order', [order]);
+              todo.save();
 
-  bool isPersonAvailable(Person person, double startLat, double startLong, double endLat, double endLong, double maxDistance) {
+              var todo2 = ParseObject('deliveryBoy')
+                ..objectId = boy["objectId"]
+                ..set('order', [order]);
+              todo2.save();
+
+              var todo3 = ParseObject('deliveryBoy')
+                ..objectId = boy["objectId"]
+                ..set('is_active', false);
+              todo3.save();
+
+              print("Status Saved");
+              founded = true;
+              return boy;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  get_seller_location(token) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('tokens'));
+    parseQuery.whereContains('token', '$token');
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        final QueryBuilder<ParseObject> parseQuery2 =
+        QueryBuilder<ParseObject>(ParseObject('sellers'));
+        parseQuery2.whereContains('objectId', '${o["obj_id"]}');
+        final ParseResponse apiResponse2 = await parseQuery2.query();
+        if (apiResponse2.success && apiResponse2.results != null) {
+          for (var o in apiResponse2.results!) {
+            return [o["lat"], o["long"]];
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  // verify_all(lat , long , context) async{
+      //   var la_t = lat;
+      //   var lon_g = long;
+      //   print("Process Started");
+      //   print(is_payment_done);
+      //   if(is_payment_done == true){
+      //     print(is_payment_done);
+      //     double meters = 500;
+      //
+      //     double coef = meters / 111320.0;
+      //
+      //     double new_lat = lat + coef;
+      //
+      //     double new_long = long + coef / cos(lat * 0.01745);
+      //     QueryBuilder<ParseObject> queryTodo =
+      //     QueryBuilder<ParseObject>(ParseObject('deliveryBoy'));
+      //     final ParseResponse apiResponse = await queryTodo.query();
+      //
+      //     if (apiResponse.success && apiResponse.results != null) {
+      //       for (var boy in apiResponse.results !) {
+      //         // print(boy);
+      //         bool avail = isPersonAvailable(Person(latitude: boy["lat"], longitude: boy["long"]), user.lat, user.long, new_lat, new_long, 1);
+      //         // print(avail);
+      //         if(avail == true){
+      //           if(boy["is_active"] == true){
+      //             print(double.parse(checkout_bodY.widget.products[0]["price"])* 0.1);
+      //             var todo = ParseObject('payment')
+      //               ..set('order', [checkout_bodY.widget.products[0]["price"]* 0.1])
+      //               ..set('order', [checkout_bodY.widget.products]);
+      //             await todo.save();
+      //             print("Statues Saved");
+      //             Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+      //           }else{
+      //             verify_all(la_t, lon_g , context);
+      //           }
+      //         }else{
+      //           verify_all(la_t, lon_g , context);
+      //         }
+      //       }
+      //     } else {
+      //       return [];
+      //     }
+      //
+      //   }else{
+      //
+      //     verify_all(la_t, lon_g , context);
+      //   }
+      //
+      //
+      // }
+
+  bool isPersonAvailable(Person person, double startLat, double startLong,
+      double endLat, double endLong, double maxDistance) {
     const double earthRadius = 6371.0; // Earth's radius in km
     double latDiff = (endLat - startLat) * pi / 180.0;
     double longDiff = (endLong - startLong) * pi / 180.0;
@@ -161,16 +250,15 @@ class checkout_controller{
     double endLatRad = endLat * pi / 180.0;
 
     double a = sin(latDiff / 2) * sin(latDiff / 2) +
-        sin(longDiff / 2) * sin(longDiff / 2) *
-            cos(startLatRad) * cos(endLatRad);
+        sin(longDiff / 2) *
+            sin(longDiff / 2) *
+            cos(startLatRad) *
+            cos(endLatRad);
     double c = 2 * atan2(sqrt(a), sqrt(1 - a));
     double distance = earthRadius * c;
 
     return distance <= maxDistance;
   }
-
-
-
 }
 
 class Person {

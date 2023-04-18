@@ -86,6 +86,9 @@ class login_controller{
                   print("user password - " + "${user.password}");
                   print("user profile - " + "${user.profile_photo}");
                   user.is_login = true;
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  prefs.setString("login", "true");
+                  prefs.setString("name", user_nane.text);
                   EasyLoading.dismiss();
                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => splash()), (route) => false);
                 }

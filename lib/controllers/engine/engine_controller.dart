@@ -15,6 +15,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:urban_style/widgets/my_order_cart.dart';
 import '../../pages/accounts/login/login.dart';
+import '../../pages/home/home.dart';
 
 class engine_controller{
 
@@ -114,7 +115,7 @@ class engine_controller{
     return 12742 * asin(sqrt(a));
   }
 
-  static initilize_firebase(phone)async{
+  static initilize_firebase(phone , context)async{
     if(phone == true){
       await Firebase.initializeApp();
     }else{
@@ -122,6 +123,8 @@ class engine_controller{
           options: FirebaseOptions(apiKey: "AIzaSyD2booaGafuilDBIVG8M4Ml7FcBTHBNcMc", appId: "1:779807127457:web:8e9722b0f0974440f5fde0", messagingSenderId: "779807127457", projectId: "phone-firebase-86703")
       );
     }
+    await Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+
   }
 
   static extract_location(lat,long) async{

@@ -272,6 +272,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_countdown_timer:
+    dependency: "direct main"
+    description:
+      name: flutter_countdown_timer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   flutter_easyloading:
     dependency: "direct main"
     description:
@@ -757,7 +764,7 @@ packages:
     source: hosted
     version: "4.2.4"
   rive:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rive
       url: "https://pub.dartlang.org"
