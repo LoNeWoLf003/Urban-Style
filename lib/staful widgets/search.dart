@@ -178,7 +178,7 @@ class _searchState extends State<search> {
                                             des: _foundUsers[index]
                                                 ["description"],
                                             lat: _foundUsers[index]["lat"],
-                                            long: _foundUsers[index]["long"],
+                                            long: _foundUsers[index]["long"], open: _foundUsers[index]["shop_status"],
                                           )));
                                 },
                                 child: Container(
@@ -208,7 +208,7 @@ class _searchState extends State<search> {
                                                       color:
                                                           ColorHelper.color[4]),
                                                 ),
-                                          Expanded(child: like_btn(title: _foundUsers[index]["title"], des: _foundUsers[index]["des"], price: _foundUsers[index]["price"], image: _foundUsers[index]["image"], stock: _foundUsers[index]["stock"], lat: _foundUsers[index]["lat"], long: _foundUsers[index]["long"], token: _foundUsers[index]["token"], )),
+                                          Expanded(child: like_btn(title: _foundUsers[index]["title"], des: _foundUsers[index]["des"], price: _foundUsers[index]["price"], image: _foundUsers[index]["image"], stock: _foundUsers[index]["stock"], lat: _foundUsers[index]["lat"], long: _foundUsers[index]["long"], token: _foundUsers[index]["token"], open: _foundUsers[index]["shop_status"],)),
                                         ],
                                       ),
                                       Container(

@@ -99,13 +99,13 @@ class help_support extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
                     },
                     child: Row(
                         children:[
                           Container(
                             child: Text(
-                              "Help & Support",
+                              "My Orders",
                               style: TextStyle(
                                 color: ColorHelper.color[0],),
                             ),
@@ -145,13 +145,13 @@ class help_support extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
                     },
                     child: Row(
                         children:[
                           Container(
                             child: Text(
-                              "My Orders",
+                              "Help & Support",
                               style: TextStyle(
                                 color: ColorHelper.color[0],),
                             ),

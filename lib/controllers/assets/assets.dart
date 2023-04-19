@@ -19,4 +19,5 @@ class assets{
   static final loading = "assets/loading.gif";
   static final breathe = "assets/breathe.riv";
   static final timer = "assets/timer.riv";
+  static final payment_failed = "assets/Payment Failed.gif";
 }

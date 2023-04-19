@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/user/user.dart';
@@ -8,7 +10,7 @@ import '../controllers/cart/cart controller.dart';
 import '../pages/accounts/sign up/sign up.dart';
 
 class cart_button extends StatefulWidget {
-  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token}) : super(key: key);
+  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token, required this.open}) : super(key: key);
   final title;
 
   final des;
@@ -22,6 +24,8 @@ class cart_button extends StatefulWidget {
   final stock;
 
   final lat;
+
+  final open;
 
   final long;
 
@@ -52,15 +56,25 @@ class _cart_buttonState extends State<cart_button> {
           is_added = !is_added;
           if(is_added == true){
             if(user.is_login == true){
-              user.new_order = true;
-              var price = widget.price.split(" ")[1];
-              print(price);
-              print("Cat - ${widget.cat}");
-              var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token};
-              user.cart.add(product);
-              var prev_price = user.cart_price;
-              user.cart_price = prev_price + int.parse(price);
-              cart_controller.cart_update();
+              if(widget.stock == "In Stock"){
+                if(widget.open == true){
+                  user.new_order = true;
+                  var price = widget.price.split(" ")[1];
+                  print(price);
+                  print("Cat - ${widget.cat}");
+                  var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token , "shop_status" : widget.open};
+                  user.cart.add(product);
+                  var prev_price = user.cart_price;
+                  user.cart_price = prev_price + int.parse(price);
+                  cart_controller.cart_update();
+                }else{
+                  Get.snackbar("Shop is Closed", "Can't add to cart");
+                  is_added = false;
+                }
+              }else{
+                is_added = false;
+                Get.snackbar("Out of Stock", "Can't add to cart");
+              }
             }else{
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
             }
@@ -79,6 +93,7 @@ class _cart_buttonState extends State<cart_button> {
               user.cart.removeWhere((element) => element["lat"] == widget.lat);
               user.cart.removeWhere((element) => element["cat"] == widget.cat);
               user.cart.removeWhere((element) => element["size"] == widget.size);
+              user.cart.removeWhere((element) => element["shop_status"] == widget.open);
               user.cart_price = prev_price - int.parse(price);
               cart_controller.cart_update();
             }else{

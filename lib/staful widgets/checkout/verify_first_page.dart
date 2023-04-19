@@ -22,6 +22,7 @@ class verify_first_page extends StatefulWidget {
 class _verify_first_pageState extends State<verify_first_page> {
   @override
 bool okay = false;
+  bool otp_verify = false;
   bool process = false;
   Widget build(BuildContext context) {
     return Padding(
@@ -43,33 +44,32 @@ bool okay = false;
 
               // Sign the user in (or link) with the credential
               await auth.signInWithCredential(credential);
-            }catch(e){
-              Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
               setState(() {
-                check_status_Bar.setState(() {
-                  check_status_Bar.part_1 = false;
-                });
-                checkout_bodY.setState(() {
-                  checkout_bodY.index = 0;
-                });
+                otp_verify = true;
+              });
+            }catch(e){
+              setState(() {
+                process = false;
+              });
+              verifyPhone.setState(() {
+                verifyPhone.clicked = false;
+                verifyPhone.send_otp = false;
+              });
+              checkout_controller.otp.text = "";
+
+              Get.snackbar("Wrong OTP ", "Please Enter Correct OTP to continue");
+              check_status_Bar.setState(() {
+                check_status_Bar.part_1 = false;
+              });
+              checkout_bodY.setState(() {
+                checkout_bodY.index = 0;
               });
             }
           }
           // verify_otp_alternate();
-          if(checkout_controller.name.text.isEmpty){
-            Get.snackbar("Name not valid", "Please Enter Correct Name to continue");
-            setState(() {
-              process = false;
-            });
-            verifyPhone.setState(() {
-              verifyPhone.clicked = false;
-              verifyPhone.send_otp = false;
-            });
-            checkout_controller.otp.text = "";
-
-          }else{
-            if(checkout_controller.country_code.text.isEmpty){
-              Get.snackbar("Country Code not valid", "Please Enter Correct Country Code to continue");
+          if(otp_verify == true){
+            if(checkout_controller.name.text.isEmpty){
+              Get.snackbar("Name not valid", "Please Enter Correct Name to continue");
               setState(() {
                 process = false;
               });
@@ -80,8 +80,8 @@ bool okay = false;
               checkout_controller.otp.text = "";
 
             }else{
-              if(checkout_controller.phone.text.isEmpty){
-                Get.snackbar("Phone Number not valid", "Please Enter Correct Phone Number to continue");
+              if(checkout_controller.country_code.text.isEmpty){
+                Get.snackbar("Country Code not valid", "Please Enter Correct Country Code to continue");
                 setState(() {
                   process = false;
                 });
@@ -92,8 +92,8 @@ bool okay = false;
                 checkout_controller.otp.text = "";
 
               }else{
-                if(checkout_controller.otp.text.isEmpty){
-                  Get.snackbar("Otp not valid", "Please Enter Correct Otp to continue");
+                if(checkout_controller.phone.text.isEmpty){
+                  Get.snackbar("Phone Number not valid", "Please Enter Correct Phone Number to continue");
                   setState(() {
                     process = false;
                   });
@@ -101,12 +101,11 @@ bool okay = false;
                     verifyPhone.clicked = false;
                     verifyPhone.send_otp = false;
                   });
-
                   checkout_controller.otp.text = "";
 
                 }else{
-                  if(checkout_controller.alternate_phone.text.isEmpty){
-                    Get.snackbar("Alternate Phone Number not valid", "Please Enter Correct Alternate Phone Number to continue");
+                  if(checkout_controller.otp.text.isEmpty){
+                    Get.snackbar("Otp not valid", "Please Enter Correct Otp to continue");
                     setState(() {
                       process = false;
                     });
@@ -114,11 +113,12 @@ bool okay = false;
                       verifyPhone.clicked = false;
                       verifyPhone.send_otp = false;
                     });
+
                     checkout_controller.otp.text = "";
 
                   }else{
-                    if(checkout_controller.alternate_phone_otp.text.isEmpty){
-                      Get.snackbar("Alternate Phone Otp not valid", "Please Enter Correct Alternate Phone Otp to continue");
+                    if(checkout_controller.alternate_phone.text.isEmpty){
+                      Get.snackbar("Alternate Phone Number not valid", "Please Enter Correct Alternate Phone Number to continue");
                       setState(() {
                         process = false;
                       });
@@ -129,8 +129,8 @@ bool okay = false;
                       checkout_controller.otp.text = "";
 
                     }else{
-                      if(checkout_controller.landmark.text.isEmpty){
-                        Get.snackbar("Landmark not valid", "Please Enter Correct Landmark to continue");
+                      if(checkout_controller.alternate_phone_otp.text.isEmpty){
+                        Get.snackbar("Alternate Phone Otp not valid", "Please Enter Correct Alternate Phone Otp to continue");
                         setState(() {
                           process = false;
                         });
@@ -141,8 +141,8 @@ bool okay = false;
                         checkout_controller.otp.text = "";
 
                       }else{
-                        if(checkout_controller.locality.text.isEmpty){
-                          Get.snackbar("Locality not valid", "Please Enter Correct Locality to continue");
+                        if(checkout_controller.landmark.text.isEmpty){
+                          Get.snackbar("Landmark not valid", "Please Enter Correct Landmark to continue");
                           setState(() {
                             process = false;
                           });
@@ -153,8 +153,8 @@ bool okay = false;
                           checkout_controller.otp.text = "";
 
                         }else{
-                          if(checkout_controller.pincode.text.isEmpty){
-                            Get.snackbar("Pincode not valid", "Please Enter Correct Pincode to continue");
+                          if(checkout_controller.locality.text.isEmpty){
+                            Get.snackbar("Locality not valid", "Please Enter Correct Locality to continue");
                             setState(() {
                               process = false;
                             });
@@ -165,8 +165,8 @@ bool okay = false;
                             checkout_controller.otp.text = "";
 
                           }else{
-                            if(checkout_controller.city.text.isEmpty){
-                              Get.snackbar("City not valid", "Please Enter Correct City to continue");
+                            if(checkout_controller.pincode.text.isEmpty){
+                              Get.snackbar("Pincode not valid", "Please Enter Correct Pincode to continue");
                               setState(() {
                                 process = false;
                               });
@@ -177,8 +177,8 @@ bool okay = false;
                               checkout_controller.otp.text = "";
 
                             }else{
-                              if(checkout_controller.state.text.isEmpty){
-                                Get.snackbar("State not valid", "Please Enter Correct State to continue");
+                              if(checkout_controller.city.text.isEmpty){
+                                Get.snackbar("City not valid", "Please Enter Correct City to continue");
                                 setState(() {
                                   process = false;
                                 });
@@ -189,8 +189,8 @@ bool okay = false;
                                 checkout_controller.otp.text = "";
 
                               }else{
-                                if(checkout_controller.brief_address.text.isEmpty){
-                                  Get.snackbar("Brief Address not valid", "Please Enter Correct Brief Address to continue");
+                                if(checkout_controller.state.text.isEmpty){
+                                  Get.snackbar("State not valid", "Please Enter Correct State to continue");
                                   setState(() {
                                     process = false;
                                   });
@@ -201,12 +201,25 @@ bool okay = false;
                                   checkout_controller.otp.text = "";
 
                                 }else{
-                                  check_status_Bar.setState(() {
-                                    check_status_Bar.part_1 = true;
-                                  });
-                                  checkout_bodY.setState(() {
-                                    checkout_bodY.index = 1;
-                                  });
+                                  if(checkout_controller.brief_address.text.isEmpty){
+                                    Get.snackbar("Brief Address not valid", "Please Enter Correct Brief Address to continue");
+                                    setState(() {
+                                      process = false;
+                                    });
+                                    verifyPhone.setState(() {
+                                      verifyPhone.clicked = false;
+                                      verifyPhone.send_otp = false;
+                                    });
+                                    checkout_controller.otp.text = "";
+
+                                  }else{
+                                    check_status_Bar.setState(() {
+                                      check_status_Bar.part_1 = true;
+                                    });
+                                    checkout_bodY.setState(() {
+                                      checkout_bodY.index = 1;
+                                    });
+                                  }
                                 }
                               }
                             }

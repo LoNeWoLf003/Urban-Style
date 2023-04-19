@@ -27,10 +27,15 @@ class product_info extends StatelessWidget {
       required this.stock,
       required this.des,
       required this.lat,
+      required this.open,
       required this.token,
-      required this.long, this.cat, this.selected_size})
+      required this.long,
+      this.cat,
+      this.selected_size})
       : super(key: key);
   final title;
+
+  final open;
 
   final token;
 
@@ -48,7 +53,7 @@ class product_info extends StatelessWidget {
 
   final cat;
 
-  final selected_size ;
+  final selected_size;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,8 @@ class product_info extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => cart()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => cart()));
                     },
                     child: Container(
                       height: 30,
@@ -90,15 +96,25 @@ class product_info extends StatelessWidget {
           )),
           Container(
             child: stock == "In Stock"
-                ? Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Text(
-                        "Product expected to be delivered under ${engine_controller().calculate_minute(double.parse(lat), double.parse(long))} minutes",
-                        style: TextStyle(color: ColorHelper.color[1]),
-                      ),
-                    ))
+                ? open == true
+                    ? Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text(
+                            "Product expected to be delivered under ${engine_controller().calculate_minute(double.parse(lat), double.parse(long))} minutes",
+                            style: TextStyle(color: ColorHelper.color[1]),
+                          ),
+                        ))
+                    : Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text(
+                            "* shop is closed",
+                            style: TextStyle(color: ColorHelper.color[4]),
+                          ),
+                        ))
                 : Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -119,150 +135,235 @@ class product_info extends StatelessWidget {
               width: context.isPhone ? double.infinity : 300,
               child: Image.memory(
                 image,
-                fit: context.isPhone ?BoxFit.fitHeight :BoxFit.fitHeight,
+                fit: context.isPhone ? BoxFit.fitHeight : BoxFit.fitHeight,
               ),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-          height: context.isPhone ? cat == null ? 220  : 320 : cat == null ? 320 : 240,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: ColorHelper.color[0],
-            boxShadow: [
-              BoxShadow(
-                  color: ColorHelper.color[1],
-                  blurRadius: 10.0,
-                  offset: Offset(-2, -2))
-            ],
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40)),
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 5,
+              height: context.isPhone
+                  ? cat == null
+                      ? 220
+                      : 320
+                  : cat == null
+                      ? 320
+                      : 240,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: ColorHelper.color[0],
+                boxShadow: [
+                  BoxShadow(
+                      color: ColorHelper.color[1],
+                      blurRadius: 10.0,
+                      offset: Offset(-2, -2))
+                ],
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40)),
               ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        child: Text(
-                          title,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: ColorHelper.r_g_b[3]),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        price,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: ColorHelper.r_g_b[3]),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      des,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: ColorHelper.color[2]),
-                    )),
-              ),
-              cat != null ?SizedBox(height: 15,) : SizedBox(height: 0,),
-              // cat == "Rings" ?rings_size() : SizedBox(height: 0,),
-              cat == "T-Shirt" ?shirt_size() : SizedBox(height: 0,),
-              cat == "Shoes" ?shoe_size() : SizedBox(height: 0,),
-              Expanded(
-                  child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap : ()async{
-                            if(user.is_login == true){
-                              EasyLoading.showProgress(0.30, status: 'Loading...');
-                              if(user.is_login == true){
-                                checkout_controller.name.text = user.username;
-                              }
-                              EasyLoading.showProgress(0.40, status: 'Loading...');
-                              checkout_controller.locality.text = user.locality;
-                              checkout_controller.pincode.text = user.postal_code;
-                              checkout_controller.city.text = user.locality;
-                              checkout_controller.state.text = user.state;
-                              checkout_controller.state.text = user.locality;
-                              EasyLoading.showProgress(0.60, status: 'Loading...');
-                              var pricE = price.split(" ")[1];
-                              EasyLoading.showProgress(0.70, status: 'Loading...');
-                              var otp = engine_controller.getInteger(6);
-                              print("Otp - ${otp}");
-                              EasyLoading.showProgress(0.90, status: 'Loading...');
-                              // var todo = ParseObject('otp')
-                              //   ..set('otp', otp)
-                              //   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
-                              // await todo.save();
-                              EasyLoading.showProgress(0.100, status: 'Loading...');
-                              EasyLoading.dismiss();
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: [{"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , "otp" : otp , 'token' : token , 'drop_location_lat' : "${user.lat}" , 'drop_location_long' : "${user.long}"}])));
-
-                            }else{
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
-                            }
-                            },
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Row(
+                      children: [
+                        Expanded(
                           child: Container(
-                            height: 70,
                             width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                color: ColorHelper.color[3],
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: ColorHelper.color[3],
-                                      blurRadius: 20.0)
-                                ]),
-                            child: Center(
-                              child: Text(
-                                "Buy Now",
-                                style: TextStyle(color: ColorHelper.color[0]),
-                              ),
+                            child: Text(
+                              title,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorHelper.r_g_b[3]),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      cart_button(title: title, des: des, price: price, image: image, stock: stock, lat: lat, long: long, cat: cat, size: cat=="Shoes" ?user.selected_size :user.selected_shirt_size , token: token,)
-                    ],
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            price,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: ColorHelper.r_g_b[3]),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ))
-            ],
-          ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 18),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          des,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: ColorHelper.color[2]),
+                        )),
+                  ),
+                  cat != null
+                      ? SizedBox(
+                          height: 15,
+                        )
+                      : SizedBox(
+                          height: 0,
+                        ),
+                  // cat == "Rings" ?rings_size() : SizedBox(height: 0,),
+                  cat == "T-Shirt"
+                      ? shirt_size()
+                      : SizedBox(
+                          height: 0,
+                        ),
+                  cat == "Shoes"
+                      ? shoe_size()
+                      : SizedBox(
+                          height: 0,
+                        ),
+                  Expanded(
+                      child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () async {
+                                if (user.is_login == true) {
+                                  if(stock == "In Stock"){
+                                    if(open == true){
+                                      EasyLoading.showProgress(0.30,
+                                          status: 'Loading...');
+                                      if (user.is_login == true) {
+                                        checkout_controller.name.text =
+                                            user.username;
+                                      }
+                                      EasyLoading.showProgress(0.40,
+                                          status: 'Loading...');
+                                      checkout_controller.locality.text =
+                                          user.locality;
+                                      checkout_controller.pincode.text =
+                                          user.postal_code;
+                                      checkout_controller.city.text = user.locality;
+                                      checkout_controller.state.text = user.state;
+                                      checkout_controller.state.text =
+                                          user.locality;
+                                      EasyLoading.showProgress(0.60,
+                                          status: 'Loading...');
+                                      var pricE = price.split(" ")[1];
+                                      EasyLoading.showProgress(0.70,
+                                          status: 'Loading...');
+                                      var otp = engine_controller.getInteger(6);
+                                      print("Otp - ${otp}");
+                                      EasyLoading.showProgress(0.90,
+                                          status: 'Loading...');
+                                      // var todo = ParseObject('otp')
+                                      //   ..set('otp', otp)
+                                      //   ..set('product', {"title" : title , "des" : des , "price" : pricE , "image" : image , "stock" : stock , "lat" : lat , "long" : long , "cat":cat , "size" : cat=="Shoes" ?user.selected_size :user.selected_shirt_size , });
+                                      // await todo.save();
+                                      EasyLoading.showProgress(0.100,
+                                          status: 'Loading...');
+                                      EasyLoading.dismiss();
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              order_confirmation(products: [
+                                                {
+                                                  "title": title,
+                                                  "des": des,
+                                                  "price": pricE,
+                                                  "image": image,
+                                                  "stock": stock,
+                                                  "lat": lat,
+                                                  "long": long,
+                                                  "cat": cat,
+                                                  "size": cat == "Shoes"
+                                                      ? user.selected_size
+                                                      : user.selected_shirt_size,
+                                                  "otp": otp,
+                                                  'token': token,
+                                                  'drop_location_lat':
+                                                  "${user.lat}",
+                                                  'drop_location_long':
+                                                  "${user.long}"
+                                                }
+                                              ])));
+                                    }else{
+                                      Get.snackbar("Shop is Closed", "Can't buy the product");
+                                    }
+                                  }else{
+                                    Get.snackbar("Out of Stock", "Can't buy the product");
+                                  }
+                                } else {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => sign_up()));
+                                }
+                              },
+                              child: Container(
+                                height: 70,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    color: stock == "In Stock"
+                                        ? open == true
+                                            ? ColorHelper.color[3]
+                                            : ColorHelper.color[1]
+                                        : ColorHelper.color[1],
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: stock == "In Stock"
+                                              ? open == true
+                                              ?ColorHelper.color[3]
+                                              : ColorHelper.color[1]
+                                              : ColorHelper.color[1],
+                                          blurRadius: 20.0)
+                                    ]),
+                                child: Center(
+                                  child: Text("Buy Now",
+                                      style: TextStyle(
+                                          color: stock == "In Stock"
+                                              ? open == true
+                                                  ? ColorHelper.color[0]
+                                                  : ColorHelper.color[0]
+                                              : ColorHelper.color[0])),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          cart_button(
+                            title: title,
+                            des: des,
+                            price: price,
+                            image: image,
+                            stock: stock,
+                            lat: lat,
+                            long: long,
+                            cat: cat,
+                            size: cat == "Shoes"
+                                ? user.selected_size
+                                : user.selected_shirt_size,
+                            token: token,
+                            open: open,
+                          )
+                        ],
+                      ),
+                    ),
+                  ))
+                ],
+              ),
             ),
           )
         ],

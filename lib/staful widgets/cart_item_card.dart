@@ -16,7 +16,7 @@ import 'package:urban_style/widgets/product_info.dart';
 import '../user/user.dart';
 
 class cart_item_card extends StatefulWidget {
-  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.selected_size, required this.index, required this.token, }) : super(key: key);
+  cart_item_card({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.selected_size, required this.index, required this.token, required this.open, }) : super(key: key);
   final title;
 
   final des;
@@ -35,6 +35,8 @@ class cart_item_card extends StatefulWidget {
 
   final token;
 
+  final open;
+
   final selected_size ;
 
   final index ;
@@ -52,13 +54,13 @@ class _cart_item_cardState extends State<cart_item_card> {
   }
   bool delete = false;
   late int price ;
-  var no = 1;
+  // var no = 1;
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
         if(delete == false){
           print(widget.cat);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size, token: widget.token,)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size, token: widget.token, open: widget.open,)));
         }else{
           setState(() {
             delete = false;
@@ -134,56 +136,56 @@ class _cart_item_cardState extends State<cart_item_card> {
                 ],
               ),
             ),
-            Container(
-              height: double.infinity,
-              width: 40,
-              child: Column(
-                children: [
-                  SizedBox(height: 15,),
-                  InkWell(
-                      onTap: (){
-                       if(no > 1){
-                         var prev_price = user.cart_price;
-                         setState(() {
-                           no = no-1;
-                           widget.price = widget.price - price;
-                           print(price);
-                           user.cart_price = prev_price - price;
-                           print(user.cart_price);
-                         });
-                         cart_bottom_state.update();
-                       }
-                      },
-                      child: Container(
-                          height: 30,
-                          width: 30,
-
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Center(child: Icon(IconHelper.icons[19],color: delete ? ColorHelper.color[0] : ColorHelper.color[1],)),
-                          ))),
-                  SizedBox(height: 10,),
-                  Text("$no",style: TextStyle(color: delete ? ColorHelper.color[0] : ColorHelper.color[1]),),
-                  SizedBox(height: 5,),
-                  InkWell(
-                      onTap: (){
-                        var prev_price = user.cart_price;
-                        setState(() {
-                          no = no+1;
-                          widget.price = price + widget.price;
-                          print(price);
-                          user.cart_price = prev_price + price;
-                          print(user.cart_price);
-                        });
-                        cart_bottom_state.update();
-                      },
-                      child: Container(
-                          height: 40,
-                          width: 40,
-                          child: Center(child: Icon(IconHelper.icons[21],color: delete ? ColorHelper.color[0] : ColorHelper.color[3],))))
-                ],
-              ),
-            ),
+            // Container(
+            //   height: double.infinity,
+            //   width: 40,
+            //   child: Column(
+            //     children: [
+            //       SizedBox(height: 15,),
+            //       InkWell(
+            //           onTap: (){
+            //            if(no > 1){
+            //              var prev_price = user.cart_price;
+            //              setState(() {
+            //                no = no-1;
+            //                widget.price = widget.price - price;
+            //                print(price);
+            //                user.cart_price = prev_price - price;
+            //                print(user.cart_price);
+            //              });
+            //              cart_bottom_state.update();
+            //            }
+            //           },
+            //           child: Container(
+            //               height: 30,
+            //               width: 30,
+            //
+            //               child: Padding(
+            //                 padding: const EdgeInsets.only(bottom: 8),
+            //                 child: Center(child: Icon(IconHelper.icons[19],color: delete ? ColorHelper.color[0] : ColorHelper.color[1],)),
+            //               ))),
+            //       SizedBox(height: 10,),
+            //       Text("$no",style: TextStyle(color: delete ? ColorHelper.color[0] : ColorHelper.color[1]),),
+            //       SizedBox(height: 5,),
+            //       InkWell(
+            //           onTap: (){
+            //             var prev_price = user.cart_price;
+            //             setState(() {
+            //               no = no+1;
+            //               widget.price = price + widget.price;
+            //               print(price);
+            //               user.cart_price = prev_price + price;
+            //               print(user.cart_price);
+            //             });
+            //             cart_bottom_state.update();
+            //           },
+            //           child: Container(
+            //               height: 40,
+            //               width: 40,
+            //               child: Center(child: Icon(IconHelper.icons[21],color: delete ? ColorHelper.color[0] : ColorHelper.color[3],))))
+            //     ],
+            //   ),
+            // ),
             SizedBox(width: 8,),
             delete ? InkWell(
                 onTap: (){

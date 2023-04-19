@@ -8,6 +8,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:urban_style/staful%20widgets/checkout/verify_second_page.dart';
 import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/payment_success.dart';
@@ -40,7 +41,12 @@ class checkout_controller {
 
   var paymentIntent;
 
+  static var razorpay = Razorpay();
+  static var amount ;
+
   static bool is_payment_done = false;
+
+  static var prducts ;
 
   static verify_otp() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -79,7 +85,21 @@ class checkout_controller {
     }
   }
 
-  open_razorpay(amount, context) {}
+
+  var options = {
+    'key': 'rzp_test_BkBJbDxdJzYeW6',
+    'amount': "${amount}00",
+    'name': '${user.username}',
+    'description': '${prducts}',
+    'prefill': {
+      'contact': '8409037655',
+      'email': 'test@razorpay.com'
+    }
+  };
+
+  open_payment_page(){
+    razorpay.open(options);
+  }
 
   update_my_orders() async {
     var todo1 = ParseObject('users')

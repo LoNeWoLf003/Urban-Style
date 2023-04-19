@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 
 import '../widgets/checkout/location.dart';
 import '../widgets/checkout/packging.dart';
@@ -22,6 +23,7 @@ class _order_confirmation_bodyState extends State<order_confirmation_body> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    checkout_controller.country_code.text = "+91";
     widget.products.forEach((element) {
       var prevPrice = widget.price;
       widget.price = int.parse(element["price"]) + prevPrice;

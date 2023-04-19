@@ -34,7 +34,7 @@ class pants extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(lat: snapshot.data[index]["lat"],long: snapshot.data[index]["long"],title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"], token: snapshot.data[index]["token"])));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(lat: snapshot.data[index]["lat"],long: snapshot.data[index]["long"],title: snapshot.data[index]["title"], price: "₹ ${snapshot.data[index]["price"]}", image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"],des: snapshot.data[index]["description"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"],)));
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -54,9 +54,11 @@ class pants extends StatelessWidget {
                         children: [
                           SizedBox(width: 8,),
                           snapshot.data[index]["stock"] == "In Stock"
+                              ? snapshot.data[index]["shop_status"] == true
                               ? Text("")
+                              : Text("* Shop Closed",style: TextStyle(color: ColorHelper.color[4]),)
                               : Text("* out of stock",style: TextStyle(color: ColorHelper.color[4]),),
-                          Expanded(child: like_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"] )),
+                          Expanded(child: like_btn(title: snapshot.data[index]["title"],open : snapshot.data[index]["shop_status"],  des: snapshot.data[index]["description"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"] )),
                         ],
                       ),
                       Container(
