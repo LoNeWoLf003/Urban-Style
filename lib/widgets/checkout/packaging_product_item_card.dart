@@ -35,7 +35,7 @@ Widget packging_product_item_card(index){
                 color: ColorHelper.color[3].withOpacity(0.85)
             ),
             child: Center(
-                child: user.is_login
+                child: user.new_order
                     ?Image.memory(checkout_bodY.widget.products[index]["image"],fit: BoxFit.fill,)
                     :Image.memory(checkout_bodY.widget.products[index]["image"],fit: BoxFit.fill,)
             ),
@@ -54,6 +54,9 @@ Widget packging_product_item_card(index){
               Container(
                   width: double.infinity,
                   child: Text("₹${checkout_bodY.widget.products[index]["price"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
+              Container(
+                  width: double.infinity,
+                  child: Text("Quantity - ${checkout_bodY.widget.products[index]["quantity"]}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
 
             ],
           ),

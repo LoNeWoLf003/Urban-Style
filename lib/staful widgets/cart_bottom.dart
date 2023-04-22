@@ -89,6 +89,7 @@ class _cart_bottomState extends State<cart_bottom> {
                           if(user.is_login == false){
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
                           }else{
+                            user.new_order = true;
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => order_confirmation(products: user.cart)));
 
                           }

@@ -286,6 +286,7 @@ class product_info extends StatelessWidget {
                                                   "lat": lat,
                                                   "long": long,
                                                   "cat": cat,
+                                                  "quantity" : 1,
                                                   "size": cat == "Shoes"
                                                       ? user.selected_size
                                                       : user.selected_shirt_size,
@@ -349,6 +350,7 @@ class product_info extends StatelessWidget {
                             price: price,
                             image: image,
                             stock: stock,
+                            quantity: 1,
                             lat: lat,
                             long: long,
                             cat: cat,

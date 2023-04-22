@@ -157,7 +157,6 @@ class _homeState extends State<home> {
                   ),
                   InkWell(
                     onTap: (){
-
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
                     },
                     child: Row(

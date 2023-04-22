@@ -26,7 +26,7 @@ class _order_confirmation_bodyState extends State<order_confirmation_body> {
     checkout_controller.country_code.text = "+91";
     widget.products.forEach((element) {
       var prevPrice = widget.price;
-      widget.price = int.parse(element["price"]) + prevPrice;
+      widget.price = int.parse(element["price"]) * int.parse("${element["quantity"]}") + prevPrice;
     });
 
   }

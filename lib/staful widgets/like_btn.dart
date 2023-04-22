@@ -98,7 +98,7 @@ class _like_btnState extends State<like_btn> {
                       user.new_order = true;
                       like = true;
                       print("Cat - ${widget.cat}");
-                      var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token , "shop_status" : widget.open};
+                      var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token , "shop_status" : widget.open , "quantity" : 1};
                       user.cart.add(product);
                       var prev_price = user.cart_price;
                       user.cart_price = prev_price + int.parse(widget.price);

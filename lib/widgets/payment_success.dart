@@ -18,6 +18,7 @@ class payment_success extends StatelessWidget {
     print("////////////////////////////////////////////////////////////////");
     print(checkout_bodY.widget.products.length);
     for (var number in checkout_bodY.widget.products) {
+      user.new_order = true;
       var title = number["title"];
       var des = number["des"];
       var price = number["price"];
@@ -28,6 +29,7 @@ class payment_success extends StatelessWidget {
       var cat = number["cat"];
       var size = number["size"];
       var token = number["token"];
+      var quantity = number["quantity"];
       user.my_orders.add({
         "title": title,
         "des": des,
@@ -35,6 +37,7 @@ class payment_success extends StatelessWidget {
         "image": image,
         "stock": stock,
         "lat": lat,
+        "quantity" : quantity,
         "long": long,
         "cat": cat,
         "size": size,

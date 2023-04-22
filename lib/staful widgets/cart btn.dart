@@ -10,7 +10,7 @@ import '../controllers/cart/cart controller.dart';
 import '../pages/accounts/sign up/sign up.dart';
 
 class cart_button extends StatefulWidget {
-  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token, required this.open}) : super(key: key);
+  const cart_button({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token, required this.open, required this.quantity}) : super(key: key);
   final title;
 
   final des;
@@ -18,6 +18,8 @@ class cart_button extends StatefulWidget {
   final price;
 
   final image;
+
+  final quantity ;
 
   final token;
 
@@ -62,7 +64,7 @@ class _cart_buttonState extends State<cart_button> {
                   var price = widget.price.split(" ")[1];
                   print(price);
                   print("Cat - ${widget.cat}");
-                  var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token , "shop_status" : widget.open};
+                  var product = {"title" : widget.title , "des" : widget.des , "price" : price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : widget.size , "token" : widget.token , "shop_status" : widget.open , "quantity" : 1};
                   user.cart.add(product);
                   var prev_price = user.cart_price;
                   user.cart_price = prev_price + int.parse(price);

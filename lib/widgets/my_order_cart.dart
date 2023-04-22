@@ -14,7 +14,7 @@ import '../user/user.dart';
 var loc ;
 class my_order_card extends StatelessWidget {
   my_order_card(
-      {Key? key, required this.title, required this.price, required this.des, required this.lat, required this.long, required this.stock, required this.image,
+      {Key? key, required this.title, required this.price, required this.des, required this.lat, required this.long, required this.stock, required this.image, required this.quantity,
 
       })
       : super(key: key);
@@ -23,6 +23,7 @@ final title ;
 final image ;
 final price ;
 final des ;
+final quantity ;
 final lat ;
 final long ;
 final stock ;
@@ -96,6 +97,9 @@ final stock ;
                   Container(
                       width: double.infinity,
                       child: Text("₹${price}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
+                  Container(
+                      width: double.infinity,
+                      child: Text("Quantity - ${quantity}",style: TextStyle(fontSize: 15,color: ColorHelper.color[1]),overflow: TextOverflow.ellipsis,)),
 
                 ],
               ),

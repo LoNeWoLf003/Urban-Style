@@ -51,10 +51,11 @@ class _cart_item_cardState extends State<cart_item_card> {
     // TODO: implement initState
     super.initState();
     price = widget.price;
+    no = user.cart[widget.index]["quantity"];
   }
   bool delete = false;
   late int price ;
-  // var no = 1;
+  var no = 1;
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
@@ -136,56 +137,59 @@ class _cart_item_cardState extends State<cart_item_card> {
                 ],
               ),
             ),
-            // Container(
-            //   height: double.infinity,
-            //   width: 40,
-            //   child: Column(
-            //     children: [
-            //       SizedBox(height: 15,),
-            //       InkWell(
-            //           onTap: (){
-            //            if(no > 1){
-            //              var prev_price = user.cart_price;
-            //              setState(() {
-            //                no = no-1;
-            //                widget.price = widget.price - price;
-            //                print(price);
-            //                user.cart_price = prev_price - price;
-            //                print(user.cart_price);
-            //              });
-            //              cart_bottom_state.update();
-            //            }
-            //           },
-            //           child: Container(
-            //               height: 30,
-            //               width: 30,
-            //
-            //               child: Padding(
-            //                 padding: const EdgeInsets.only(bottom: 8),
-            //                 child: Center(child: Icon(IconHelper.icons[19],color: delete ? ColorHelper.color[0] : ColorHelper.color[1],)),
-            //               ))),
-            //       SizedBox(height: 10,),
-            //       Text("$no",style: TextStyle(color: delete ? ColorHelper.color[0] : ColorHelper.color[1]),),
-            //       SizedBox(height: 5,),
-            //       InkWell(
-            //           onTap: (){
-            //             var prev_price = user.cart_price;
-            //             setState(() {
-            //               no = no+1;
-            //               widget.price = price + widget.price;
-            //               print(price);
-            //               user.cart_price = prev_price + price;
-            //               print(user.cart_price);
-            //             });
-            //             cart_bottom_state.update();
-            //           },
-            //           child: Container(
-            //               height: 40,
-            //               width: 40,
-            //               child: Center(child: Icon(IconHelper.icons[21],color: delete ? ColorHelper.color[0] : ColorHelper.color[3],))))
-            //     ],
-            //   ),
-            // ),
+            Container(
+              height: double.infinity,
+              width: 40,
+              child: Column(
+                children: [
+                  SizedBox(height: 15,),
+                  InkWell(
+                      onTap: (){
+                       if(no > 1){
+
+                         var prev_price = user.cart_price;
+                         setState(() {
+                           no = no-1;
+                           widget.price = widget.price - price;
+                           print(price);
+                           user.cart_price = prev_price - price;
+                           print(user.cart_price);
+                           user.cart[widget.index]["quantity"] = no;
+                         });
+                         cart_bottom_state.update();
+                       }
+                      },
+                      child: Container(
+                          height: 30,
+                          width: 30,
+
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Center(child: Icon(IconHelper.icons[19],color: delete ? ColorHelper.color[0] : ColorHelper.color[1],)),
+                          ))),
+                  SizedBox(height: 10,),
+                  Text("$no",style: TextStyle(color: delete ? ColorHelper.color[0] : ColorHelper.color[1]),),
+                  SizedBox(height: 5,),
+                  InkWell(
+                      onTap: (){
+                        var prev_price = user.cart_price;
+                        setState(() {
+                          no = no+1;
+                          widget.price = price + widget.price;
+                          print(price);
+                          user.cart_price = prev_price + price;
+                          print(user.cart_price);
+                          user.cart[widget.index]["quantity"] = no;
+                        });
+                        cart_bottom_state.update();
+                      },
+                      child: Container(
+                          height: 40,
+                          width: 40,
+                          child: Center(child: Icon(IconHelper.icons[21],color: delete ? ColorHelper.color[0] : ColorHelper.color[3],))))
+                ],
+              ),
+            ),
             SizedBox(width: 8,),
             delete ? InkWell(
                 onTap: (){
