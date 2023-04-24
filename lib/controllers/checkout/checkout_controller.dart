@@ -164,7 +164,7 @@ class checkout_controller {
               print(int.parse(price) * 0.1);
               var todo = ParseObject('payment')
                 ..set('delivery_boy_price', "${int.parse(price) * 0.1}")
-                ..set('order', [order]);
+                ..set('order', [order,checkout_controller.phone]);
               todo.save();
 
               var todo2 = ParseObject('deliveryBoy')
