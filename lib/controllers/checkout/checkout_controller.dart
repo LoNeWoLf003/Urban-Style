@@ -164,12 +164,12 @@ class checkout_controller {
               print(int.parse(price) * 0.1);
               var todo = ParseObject('payment')
                 ..set('delivery_boy_price', "${int.parse(price) * 0.1}")
-                ..set('order', [order,checkout_controller.phone]);
+                ..set('order', [order,"${checkout_controller.phone.text}"]);
               todo.save();
 
               var todo2 = ParseObject('deliveryBoy')
                 ..objectId = boy["objectId"]
-                ..set('order', [order]);
+                ..set('order', [order,"${checkout_controller.phone.text}"]);
               todo2.save();
 
               var todo3 = ParseObject('deliveryBoy')
