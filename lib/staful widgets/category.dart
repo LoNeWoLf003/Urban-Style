@@ -14,7 +14,11 @@ class category extends StatefulWidget {
 
 class _categoryState extends State<category> {
   @override
-  bool caps = true;
+  bool daily_use = true;
+  bool mens = false;
+  bool womens = false;
+  bool kids = false;
+  bool caps = false;
   bool glasses = false;
   bool rings = false;
   bool chains = false;
@@ -30,14 +34,228 @@ class _categoryState extends State<category> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.only(left: 18),
+        padding: const EdgeInsets.only(left: 0),
         child: Container(
           height: 90,
           child: Row(
             children: [
+              SizedBox(width: 20,),
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = true;
+                    mens = false;
+                    womens = false;
+                    kids = false;
+                    caps = false;
+                    glasses = false;
+                    rings = false;
+                    chains = false;
+                    t_shirts = false;
+                    makeup = false;
+                    pants = false;
+                    shoes = false;
+                    sleepers = false;
+                    electronics = false;
+                    other = false;
+                  });
+                  home_page_state.setState(() {
+                    home_page_state.index_ = 3;
+                  });
+                },
+                child: Container(
+                  height: 60,
+                  width: 180,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: daily_use
+                          ? ColorHelper.color[8]
+                          :ColorHelper.color[0],
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10.0,
+                            color: ColorHelper.color[1],
+                            offset: Offset(2,3)
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10,),
+                        Image.asset("${assets.daily_use}",height: 50,width: 50,fit: BoxFit.fitWidth,),
+                        SizedBox(width: 10,),
+                        Text("Daily Use",style: TextStyle(fontWeight: FontWeight.bold,color: daily_use ?ColorHelper.color[0] : ColorHelper.color[2]),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 20,),
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    daily_use = false;
+                    mens = true;
+                    womens = false;
+                    kids = false;
+                    caps = false;
+                    glasses = false;
+                    rings = false;
+                    chains = false;
+                    t_shirts = false;
+                    makeup = false;
+                    pants = false;
+                    shoes = false;
+                    sleepers = false;
+                    electronics = false;
+                    other = false;
+                  });
+                  home_page_state.setState(() {
+                    home_page_state.index_ = 1;
+                  });
+                },
+                child: Container(
+                  height: 60,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: mens
+                          ? ColorHelper.color[8]
+                          :ColorHelper.color[0],
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10.0,
+                            color: ColorHelper.color[1],
+                            offset: Offset(2,3)
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10,),
+                        Image.asset("${assets.mens}",height: 50,width: 50,fit: BoxFit.fitWidth,),
+                        SizedBox(width: 10,),
+                        Text("Mens",style: TextStyle(fontWeight: FontWeight.bold,color: mens ?ColorHelper.color[0] : ColorHelper.color[2]),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 20,),
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = true;
+                    kids = false;
+                    caps = false;
+                    glasses = false;
+                    rings = false;
+                    chains = false;
+                    t_shirts = false;
+                    makeup = false;
+                    pants = false;
+                    shoes = false;
+                    sleepers = false;
+                    electronics = false;
+                    other = false;
+                  });
+                  home_page_state.setState(() {
+                    home_page_state.index_ = 2;
+                  });
+                },
+                child: Container(
+                  height: 60,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: womens
+                          ? ColorHelper.color[8]
+                          :ColorHelper.color[0],
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10.0,
+                            color: ColorHelper.color[1],
+                            offset: Offset(2,3)
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10,),
+                        Image.asset("${assets.womens}",height: 50,width: 50,fit: BoxFit.fitWidth,),
+                        SizedBox(width: 10,),
+                        Text("Women",style: TextStyle(fontWeight: FontWeight.bold,color: womens ?ColorHelper.color[0] : ColorHelper.color[2]),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(width: 20,),
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = true;
+                    caps = false;
+                    glasses = false;
+                    rings = false;
+                    chains = false;
+                    t_shirts = false;
+                    makeup = false;
+                    pants = false;
+                    shoes = false;
+                    sleepers = false;
+                    electronics = false;
+                    other = false;
+                  });
+                  home_page_state.setState(() {
+                    home_page_state.index_ = 3;
+                  });
+                },
+                child: Container(
+                  height: 60,
+                  width: 120,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: kids
+                          ? ColorHelper.color[8]
+                          :ColorHelper.color[0],
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10.0,
+                            color: ColorHelper.color[1],
+                            offset: Offset(2,3)
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10,),
+                        Image.asset("${assets.kids}",height: 50,width: 50,fit: BoxFit.fitWidth,),
+                        SizedBox(width: 10,),
+                        Text("Kids",style: TextStyle(fontWeight: FontWeight.bold,color: kids ?ColorHelper.color[0] : ColorHelper.color[2]),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 20,),
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = true;
                     glasses = false;
                     rings = false;
@@ -51,7 +269,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 0;
+                    home_page_state.index_ = 4;
                   });
                 },
                 child: Container(
@@ -86,6 +304,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = true;
                     rings = false;
@@ -99,7 +321,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 1;
+                    home_page_state.index_ = 5;
                   });
                 },
                 child: Container(
@@ -134,6 +356,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = true;
@@ -147,7 +373,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 2;
+                    home_page_state.index_ = 6;
                   });
                 },
                 child: Container(
@@ -182,6 +408,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -195,7 +425,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 3;
+                    home_page_state.index_ = 7;
                   });
                 },
                 child: Container(
@@ -230,6 +460,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -243,7 +477,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 4;
+                    home_page_state.index_ = 8;
                   });
                 },
                 child: Container(
@@ -278,6 +512,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -291,7 +529,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 5;
+                    home_page_state.index_ = 9;
                   });
                 },
                 child: Container(
@@ -326,6 +564,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -339,7 +581,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 6;
+                    home_page_state.index_ = 10;
                   });
                 },
                 child: Container(
@@ -374,6 +616,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -387,7 +633,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 7;
+                    home_page_state.index_ = 11;
                   });
                 },
                 child: Container(
@@ -422,6 +668,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -435,7 +685,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 8;
+                    home_page_state.index_ = 12;
                   });
                 },
                 child: Container(
@@ -470,6 +720,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -483,7 +737,7 @@ class _categoryState extends State<category> {
                     other = false;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 9;
+                    home_page_state.index_ = 13;
                   });
                 },
                 child: Container(
@@ -518,6 +772,10 @@ class _categoryState extends State<category> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    daily_use = false;
+                    mens = false;
+                    womens = false;
+                    kids = false;
                     caps = false;
                     glasses = false;
                     rings = false;
@@ -531,7 +789,7 @@ class _categoryState extends State<category> {
                     other = true;
                   });
                   home_page_state.setState(() {
-                    home_page_state.index_ = 10;
+                    home_page_state.index_ = 14;
                   });
                 },
                 child: Container(

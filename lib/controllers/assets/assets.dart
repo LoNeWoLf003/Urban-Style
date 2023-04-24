@@ -20,4 +20,8 @@ class assets{
   static final breathe = "assets/breathe.riv";
   static final timer = "assets/timer.riv";
   static final payment_failed = "assets/Payment Failed.gif";
+  static final daily_use = "assets/daily use.png";
+  static final mens = "assets/man.png";
+  static final womens = "assets/women.png";
+  static final kids = "assets/kids.png";
 }

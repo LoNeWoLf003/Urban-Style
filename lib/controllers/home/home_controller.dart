@@ -64,6 +64,90 @@ class home_controller {
     }
   }
 
+  static load_mens(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Mens');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_women(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Women');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_kids(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Kids');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_daily(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Daily Products');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+
+
+
+
   static load_glasses(context) async {
     final QueryBuilder<ParseObject> parseQuery =
         QueryBuilder<ParseObject>(ParseObject('products'));

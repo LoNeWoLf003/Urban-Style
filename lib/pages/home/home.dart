@@ -23,8 +23,12 @@ import '../../staful widgets/category.dart';
 import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
 import '../../widgets/chains.dart';
+import '../../widgets/daily_use.dart';
+import '../../widgets/kids.dart';
 import '../../widgets/makeup.dart';
+import '../../widgets/mens.dart';
 import '../../widgets/rings.dart';
+import '../../widgets/womens.dart';
 import '../my_orders/my order.dart';
 
 late _homeState home_page_state ;
@@ -42,6 +46,10 @@ class _homeState extends State<home> {
   @override
   int index_ = 0;
   var categories = [
+    daily_use(),
+    mens(),
+    womens(),
+    kids(),
     caps(),
     glasses(),
     rings(),
@@ -62,14 +70,15 @@ class _homeState extends State<home> {
           backgroundGradient: LinearGradient(
             colors: [Color(0xFF4c41a3), Color(0xFF1f186f)],),
           menuPageContent: Padding(
-            padding: const  EdgeInsets.only(top: 100.0, left: 15),
+            padding: const EdgeInsets.only(top: 100.0, left: 15),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(80)),
-                    child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
+                    child: Image.asset(
+                      assets.logo, fit: BoxFit.fill, height: 60, width: 60,),
                   ),
                   SizedBox(height: 10,),
                   Row(
@@ -87,14 +96,16 @@ class _homeState extends State<home> {
                             fontSize: 17,
                             color: Colors.blue[200],
                             fontWeight: FontWeight.bold),
-                      )],
+                      )
+                    ],
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 25),
                   ),
                   InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => home()));
                     },
                     child: Row(
                       children: [
@@ -112,17 +123,17 @@ class _homeState extends State<home> {
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: (){
-                      if(user.is_login == true){
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
-
-                      }else{
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => sign_up()));
-
+                    onTap: () {
+                      if (user.is_login == true) {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => account()));
+                      } else {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => sign_up()));
                       }
                     },
                     child: Row(
-                        children:[
+                        children: [
                           Container(
                             child: Text(
                               "Account",
@@ -137,11 +148,12 @@ class _homeState extends State<home> {
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => my_order()));
                     },
                     child: Row(
-                        children:[
+                        children: [
                           Container(
                             child: Text(
                               "My Orders",
@@ -156,11 +168,12 @@ class _homeState extends State<home> {
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => cart()));
                     },
                     child: Row(
-                        children:[
+                        children: [
                           Container(
                             child: Text(
                               "Cart",
@@ -182,11 +195,12 @@ class _homeState extends State<home> {
                     padding: EdgeInsets.only(bottom: 20),
                   ),
                   InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => help_support()));
                     },
                     child: Row(
-                        children:[
+                        children: [
                           Container(
                             child: Text(
                               "Help & Support",
@@ -200,59 +214,69 @@ class _homeState extends State<home> {
                 ],),
             ),
           ),
-        homePageContent: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: ColorHelper.r_g_b[2],
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 18,top: 50),
-                child: SafeArea(
-                  child: Row(
-                    children: [
-                      Text("Our Products !",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 24),),
-                      Expanded(child: Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10,top: 5),
-                          child: SafeArea(
-                            child: InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => search()));
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(60)),
-                                ),
-                                child: Center(
-                                  child: Icon(IconHelper.icons[10],color: ColorHelper.color[2],),
+          homePageContent: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
+            color: ColorHelper.r_g_b[2],
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 18, top: 50),
+                  child: SafeArea(
+                    child: Row(
+                      children: [
+                        Text("Our Products !", style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),),
+                        Expanded(child: Align(
+                          alignment: Alignment.topRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10, top: 5),
+                            child: SafeArea(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => search()));
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(60)),
+                                  ),
+                                  child: Center(
+                                    child: Icon(IconHelper.icons[10],
+                                      color: ColorHelper.color[2],),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),)
-                    ],
+                        ),)
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 10,),
-              category(),
-              Expanded(child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                child: categories[index_],
-              ))
+                SizedBox(height: 10,),
+                category(),
+                Expanded(child: Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: categories[index_],
+                ))
 
 
-
-            ],
+              ],
+            ),
           ),
-        ),
-      )
+        )
     );
   }
+
 }
