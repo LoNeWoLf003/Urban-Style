@@ -19,7 +19,7 @@ class splash extends StatelessWidget {
     home_controller.load_item_for_search(context);
     print("Product Searching Completed");
     return Scaffold(
-      backgroundColor: ColorHelper.color[0],
+      backgroundColor: ColorHelper.r_g_b[11],
       body: Stack(
         children: [
           Center(
