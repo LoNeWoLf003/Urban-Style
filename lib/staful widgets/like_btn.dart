@@ -10,7 +10,20 @@ import '../pages/accounts/sign up/sign up.dart';
 import '../user/user.dart';
 
 class like_btn extends StatefulWidget {
-  const like_btn({Key? key, required this.title, required this.des, required this.price, required this.image, required this.stock, required this.lat, required this.long, this.cat, this.size, required this.token, required this.open}) : super(key: key);
+  const like_btn(
+      {Key? key,
+      required this.title,
+      required this.des,
+      required this.price,
+      required this.image,
+      required this.stock,
+      required this.lat,
+      required this.long,
+      this.cat,
+      this.size,
+      required this.token,
+      required this.open})
+      : super(key: key);
   final title;
 
   final des;
@@ -32,96 +45,132 @@ class like_btn extends StatefulWidget {
   final open;
 
   final size;
+
   @override
   State<like_btn> createState() => _like_btnState();
 }
 
 class _like_btnState extends State<like_btn> {
   @override
-
   void initState() {
     // TODO: implement initState
     super.initState();
     print(user.cart.any((element) => element['title'] == widget.title));
-    if(user.cart.any((element) => element['title'] == widget.title) == true){
+    if (user.cart.any((element) => element['title'] == widget.title) == true) {
       like = true;
-    }else{
+    } else {
       like = false;
     }
   }
+
   bool like = false;
+
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8,right: 8),
+      padding: const EdgeInsets.only(top: 8, right: 8),
       child: Align(
           alignment: Alignment.centerRight,
           child: like == true
               ? InkWell(
-            onTap: (){
-              print("Changed");
-              if(user.is_login == true){
-                setState(() {
-                  var prev_price = user.cart_price;
-                  like = false;
-                  user.cart.removeWhere((element) => element["title"] == widget.title);
-                  user.cart.removeWhere((element) => element["des"] == widget.des);
-                  user.cart.removeWhere((element) => element["price"] == widget.price);
-                  user.cart.removeWhere((element) => element["image"] == widget.image);
-                  user.cart.removeWhere((element) => element["shop_status"] == widget.open);
-                  user.cart.removeWhere((element) => element["stock"] == widget.stock);
-                  user.cart.removeWhere((element) => element["long"] == widget.long);
-                  user.cart.removeWhere((element) => element["lat"] == widget.lat);
-                  user.cart.removeWhere((element) => element["cat"] == widget.cat);
-                  user.cart.removeWhere((element) => element["size"] == widget.size);
-                  user.cart.removeWhere((element) => element["token"] == widget.token);
-                  user.cart_price = prev_price - int.parse(widget.price);
-                  print(user.cart);
-                  print(user.cart.length);
-                  cart_controller.cart_update();
-                });
-              }else{
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
-              }
-            },
-            child: Container(
-                height: 40,
-                width: 40,
-                child: Icon(IconHelper.icons[16],color: ColorHelper.color[4],)),
-          )
+                  onTap: () {
+                    print("Changed");
+                    if (user.is_login == true) {
+                      setState(() {
+                        var prev_price = user.cart_price;
+                        like = false;
+                        user.cart.removeWhere(
+                            (element) => element["title"] == widget.title);
+                        user.cart.removeWhere(
+                            (element) => element["des"] == widget.des);
+                        user.cart.removeWhere(
+                            (element) => element["price"] == widget.price);
+                        user.cart.removeWhere(
+                            (element) => element["image"] == widget.image);
+                        user.cart.removeWhere(
+                            (element) => element["shop_status"] == widget.open);
+                        user.cart.removeWhere(
+                            (element) => element["stock"] == widget.stock);
+                        user.cart.removeWhere(
+                            (element) => element["long"] == widget.long);
+                        user.cart.removeWhere(
+                            (element) => element["lat"] == widget.lat);
+                        user.cart.removeWhere(
+                            (element) => element["cat"] == widget.cat);
+                        user.cart.removeWhere(
+                            (element) => element["size"] == widget.size);
+                        user.cart.removeWhere(
+                            (element) => element["token"] == widget.token);
+                        user.cart_price = prev_price - int.parse(widget.price);
+                        print(user.cart);
+                        print(user.cart.length);
+                        cart_controller.cart_update();
+                      });
+                    } else {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => sign_up()));
+                    }
+                  },
+                  child: Container(
+                      height: 40,
+                      width: 40,
+                      child: Icon(
+                        IconHelper.icons[16],
+                        color: ColorHelper.color[4],
+                      )),
+                )
               : InkWell(
-            onTap: (){
-              print("Changed");
-              if(user.is_login == true){
-                if(widget.stock == "In Stock"){
-                  if(widget.open == true){
-                    setState(() {
-                      user.new_order = true;
-                      like = true;
-                      print("Cat - ${widget.cat}");
-                      var product = {"title" : widget.title , "des" : widget.des , "price" : widget.price , "image" : widget.image , "stock" : widget.stock , "lat" : widget.lat , "long" : widget.long , "cat":widget.cat , "size" : null , "token" : widget.token , "shop_status" : widget.open , "quantity" : 1};
-                      user.cart.add(product);
-                      var prev_price = user.cart_price;
-                      user.cart_price = prev_price + int.parse(widget.price);
-                      print(user.cart);
-                      print(user.cart.length);
-                      cart_controller.cart_update();
-                    });
-                  }else{
-                    Get.snackbar("Shop is Closed", "Can't add to cart");
-                  }
-                }else{
-                  Get.snackbar("Out of Stock", "Can't add to cart");
-                }
-              }else{
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => sign_up()));
-              }
-            },
-            child: Container(
-                height: 40,
-                width: 40,
-                child: Icon(IconHelper.icons[15],color: ColorHelper.color[1],)),
-          )
-      ),
+                  onTap: () {
+                    print("Changed");
+                    if (user.is_login == true) {
+                      if (widget.stock == "In Stock") {
+                        if (widget.open == true) {
+                          setState(() {
+                            user.new_order = true;
+                            like = true;
+                            print("Cat - ${widget.cat}");
+                            var product = {
+                              "title": widget.title,
+                              "des": widget.des,
+                              "price": widget.price,
+                              "image": widget.image,
+                              "stock": widget.stock,
+                              "lat": widget.lat,
+                              "long": widget.long,
+                              "cat": widget.cat,
+                              "size": null,
+                              "token": widget.token,
+                              "shop_status": widget.open,
+                              "quantity": 1,
+                              'drop_location_lat': "${user.lat}",
+                              'drop_location_long': "${user.long}"
+                            };
+                            user.cart.add(product);
+                            var prev_price = user.cart_price;
+                            user.cart_price =
+                                prev_price + int.parse(widget.price);
+                            print(user.cart);
+                            print(user.cart.length);
+                            cart_controller.cart_update();
+                          });
+                        } else {
+                          Get.snackbar("Shop is Closed", "Can't add to cart");
+                        }
+                      } else {
+                        Get.snackbar("Out of Stock", "Can't add to cart");
+                      }
+                    } else {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => sign_up()));
+                    }
+                  },
+                  child: Container(
+                      height: 40,
+                      width: 40,
+                      child: Icon(
+                        IconHelper.icons[15],
+                        color: ColorHelper.color[1],
+                      )),
+                )),
     );
   }
 }

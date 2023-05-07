@@ -13,6 +13,7 @@ class splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    engine_controller().user_logged_in(context);
     engine_controller.initilize_firebase(context.isPhone , context);
     print("Firebase Initilized");
     home_controller.load_item_for_search(context);

@@ -24,10 +24,15 @@ class engine_controller{
 
   user_logged_in(context )async{
     getCurrentLocation();
+    print("Got Location");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if(prefs.getString("login") == null){
       user.is_login = false;
+      print("User Don't have account");
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+
     }else{
+      print("User has Account");
       user.is_login = true;
       user.username = prefs.getString("name");
       final QueryBuilder<ParseObject> parseQuery =
@@ -65,6 +70,8 @@ class engine_controller{
           print("user email - " + "${user.email}");
           print("user password - " + "${user.password}");
           print("user profile - " + "${user.profile_photo}");
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+
         }
       }else{
         Get.snackbar(
@@ -94,6 +101,7 @@ class engine_controller{
     user.state = placemarks[1].administrativeArea;
     user.postal_code = placemarks[0].postalCode;
     print(placemarks);
+    return ;
 
 
 
@@ -123,7 +131,6 @@ class engine_controller{
           options: FirebaseOptions(apiKey: "AIzaSyD2booaGafuilDBIVG8M4Ml7FcBTHBNcMc", appId: "1:779807127457:web:8e9722b0f0974440f5fde0", messagingSenderId: "779807127457", projectId: "phone-firebase-86703")
       );
     }
-    await Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
 
   }
 

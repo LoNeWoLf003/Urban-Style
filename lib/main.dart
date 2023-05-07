@@ -33,7 +33,6 @@ class engine extends StatelessWidget {
   const engine({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    engine_controller().user_logged_in(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
