@@ -31,6 +31,8 @@ class IconHelper{
     MdiIcons.truckDelivery,
     Icons.radio_button_off,
     Icons.radio_button_checked,
+    Icons.account_circle_outlined,
+    Icons.timer_outlined
   ];
 
   static var assets_image = [

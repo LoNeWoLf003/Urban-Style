@@ -9,6 +9,7 @@ import 'package:urban_style/pages/cart/cart.dart';
 
 import '../controllers/assets/assets.dart';
 import '../widgets/product_info.dart';
+import 'add_btn.dart';
 import 'like_btn.dart';
 
 class search extends StatefulWidget {
@@ -51,102 +52,61 @@ class _searchState extends State<search> {
     });
   }
 
+  TextEditingController word = new TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorHelper.color[0],
+      backgroundColor: Colors.grey.shade100,
       body: Column(
         children: [
-          SafeArea(
-            child: Row(
-              children: [
-                SizedBox(width: 8,),
-                Container(
-                  height: 45,
-                  width: 45,
+          Container(
+            height: 130,
+            width: double.infinity,
+            color: ColorHelper.color[0],
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8,right: 8,bottom: 20,top: 20),
+                child: Container(
+                  width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(60)),
-                    color: ColorHelper.color[9].withOpacity(0.30),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(color: ColorHelper.color[1].withOpacity(0.40),width: 2)
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: InkWell(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: double.infinity,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(60)),
-                          color: ColorHelper.color[9],
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 5),
-                            child: Icon(IconHelper.icons[7],color: ColorHelper.color[0],size: 17,),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 8,),
+                        InkWell(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: Icon(IconHelper.icons[7])),
+                        SizedBox(width: 8,),
+                        Expanded(child: TextFormField(
+                          onChanged: (value) => _runFilter(value),
+                          controller: word,
+                          cursorColor: ColorHelper.color[2],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          decoration: InputDecoration.collapsed(
+                              hintText: "Search for atta, onions, dal and more",
+                              hintStyle: TextStyle(color: ColorHelper.color[1])
                           ),
-                        ),
-                      ),
+                        ))
+                      ],
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Container(
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(60)),
-                            border: Border.all(color: ColorHelper.color[1])),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: TextFormField(
-                              onChanged: (value) => _runFilter(value),
-                              cursorColor: ColorHelper.color[2],
-                              decoration: InputDecoration.collapsed(
-                                  hintText: "Search here"),
-                            ),
-                          ),
-                        ),
-                      )),
-                ),
-
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(60)),
-                    color: ColorHelper.color[9].withOpacity(0.30),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: InkWell(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => cart()));
-                      },
-                      child: Container(
-                        height: double.infinity,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(60)),
-                          color: ColorHelper.color[9],
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(),
-                            child: Icon(IconHelper.icons[6],color: ColorHelper.color[0],size: 17,),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8,)
-              ],
+              ),
             ),
           ),
+          word.text.isNotEmpty
+          ?Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8,top: 8),
+                child: Text('Showing results for "${word.text}"',style: TextStyle(fontWeight: FontWeight.bold),),
+              ))
+          : Container(),
           Expanded(
             child: _foundUsers.isEmpty
                 ? Padding(
@@ -155,16 +115,16 @@ class _searchState extends State<search> {
                   )
                 : Padding(
                     padding:
-                        const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                        const EdgeInsets.only(left: 0, right: 0, bottom: 0),
                     child: GridView.builder(
                         shrinkWrap: true,
                         itemCount: _foundUsers.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: context.isPhone ? 2 : 6,
-                            mainAxisExtent: 266),
+                            mainAxisExtent: 300),
                         itemBuilder: (context, index) {
                           return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(3.0),
                               child: InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
@@ -185,13 +145,8 @@ class _searchState extends State<search> {
                                   decoration: BoxDecoration(
                                       color: ColorHelper.color[0],
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(30)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: ColorHelper.color[1],
-                                            blurRadius: 5,
-                                            offset: Offset(3, 4))
-                                      ]),
+                                          BorderRadius.all(Radius.circular(10)),
+                                      ),
                                   child: Column(
                                     children: [
                                       Row(
@@ -201,7 +156,20 @@ class _searchState extends State<search> {
                                           ),
                                           _foundUsers[index]["stock"] ==
                                                   "In Stock"
-                                              ? Text("")
+                                              ? Container(
+                                            height: 50,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(2)),
+                                              color: ColorHelper.color[3]
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(1.0),
+                                                child: Text("15% off",style: TextStyle(color: ColorHelper.color[0]),),
+                                              ),
+                                            ),
+                                          )
                                               : Text(
                                                   "* out of stock",
                                                   style: TextStyle(
@@ -214,32 +182,32 @@ class _searchState extends State<search> {
                                       Container(
                                           height: 134,
                                           width: 134,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(80)),
-                                              color: _foundUsers[index]
-                                                          ["stock"] ==
-                                                      "In Stock"
-                                                  ? ColorHelper.color[3]
-                                                      .withOpacity(0.40)
-                                                  : ColorHelper.color[4]
-                                                      .withOpacity(0.40)),
+                                          // decoration: BoxDecoration(
+                                          //     borderRadius: BorderRadius.all(
+                                          //         Radius.circular(80)),
+                                          //     color: _foundUsers[index]
+                                          //                 ["stock"] ==
+                                          //             "In Stock"
+                                          //         ? ColorHelper.color[3]
+                                          //             .withOpacity(0.40)
+                                          //         : ColorHelper.color[4]
+                                          //             .withOpacity(0.40)),
                                           child: Padding(
                                             padding: EdgeInsets.all(5),
                                             child: Container(
                                               height: double.infinity,
                                               width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(80)),
-                                                  color: _foundUsers[index]
-                                                              ["stock"] ==
-                                                          "In Stock"
-                                                      ? ColorHelper.color[3]
-                                                          .withOpacity(0.85)
-                                                      : ColorHelper.color[4]
-                                                          .withOpacity(0.85)),
+                                              // decoration: BoxDecoration(
+                                              //     borderRadius:
+                                              //         BorderRadius.all(
+                                              //             Radius.circular(80)),
+                                              //     color: _foundUsers[index]
+                                              //                 ["stock"] ==
+                                              //             "In Stock"
+                                              //         ? ColorHelper.color[3]
+                                              //             .withOpacity(0.85)
+                                              //         : ColorHelper.color[4]
+                                              //             .withOpacity(0.85)),
                                               child: Center(
                                                 child: Image.memory(
                                                   _foundUsers[index]["image"],
@@ -248,26 +216,68 @@ class _searchState extends State<search> {
                                               ),
                                             ),
                                           )),
+                                      // Padding(
+                                      //   padding: const EdgeInsets.only(
+                                      //       left: 5, right: 5, top: 5),
+                                      //   child: Text(
+                                      //     _foundUsers[index]["title"],
+                                      //     overflow: TextOverflow.ellipsis,
+                                      //     style: TextStyle(
+                                      //         fontWeight: FontWeight.bold,
+                                      //         color: ColorHelper.r_g_b[3]),
+                                      //   ),
+                                      // ),
+                                      // Padding(
+                                      //   padding: const EdgeInsets.only(
+                                      //       left: 5, right: 5, top: 5),
+                                      //   child: Text(
+                                      //     "₹ ${_foundUsers[index]["price"]}",
+                                      //     overflow: TextOverflow.ellipsis,
+                                      //     style: TextStyle(
+                                      //         fontWeight: FontWeight.bold,
+                                      //         color: ColorHelper.color[2]),
+                                      //   ),
+                                      // )
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5, right: 5, top: 5),
-                                        child: Text(
-                                          _foundUsers[index]["title"],
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorHelper.r_g_b[3]),
+                                        padding: const EdgeInsets.only(left: 8),
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Container(
+                                            height: 25,
+                                            width: 74,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(4)),
+                                              color: ColorHelper.color[1].withOpacity(0.10)
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                SizedBox(width: 2,),
+                                                Icon(IconHelper.icons[29],size: 20,),
+                                                SizedBox(width: 3,),
+                                                Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5, right: 5, top: 5),
-                                        child: Text(
-                                          "₹ ${_foundUsers[index]["price"]}",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorHelper.color[2]),
+                                        padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
+                                        child: Text(_foundUsers[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 8,right: 8),
+                                        child: Row(
+                                          children: [
+                                            Text("₹${_foundUsers[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
+                                            Expanded(
+                                                child: Align(
+                                                  alignment: Alignment.centerRight,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(2.0),
+                                                    child: cart_btn(title: _foundUsers[index]["title"], des: _foundUsers[index]["des"], price: _foundUsers[index]["price"], image: _foundUsers[index]["image"], stock: _foundUsers[index]["stock"], lat: _foundUsers[index]["lat"], long: _foundUsers[index]["long"], token: _foundUsers[index]["token"], open: _foundUsers[index]["shop_status"], cat: null, size: null,),
+                                                  ),
+                                                ))
+                                          ],
                                         ),
                                       )
                                     ],

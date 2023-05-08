@@ -1,4 +1,5 @@
 import 'package:animated_drawer/views/animated_drawer.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -226,52 +227,70 @@ class _homeState extends State<home> {
             color: ColorHelper.r_g_b[2],
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 18, top: 50),
-                  child: SafeArea(
-                    child: Row(
-                      children: [
-                        Text("Our Products !", style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),),
-                        Expanded(child: Align(
-                          alignment: Alignment.topRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 5),
-                            child: SafeArea(
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => search()));
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(60)),
-                                  ),
-                                  child: Center(
-                                    child: Icon(IconHelper.icons[10],
-                                      color: ColorHelper.color[2],),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),)
-                      ],
-                    ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => account()), (route) => false);
+                        },
+                        child: SafeArea(child: Icon(IconHelper.icons[28],size: 44,))),
                   ),
                 ),
-                SizedBox(height: 10,),
-                category(),
-                Expanded(child: Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: categories[index_],
-                ))
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: Text("DELIVERY IN",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: Text("19 minutes",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12,right: 12),
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => search()));
+                    },
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: ColorHelper.color[1].withOpacity(0.50),
 
-
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SizedBox(width: 8,),
+                            Icon(IconHelper.icons[10],),
+                            SizedBox(width: 5,),
+                            AnimatedTextKit(
+                              animatedTexts: [
+                                FadeAnimatedText('Search "sugar"'),
+                                FadeAnimatedText('Search "wheat"'),
+                                FadeAnimatedText('Search "onions"'),
+                                FadeAnimatedText('Search "eggs"'),
+                                FadeAnimatedText('Search "everything"'),
+                              ],
+                              onTap: () {
+                                print("Tap Event");
+                              },
+                              repeatForever: true,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -280,3 +299,51 @@ class _homeState extends State<home> {
   }
 
 }
+//
+// Widget previous_ui(){
+//   Padding(
+//     padding: const EdgeInsets.only(left: 18, top: 50),
+//     child: SafeArea(
+//       child: Row(
+//         children: [
+//           Text("Our Products !", style: TextStyle(
+//               fontWeight: FontWeight.bold, fontSize: 24),),
+//           Expanded(child: Align(
+//             alignment: Alignment.topRight,
+//             child: Padding(
+//               padding: const EdgeInsets.only(right: 10, top: 5),
+//               child: SafeArea(
+//                 child: InkWell(
+//                   onTap: () {
+//                     Navigator.of(context).push(MaterialPageRoute(
+//                         builder: (context) => search()));
+//                   },
+//                   child: Container(
+//                     height: 50,
+//                     width: 50,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.all(
+//                           Radius.circular(60)),
+//                     ),
+//                     child: Center(
+//                       child: Icon(IconHelper.icons[10],
+//                         color: ColorHelper.color[2],),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ),)
+//         ],
+//       ),
+//     ),
+//   ),
+//   SizedBox(height: 10,),
+//   category(),
+//   Expanded(child: Container(
+//   height: double.infinity,
+//   width: double.infinity,
+//   child: categories[index_],
+//   ))
+//
+  //}
