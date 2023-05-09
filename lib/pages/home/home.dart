@@ -10,6 +10,8 @@ import 'package:urban_style/widgets/pants.dart';
 import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
+import '../../controllers/assets/assets.dart';
+import '../../widgets/category card.dart';
 import '../navigation_drawer.dart/navbar.dart';
 import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
@@ -171,6 +173,8 @@ class _homeState extends State<home> {
                           ],
                           onTap: () {
                             print("Tap Event");
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const search()));
                           },
                           repeatForever: true,
                         ),
@@ -179,6 +183,77 @@ class _homeState extends State<home> {
                   ),
                 ),
               ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 14,left: 12),
+                child: Text("Shop by categories",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Row(
+              children: [
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.mens,title: "Mens",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.womens,title: "Womens",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.kids,title: "Kids",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.daily_use,title: "Daily Use",),
+                )),
+
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.shoes,title: "Shoes",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.electronics,title: "Electronics",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.makeup,title: "Makeup",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.frozen_food,title: "Frozen & Packed Food",),
+                )),
+
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.fruits_veges,title: "Fruits & Vegetables",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.dairy_breakfast,title: "Dairy & Breakfast",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.munchies,title: "Munchies",),
+                )),
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: category_card(image: assets.coldDrinks,title: "Cold Drinks & Juices",),
+                )),
+
+              ],
             )
           ],
         ),

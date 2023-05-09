@@ -24,4 +24,9 @@ class assets{
   static final mens = "assets/man.png";
   static final womens = "assets/women.png";
   static final kids = "assets/kids.png";
+  static final frozen_food = "assets/Frozen Food.png";
+  static final fruits_veges = "assets/FruitsVegetables.png";
+  static final dairy_breakfast = "assets/DairyBreakfast.png";
+  static final munchies = "assets/Munchis.png";
+  static final coldDrinks = "assets/ColdDrinksJuices.png";
 }
