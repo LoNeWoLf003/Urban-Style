@@ -39,7 +39,7 @@ class engine extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
 
       ),
-      home: splash(),
+      home: splash(), //splashscreen
       builder: EasyLoading.init(),
     );
   }
