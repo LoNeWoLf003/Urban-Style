@@ -16,7 +16,7 @@ class Navigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Color.fromARGB(255, 217,244,113),
+        color: Color.fromARGB(255, 217, 244, 113),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24.0, 80, 24, 0),
           child: Column(
@@ -29,6 +29,14 @@ class Navigation extends StatelessWidget {
                 thickness: 2,
                 height: 5,
                 color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              DrawerItem(
+                name: 'Home',
+                icon: Icons.home,
+                onPressed: () => onItemPressed(context, index: 4),
               ),
               const SizedBox(
                 height: 20,
@@ -110,6 +118,10 @@ void onItemPressed(BuildContext context, {required int index}) {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const help_support()));
       break;
+    case 4:
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => home()));
+      break;
   }
 }
 
@@ -119,12 +131,16 @@ Widget headerWidget() {
       const Text(
         "Hey ",
         style: TextStyle(
-            fontSize: 26, color: Color.fromARGB(255, 10, 99, 25), fontWeight: FontWeight.bold),
+            fontSize: 26,
+            color: Color.fromARGB(255, 10, 99, 25),
+            fontWeight: FontWeight.bold),
       ),
       Text(
         "There !",
         style: TextStyle(
-            fontSize: 26, color: Color.fromARGB(255, 5, 77, 49), fontWeight: FontWeight.bold),
+            fontSize: 26,
+            color: Color.fromARGB(255, 5, 77, 49),
+            fontWeight: FontWeight.bold),
       )
     ],
   );

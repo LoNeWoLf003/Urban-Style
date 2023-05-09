@@ -15,6 +15,7 @@ import '../cart/cart.dart';
 import '../help_support/help_support.dart';
 import '../home/home.dart';
 import '../my_orders/my order.dart';
+import '../navigation_drawer.dart/navbar.dart';
 
 class account extends StatelessWidget {
   const account({Key? key}) : super(key: key);
@@ -22,214 +23,286 @@ class account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AnimatedDrawer(
-          shadowColor: Color(0xFF4c41a3),
-          backgroundGradient: LinearGradient(
-            colors: [Color(0xFF4c41a3), Color(0xFF1f186f)],),
-          menuPageContent: Padding(
-            padding: const  EdgeInsets.only(top: 100.0, left: 15),
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(80)),
-                    child: Image.asset(assets.logo,fit: BoxFit.fill,height: 60,width: 60,),
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    children: [
-                      Text(
-                        "Hey ",
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "There !",
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.blue[200],
-                            fontWeight: FontWeight.bold),
-                      )],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 25),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => home()));
-                    },
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Text(
-                            "Home",
-                            style: TextStyle(
-                              color: ColorHelper.color[0],),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      if(user.is_login == true){
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => account()));
-
-                      }else{
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => sign_up()));
-
-                      }
-                    },
-                    child: Row(
-                        children:[
-                          Container(
-                            child: Text(
-                              "Account",
-                              style: TextStyle(
-                                color: ColorHelper.color[0],),
-                            ),
-                          ),
-                        ]
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => my_order()));
-                    },
-                    child: Row(
-                        children:[
-                          Container(
-                            child: Text(
-                              "My Orders",
-                              style: TextStyle(
-                                color: ColorHelper.color[0],),
-                            ),
-                          ),
-                        ]
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                  ),
-                  InkWell(
-                    onTap: (){
-
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
-                    },
-                    child: Row(
-                        children:[
-                          Container(
-                            child: Text(
-                              "Cart",
-                              style: TextStyle(
-                                color: ColorHelper.color[0],),
-                            ),
-                          ),
-                        ]
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                  ),
-                  Divider(
-                    color: ColorHelper.r_g_b[3],
-                    thickness: 2,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => help_support()));
-                    },
-                    child: Row(
-                        children:[
-                          Container(
-                            child: Text(
-                              "Help & Support",
-                              style: TextStyle(
-                                color: ColorHelper.color[0],),
-                            ),
-                          ),
-                        ]
-                    ),
-                  ),
-                ],),
+        drawer: const Navigation(),
+        appBar: AppBar(
+            title: const Text(
+              'Grofy',
+              style: TextStyle(color: Color.fromARGB(255, 10, 99, 25)),
             ),
-          ),
-          homePageContent: Container(
+            iconTheme: const IconThemeData(color: Color.fromARGB(255, 10, 99, 25)),
+            centerTitle: true,
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 5.0),
+                child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => const cart()),
+                          (route) => false);
+                    },
+                    child: SafeArea(
+                        child: Icon(
+                      Icons.shopping_cart,
+                      size: 35,
+                      color: const Color.fromARGB(255, 10, 99, 25),
+                    ))),
+              ),
+            ]),
+        body: Container(
+          // shadowColor: const Color(0xFF4c41a3),
+          // backgroundGradient: const LinearGradient(
+          //   colors: [Color(0xFF4c41a3), Color(0xFF1f186f)],
+          // ),
+          // menuPageContent: Padding(
+          //   padding: const EdgeInsets.only(top: 100.0, left: 15),
+          //   child: Container(
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         ClipRRect(
+          //           borderRadius: const BorderRadius.all(Radius.circular(80)),
+          //           child: Image.asset(
+          //             assets.logo,
+          //             fit: BoxFit.fill,
+          //             height: 60,
+          //             width: 60,
+          //           ),
+          //         ),
+          //         const SizedBox(
+          //           height: 10,
+          //         ),
+          //         Row(
+          //           children: [
+          //             const Text(
+          //               "Hey ",
+          //               style: TextStyle(
+          //                   fontSize: 17,
+          //                   color: Colors.white,
+          //                   fontWeight: FontWeight.bold),
+          //             ),
+          //             Text(
+          //               "There !",
+          //               style: TextStyle(
+          //                   fontSize: 17,
+          //                   color: Colors.blue[200],
+          //                   fontWeight: FontWeight.bold),
+          //             )
+          //           ],
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 25),
+          //         ),
+          //         InkWell(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //                 MaterialPageRoute(builder: (context) => home()));
+          //           },
+          //           child: Row(
+          //             children: [
+          //               Container(
+          //                 child: Text(
+          //                   "Home",
+          //                   style: TextStyle(
+          //                     color: ColorHelper.color[0],
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 20),
+          //         ),
+          //         InkWell(
+          //           onTap: () {
+          //             if (user.is_login == true) {
+          //               Navigator.of(context).pushReplacement(
+          //                   MaterialPageRoute(builder: (context) => const account()));
+          //             } else {
+          //               Navigator.of(context).pushReplacement(
+          //                   MaterialPageRoute(builder: (context) => const sign_up()));
+          //             }
+          //           },
+          //           child: Row(children: [
+          //             Container(
+          //               child: Text(
+          //                 "Account",
+          //                 style: TextStyle(
+          //                   color: ColorHelper.color[0],
+          //                 ),
+          //               ),
+          //             ),
+          //           ]),
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 20),
+          //         ),
+          //         InkWell(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //                 MaterialPageRoute(builder: (context) => const my_order()));
+          //           },
+          //           child: Row(children: [
+          //             Container(
+          //               child: Text(
+          //                 "My Orders",
+          //                 style: TextStyle(
+          //                   color: ColorHelper.color[0],
+          //                 ),
+          //               ),
+          //             ),
+          //           ]),
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 20),
+          //         ),
+          //         InkWell(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //                 MaterialPageRoute(builder: (context) => const cart()));
+          //           },
+          //           child: Row(children: [
+          //             Container(
+          //               child: Text(
+          //                 "Cart",
+          //                 style: TextStyle(
+          //                   color: ColorHelper.color[0],
+          //                 ),
+          //               ),
+          //             ),
+          //           ]),
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 20),
+          //         ),
+          //         Divider(
+          //           color: ColorHelper.r_g_b[3],
+          //           thickness: 2,
+          //         ),
+          //         const Padding(
+          //           padding: EdgeInsets.only(bottom: 20),
+          //         ),
+          //         InkWell(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(MaterialPageRoute(
+          //                 builder: (context) => const help_support()));
+          //           },
+          //           child: Row(children: [
+          //             Container(
+          //               child: Text(
+          //                 "Help & Support",
+          //                 style: TextStyle(
+          //                   color: ColorHelper.color[0],
+          //                 ),
+          //               ),
+          //             ),
+          //           ]),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             color: ColorHelper.r_g_b[2],
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 45,right: 18,top: 8),
-                        child: Row(
-                          children: [
-                            Text("Account"),
-                            Expanded(
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => cart()));
-                                    },
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      child: Icon(IconHelper.icons[6]),
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        ),
-                      )),
-                    SizedBox(height: 50,),
-                  profile(),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: Text("${user.username}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+                  // SafeArea(
+                  //     child: Padding(
+                  //   padding: const EdgeInsets.only(left: 45, right: 18, top: 8),
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //           child: Align(
+                  //         alignment: Alignment.centerRight,
+                  //         child: InkWell(
+                  //           onTap: () {
+                  //             Navigator.of(context).pushReplacement(
+                  //                 MaterialPageRoute(
+                  //                     builder: (context) => const cart()));
+                  //           },
+                  //           child: Container(
+                  //             height: 30,
+                  //             width: 30,
+                  //             child: Icon(IconHelper.icons[6]),
+                  //           ),
+                  //         ),
+                  //       ))
+                  //     ],
+                  //   ),
+                  // )),
+                  const SizedBox(
+                    height: 50,
                   ),
-                  SizedBox(height: 10,),
-                  Divider(color: ColorHelper.color[1],),
+                  const profile(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: Text(
+                      "${user.username}",
+                      style:
+                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    color: ColorHelper.color[1],
+                  ),
                   Row(
                     children: [
-                      SizedBox(width: 5,),
-                      Text("Profile Details",style: TextStyle(color: ColorHelper.color[1]),),
-                      Expanded(child: Divider(color: ColorHelper.color[1],))
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Profile Details",
+                        style: TextStyle(color: ColorHelper.color[1]),
+                      ),
+                      Expanded(
+                          child: Divider(
+                        color: ColorHelper.color[1],
+                      ))
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8,right: 8),
+                    padding: const EdgeInsets.only(left: 8, right: 8),
                     child: Row(
                       children: [
-                        Icon(IconHelper.icons[0],color: ColorHelper.color[1],),
-                        SizedBox(width: 5,),
-                        Text(user.username , style: TextStyle(color: ColorHelper.color[1]),),
-                        Expanded(child: Align(
+                        Icon(
+                          IconHelper.icons[0],
+                          color: ColorHelper.color[1],
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          user.username,
+                          style: TextStyle(color: ColorHelper.color[1]),
+                        ),
+                        Expanded(
+                            child: Align(
                           alignment: Alignment.centerRight,
                           child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 AwesomeDialog(
                                   context: context,
                                   animType: AnimType.scale,
                                   dialogType: DialogType.info,
-                                  body: Center(child: text_feild("Name", IconHelper.icons[0], account_controller.email)),
+                                  body: Center(
+                                      child: text_feild(
+                                          "Name",
+                                          IconHelper.icons[0],
+                                          account_controller.email)),
                                   title: 'New Name',
-                                  desc:   'Enter new Name',
+                                  desc: 'Enter new Name',
                                   btnOkText: "Save",
                                   btnOkOnPress: () {
                                     account_controller.change_email(context);
@@ -241,25 +314,40 @@ class account extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8,right: 8),
+                    padding: const EdgeInsets.only(left: 8, right: 8),
                     child: Row(
                       children: [
-                        Icon(IconHelper.icons[5],color: ColorHelper.color[1],),
-                        SizedBox(width: 5,),
-                        Text(user.email , style: TextStyle(color: ColorHelper.color[1]),),
-                        Expanded(child: Align(
+                        Icon(
+                          IconHelper.icons[5],
+                          color: ColorHelper.color[1],
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          user.email,
+                          style: TextStyle(color: ColorHelper.color[1]),
+                        ),
+                        Expanded(
+                            child: Align(
                           alignment: Alignment.centerRight,
                           child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 AwesomeDialog(
                                   context: context,
                                   animType: AnimType.scale,
                                   dialogType: DialogType.info,
-                                  body: Center(child: text_feild("Email", IconHelper.icons[0], account_controller.email)),
+                                  body: Center(
+                                      child: text_feild(
+                                          "Email",
+                                          IconHelper.icons[0],
+                                          account_controller.email)),
                                   title: 'New Email',
-                                  desc:   'Enter new Email',
+                                  desc: 'Enter new Email',
                                   btnOkText: "Save",
                                   btnOkOnPress: () {
                                     account_controller.change_email(context);
@@ -271,43 +359,71 @@ class account extends StatelessWidget {
                       ],
                     ),
                   ),
-                  context.isPhone ? SizedBox(height: 20,) : SizedBox(),
                   context.isPhone
-                  ?Padding(
-                    padding: const EdgeInsets.only(left: 8,right: 8),
-                    child: Row(
-                      children: [
-                        Icon(IconHelper.icons[12],color: ColorHelper.color[1],),
-                        SizedBox(width: 5,),
-                        Text("${user.sublocality} ," + "${user.locality} ," + "${user.postal_code}" , style: TextStyle(color: ColorHelper.color[1]),),
-
-                      ],
-                    ),
-                  )
-                      : SizedBox(),
-                  SizedBox(height: 20,),
+                      ? const SizedBox(
+                          height: 20,
+                        )
+                      : const SizedBox(),
+                  context.isPhone
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: Row(
+                            children: [
+                              Icon(
+                                IconHelper.icons[12],
+                                color: ColorHelper.color[1],
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "${user.sublocality} ," +
+                                    "${user.locality} ," +
+                                    "${user.postal_code}",
+                                style: TextStyle(color: ColorHelper.color[1]),
+                              ),
+                            ],
+                          ),
+                        )
+                      : const SizedBox(),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8,right: 8),
+                    padding: const EdgeInsets.only(left: 8, right: 8),
                     child: Row(
                       children: [
-                        Icon(IconHelper.icons[6],color: ColorHelper.color[1],),
-                        SizedBox(width: 5,),
-                        Text("Cart" , style: TextStyle(color: ColorHelper.color[1]),),
-                        Expanded(child: Align(
+                        Icon(
+                          IconHelper.icons[6],
+                          color: ColorHelper.color[1],
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "Cart",
+                          style: TextStyle(color: ColorHelper.color[1]),
+                        ),
+                        Expanded(
+                            child: Align(
                           alignment: Alignment.centerRight,
                           child: Text("${user.cart.length}"),
                         )),
-                        SizedBox(width: 8,)
+                        const SizedBox(
+                          width: 8,
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(height: 40,),
+                  const SizedBox(
+                    height: 40,
+                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           account_controller.logout(context);
                         },
                         child: Container(
@@ -315,29 +431,33 @@ class account extends StatelessWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               color: ColorHelper.color[0],
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
                               boxShadow: [
                                 BoxShadow(
                                     color: ColorHelper.color[1],
                                     blurRadius: 30.0,
-                                    offset: Offset(0,20)
-                                )
-                              ]
-                          ),
+                                    offset: const Offset(0, 20))
+                              ]),
                           child: Center(
-                            child: Text("Log Out",style: TextStyle(color: ColorHelper.color[4]),),
+                            child: Text(
+                              "Log Out",
+                              style: TextStyle(color: ColorHelper.color[4]),
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           account_controller.delete_account(context);
                         },
                         child: Container(
@@ -345,17 +465,19 @@ class account extends StatelessWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               color: ColorHelper.color[4],
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
                               boxShadow: [
                                 BoxShadow(
                                     color: ColorHelper.color[1],
                                     blurRadius: 30.0,
-                                    offset: Offset(0,20)
-                                )
-                              ]
-                          ),
+                                    offset: const Offset(0, 20))
+                              ]),
                           child: Center(
-                            child: Text("Delete Account",style: TextStyle(color: ColorHelper.color[0]),),
+                            child: Text(
+                              "Delete Account",
+                              style: TextStyle(color: ColorHelper.color[0]),
+                            ),
                           ),
                         ),
                       ),
@@ -365,7 +487,6 @@ class account extends StatelessWidget {
               ),
             ),
           ),
-        )
-    );
+        );
   }
 }
