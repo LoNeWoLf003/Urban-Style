@@ -17,14 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  animated_drawer:
-    dependency: "direct main"
-    description:
-      name: animated_drawer
-      sha256: "01dafe03a3b54fe684179d9a3c9cc6c515f674615f0a3ad5c72dab8476ebb777"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.4"
   animated_text_kit:
     dependency: "direct main"
     description:
@@ -637,14 +629,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.7096"
-  matrix4_transform:
-    dependency: transitive
-    description:
-      name: matrix4_transform
-      sha256: e299621406bd0fe5c2641ef88f9bf81d38b672ca5d0b3b0e8ff3e5334803e5cc
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.7"
   meta:
     dependency: transitive
     description:
@@ -1179,5 +1163,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.0-132.0.dev <3.0.0"
   flutter: ">=3.0.0"

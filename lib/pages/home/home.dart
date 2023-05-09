@@ -1,15 +1,8 @@
-import 'package:animated_drawer/views/animated_drawer.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/pages/account/account.dart';
-import 'package:urban_style/pages/accounts/sign%20up/sign%20up.dart';
-import 'package:urban_style/pages/cart/cart.dart';
-import 'package:urban_style/pages/help_support/help_support.dart';
-import 'package:urban_style/user/user.dart';
 import 'package:urban_style/widgets/all.dart';
 import 'package:urban_style/widgets/electronics.dart';
 import 'package:urban_style/widgets/glasses.dart';
@@ -18,9 +11,6 @@ import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
 import '../navigation_drawer.dart/navbar.dart';
-import '../../controllers/assets/assets.dart';
-import '../../controllers/cart/cart controller.dart';
-import '../../staful widgets/category.dart';
 import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
 import '../../widgets/chains.dart';
@@ -30,7 +20,6 @@ import '../../widgets/makeup.dart';
 import '../../widgets/mens.dart';
 import '../../widgets/rings.dart';
 import '../../widgets/womens.dart';
-import '../my_orders/my order.dart';
 
 late _homeState home_page_state;
 
@@ -71,12 +60,14 @@ class _homeState extends State<home> {
       drawer: const Navigation(),
       appBar: AppBar(
           title: const Text(
-            'Grofy',
+            '',
             style: TextStyle(color: Color.fromARGB(255, 10, 99, 25)),
           ),
-          iconTheme: IconThemeData(color: Color.fromARGB(255, 10, 99, 25)),
+          iconTheme: const IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          // backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
@@ -91,7 +82,7 @@ class _homeState extends State<home> {
                       child: Icon(
                     IconHelper.icons[28],
                     size: 44,
-                    color: Color.fromARGB(255, 10, 99, 25),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   ))),
             ),
           ]),
@@ -101,9 +92,9 @@ class _homeState extends State<home> {
         color: ColorHelper.r_g_b[2],
         child: Column(
           children: [
-            const SizedBox(
-              height: 40,
-            ),
+            // const SizedBox(
+            //   height: 5,
+            // ),
             // Align(
             //   alignment: Alignment.centerRight,
             //   child: Padding(
