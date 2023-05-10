@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urban_style/widgets/product_info.dart';
-import 'package:urban_style/widgets/shimmer%20loader.dart';
 
 import '../constrants/Icons.dart';
 import '../constrants/color.dart';
@@ -13,14 +12,14 @@ import '../staful widgets/add_btn.dart';
 import '../staful widgets/like_btn.dart';
 import '../staful widgets/search.dart';
 
-class electronics extends StatelessWidget {
-  const electronics({Key? key}) : super(key: key);
+class cold_drinks_juices extends StatelessWidget {
+  const cold_drinks_juices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: home_controller.load_electronics(context),
+        future: home_controller.load_drinks(context),
         builder: (context , AsyncSnapshot snapshot){
           if(snapshot.connectionState == ConnectionState.waiting){
             return Column(
@@ -114,7 +113,7 @@ class electronics extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8,top: 8),
-                        child: Text('Showing results for "electronics"',style: TextStyle(fontWeight: FontWeight.bold),),
+                        child: Text('Showing results for "cold drinks & juices"',style: TextStyle(fontWeight: FontWeight.bold),),
                       )),
                   Padding(
                     padding:

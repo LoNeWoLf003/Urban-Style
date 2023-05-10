@@ -4,14 +4,22 @@ import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/pages/account/account.dart';
 import 'package:urban_style/widgets/all.dart';
+import 'package:urban_style/widgets/bakery.dart';
+import 'package:urban_style/widgets/cold%20drinks%20juices.dart';
+import 'package:urban_style/widgets/dairy%20breakfast.dart';
 import 'package:urban_style/widgets/electronics.dart';
 import 'package:urban_style/widgets/glasses.dart';
+import 'package:urban_style/widgets/masala%20dry%20fruits.dart';
+import 'package:urban_style/widgets/munchies.dart';
 import 'package:urban_style/widgets/pants.dart';
 import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
+import 'package:urban_style/widgets/sweet%20tooth.dart';
 import 'package:urban_style/widgets/t-shirt.dart';
 import '../../controllers/assets/assets.dart';
 import '../../widgets/category card.dart';
+import '../../widgets/frozen food.dart';
+import '../../widgets/fruits vegetables.dart';
 import '../navigation_drawer.dart/navbar.dart';
 import '../../staful widgets/search.dart';
 import '../../widgets/caps.dart';
@@ -92,170 +100,254 @@ class _homeState extends State<home> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: ColorHelper.r_g_b[2],
-        child: Column(
-          children: [
-            // const SizedBox(
-            //   height: 5,
-            // ),
-            // Align(
-            //   alignment: Alignment.centerRight,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: InkWell(
-            //         onTap: () {
-            //           Navigator.of(context).pushAndRemoveUntil(
-            //               MaterialPageRoute(builder: (context) => account()),
-            //               (route) => false);
-            //         },
-            //         child: SafeArea(
-            //             child: Icon(
-            //           IconHelper.icons[28],
-            //           size: 44,
-            //         ))),
-            //   ),
-            // ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 12),
-                child: Text(
-                  "DELIVERY IN",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 12),
-                child: Text(
-                  "19 minutes",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12),
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const search()));
-                },
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: ColorHelper.color[1].withOpacity(0.50),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // const SizedBox(
+              //   height: 5,
+              // ),
+              // Align(
+              //   alignment: Alignment.centerRight,
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: InkWell(
+              //         onTap: () {
+              //           Navigator.of(context).pushAndRemoveUntil(
+              //               MaterialPageRoute(builder: (context) => account()),
+              //               (route) => false);
+              //         },
+              //         child: SafeArea(
+              //             child: Icon(
+              //           IconHelper.icons[28],
+              //           size: 44,
+              //         ))),
+              //   ),
+              // ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Text(
+                    "DELIVERY IN",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
-                  child: Center(
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Icon(
-                          IconHelper.icons[10],
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        AnimatedTextKit(
-                          animatedTexts: [
-                            FadeAnimatedText('Search "sugar"'),
-                            FadeAnimatedText('Search "wheat"'),
-                            FadeAnimatedText('Search "onions"'),
-                            FadeAnimatedText('Search "eggs"'),
-                            FadeAnimatedText('Search "everything"'),
-                          ],
-                          onTap: () {
-                            print("Tap Event");
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => const search()));
-                          },
-                          repeatForever: true,
-                        ),
-                      ],
+                ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Text(
+                    "19 minutes",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const search()));
+                  },
+                  child: Container(
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      color: ColorHelper.color[1].withOpacity(0.50),
+                    ),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Icon(
+                            IconHelper.icons[10],
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          AnimatedTextKit(
+                            animatedTexts: [
+                              FadeAnimatedText('Search "sugar"'),
+                              FadeAnimatedText('Search "wheat"'),
+                              FadeAnimatedText('Search "onions"'),
+                              FadeAnimatedText('Search "eggs"'),
+                              FadeAnimatedText('Search "everything"'),
+                            ],
+                            onTap: () {
+                              print("Tap Event");
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => const search()));
+                            },
+                            repeatForever: true,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 14,left: 12),
-                child: Text("Shop by categories",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 14,left: 12),
+                  child: Text("Shop by categories",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Row(
-              children: [
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.mens,title: "Mens",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.womens,title: "Womens",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.kids,title: "Kids",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.daily_use,title: "Daily Use",),
-                )),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => mens()));
+                        },
+                        child: category_card(image: assets.mens,title: "Mens",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => womens()));
+                        },
+                        child: category_card(image: assets.womens,title: "Womens",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => kids()));
+                        },
+                        child: category_card(image: assets.kids,title: "Kids",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => daily_use()));
+                        },
+                        child: category_card(image: assets.daily_use,title: "Daily Use",)),
+                  )),
 
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.shoes,title: "Shoes",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.electronics,title: "Electronics",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.makeup,title: "Makeup",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.frozen_food,title: "Frozen & Packed Food",),
-                )),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => shoes()));
+                        },
+                        child: category_card(image: assets.shoes,title: "Shoes",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => electronics()));
+                        },
+                        child: category_card(image: assets.electronics,title: "Electronics",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => makeup()));
+                        },
+                        child: category_card(image: assets.makeup,title: "Makeup",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => frozen_food()));
+                        },
+                        child: category_card(image: assets.frozen_food,title: "Frozen & Packed Food",)),
+                  )),
 
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.fruits_veges,title: "Fruits & Vegetables",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.dairy_breakfast,title: "Dairy & Breakfast",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.munchies,title: "Munchies",),
-                )),
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: category_card(image: assets.coldDrinks,title: "Cold Drinks & Juices",),
-                )),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => fruits_vegetables()));
+                        },
+                        child: category_card(image: assets.fruits_veges,title: "Fruits & Vegetables",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => dairy_breakfast()));
+                        },
+                        child: category_card(image: assets.dairy_breakfast,title: "Dairy & Breakfast",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => munchies()));
+                        },
+                        child: category_card(image: assets.munchies,title: "Munchies",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => cold_drinks_juices()));
+                        },
+                        child: category_card(image: assets.coldDrinks,title: "Cold Drinks & Juices",)),
+                  )),
 
-              ],
-            )
-          ],
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => bakery()));
+                        },
+                        child: category_card(image: assets.bakery,title: "Bakery",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => masala_dry_fruits()));
+                        },
+                        child: category_card(image: assets.masala_dry_fruits,title: "Masala & Dry Fruits",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => sweet_tooth()));
+                        },
+                        child: category_card(image: assets.sweetooth,title: "Sweet Tooth",)),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: category_card(image: assets.atta,title: "Atta, Rice & Dal",),
+                  )),
+
+                ],
+              ),
+              SizedBox(height: 1000,)
+            ],
+          ),
         ),
       ),
     );

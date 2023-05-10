@@ -325,4 +325,185 @@ class home_controller {
       }
     }
   }
+
+  static load_frozen(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'FrozenFood');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_fruits_veges(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'FruitsVegetables');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+
+  static load_breakfast(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'DairyBreakfast');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_munchies(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Munchies');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_drinks(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'DrinksJuices');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_bakery(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'DrinksJuices');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_masala_dryFruits(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'Masala');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_sweet_tooth(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'SweetTooth');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
+
+  static load_atta(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'AttaRice');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        var data = apiResponse.results;
+        return data;
+
+      }
+    }
+  }
 }

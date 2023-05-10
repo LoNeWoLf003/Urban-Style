@@ -22,7 +22,7 @@ final title ;
               borderRadius: BorderRadius.all(Radius.circular(10))
             ),
             child: Center(
-              child: Image.asset(image,height: 60,width: 60,fit: BoxFit.fitWidth,),
+              child: Image.asset(image,height: 80,width: 80,fit: BoxFit.fitWidth,),
             ),
           ),
           Center(

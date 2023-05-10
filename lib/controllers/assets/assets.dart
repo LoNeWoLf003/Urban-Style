@@ -29,4 +29,9 @@ class assets{
   static final dairy_breakfast = "assets/DairyBreakfast.png";
   static final munchies = "assets/Munchis.png";
   static final coldDrinks = "assets/ColdDrinksJuices.png";
+  static final bakery = "assets/Bakery.png";
+  static final masala_dry_fruits = "assets/MasalaDryFruits.png";
+  static final sweetooth = "assets/Sweetooth.png";
+  static final tea_coffee = "assets/TeaCoffee.png";
+  static final atta = "assets/Atta.png";
 }
