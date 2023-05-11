@@ -15,6 +15,8 @@ import 'package:firebase_core/firebase_core.dart'; //comment
 
 import 'controllers/checkout/checkout_controller.dart';
 
+// this is main page
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final keyApplicationId = '${keys.application_Id}';
