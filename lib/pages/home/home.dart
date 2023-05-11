@@ -75,16 +75,23 @@ class _homeState extends State<home> {
     return Scaffold(
       drawer: const Navigation(),
       appBar: AppBar(
-          title: const Text(
-            '',
-            style: TextStyle(color: Color.fromARGB(255, 10, 99, 25)),
-          ),
+
+          // title: const Text(
+          //   '',
+          //   style: TextStyle(color: Color.fromARGB(255, 10, 99, 25)),
+          // ),
           iconTheme: const IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
           centerTitle: true,
           // backgroundColor: Color.fromARGB(255, 255, 255, 255),
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: <Widget>[
+            SizedBox(width: 50,),
+            Expanded(
+              child: Center(
+                child : Image.asset(assets.appbar_anim_2,height: double.infinity,width: 170,fit: BoxFit.fitWidth,)
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
               child: InkWell(

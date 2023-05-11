@@ -34,4 +34,6 @@ class assets{
   static final sweetooth = "assets/Sweetooth.png";
   static final tea_coffee = "assets/TeaCoffee.png";
   static final atta = "assets/Atta.png";
+  static final appbar_anim_1 = "assets/Grofy appbar animation.gif";
+  static final appbar_anim_2 = "assets/Grofy appbar animation 2.gif";
 }
