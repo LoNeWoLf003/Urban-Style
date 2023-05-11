@@ -506,4 +506,34 @@ class home_controller {
       }
     }
   }
+
+  static load_summer(context) async {
+    final QueryBuilder<ParseObject> parseQuery =
+    QueryBuilder<ParseObject>(ParseObject('products'));
+    // `whereContains` is a basic query method that checks if string field
+    // contains a specific substring
+    parseQuery.whereContains('category', 'SweetTooth');
+
+    // The query will resolve only after calling this method, retrieving
+    // an array of `ParseObjects`, if success
+    final ParseResponse apiResponse = await parseQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      var data = apiResponse.results;
+      final QueryBuilder<ParseObject> parseQuery2 =
+      QueryBuilder<ParseObject>(ParseObject('products'));
+      // `whereContains` is a basic query method that checks if string field
+      // contains a specific substring
+      parseQuery2.whereContains('category', 'DrinksJuices');
+
+      // The query will resolve only after calling this method, retrieving
+      // an array of `ParseObjects`, if success
+      final ParseResponse apiResponse2 = await parseQuery2.query();
+
+      if (apiResponse2.success && apiResponse2.results != null) {
+        var data2 = apiResponse2.results;
+        return data2! + data!;
+      }
+    }
+  }
 }
