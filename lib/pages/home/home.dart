@@ -14,6 +14,7 @@ import 'package:urban_style/widgets/glasses.dart';
 import 'package:urban_style/widgets/masala%20dry%20fruits.dart';
 import 'package:urban_style/widgets/munchies.dart';
 import 'package:urban_style/widgets/pants.dart';
+import 'package:urban_style/widgets/personal%20care.dart';
 import 'package:urban_style/widgets/shoes.dart';
 import 'package:urban_style/widgets/sleepers.dart';
 import 'package:urban_style/widgets/sweet%20tooth.dart';
@@ -25,6 +26,7 @@ import '../../widgets/category card.dart';
 import '../../widgets/frozen food.dart';
 import '../../widgets/fruits vegetables.dart';
 import '../../widgets/home page loader.dart';
+import '../../widgets/pet care.dart';
 import '../../widgets/product_info.dart';
 import '../navigation_drawer.dart/navbar.dart';
 import '../../staful widgets/search.dart';
@@ -228,11 +230,11 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => shoes()));
+                              MaterialPageRoute(builder: (context) => pet_care()));
                         },
                         child: category_card(
-                          image: assets.shoes,
-                          title: "Shoes",
+                          image: assets.pet_care,
+                          title: "Pet Care",
                         )),
                   )),
                   Expanded(
@@ -241,11 +243,11 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => electronics()));
+                              builder: (context) => personal_care()));
                         },
                         child: category_card(
-                          image: assets.electronics,
-                          title: "Electronics",
+                          image: assets.personal_care,
+                          title: "Personal Care",
                         )),
                   )),
                   Expanded(
@@ -257,8 +259,8 @@ class _homeState extends State<home> {
                               builder: (context) => makeup()));
                         },
                         child: category_card(
-                          image: assets.makeup,
-                          title: "Makeup",
+                          image: assets.cleaning_essentials,
+                          title: "Cleaning Essentials",
                         )),
                   )),
                   Expanded(
