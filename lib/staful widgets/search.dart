@@ -27,6 +27,7 @@ class _searchState extends State<search> {
     // at the beginning, all users are shown
     _foundUsers = home_controller.all_item;
     super.initState();
+    _foundUsers = home_controller.all_item;
   }
 
   var results = [];
@@ -159,14 +160,14 @@ class _searchState extends State<search> {
                                               ? Container(
                                             height: 50,
                                             width: 30,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(Radius.circular(2)),
-                                              color: ColorHelper.color[3]
-                                            ),
+                                            // decoration: BoxDecoration(
+                                            //   borderRadius: BorderRadius.all(Radius.circular(2)),
+                                            //   color: ColorHelper.color[3]
+                                            // ),
                                             child: Center(
                                               child: Padding(
                                                 padding: const EdgeInsets.all(1.0),
-                                                child: Text("15% off",style: TextStyle(color: ColorHelper.color[0]),),
+                                                // child: Text("free delivery",style: TextStyle(color: ColorHelper.color[0]),),
                                               ),
                                             ),
                                           )

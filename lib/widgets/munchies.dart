@@ -166,12 +166,12 @@ class munchies extends StatelessWidget {
                                                 borderRadius: BorderRadius.all(Radius.circular(2)),
                                                 color: ColorHelper.color[3]
                                             ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(1.0),
-                                                child: Text("15% off",style: TextStyle(color: ColorHelper.color[0]),),
-                                              ),
-                                            ),
+                                            // child: Center(
+                                            //   child: Padding(
+                                            //     padding: const EdgeInsets.all(1.0),
+                                            //     child: Text("15% off",style: TextStyle(color: ColorHelper.color[0]),),
+                                            //   ),
+                                            // ),
                                           )
                                               : Text(
                                             "* out of stock",

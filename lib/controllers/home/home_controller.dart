@@ -23,17 +23,21 @@ class home_controller {
 
     if (apiResponse.success && apiResponse.results != null) {
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           all_item.add(data);
-
         }
 
       }
-      // return Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
-    } else {
-
-      return [];
+      return all_item;
     }
   }
 
@@ -146,7 +150,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -360,7 +364,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -392,7 +396,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -425,7 +429,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -457,7 +461,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -489,7 +493,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -521,7 +525,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -553,7 +557,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -585,7 +589,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -617,7 +621,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -649,7 +653,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -681,7 +685,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,
@@ -713,7 +717,7 @@ class home_controller {
     if (apiResponse.success && apiResponse.results != null) {
       var product = [];
       for(var data in apiResponse.results!){
-        var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
+        // var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
         double distanceInMeters = await Geolocator.distanceBetween(
           user.lat,
           user.long,

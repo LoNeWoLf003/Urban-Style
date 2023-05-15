@@ -160,18 +160,18 @@ class bakery extends StatelessWidget {
                                           snapshot.data[index]["stock"] ==
                                               "In Stock"
                                               ? Container(
-                                            height: 50,
-                                            width: 30,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(2)),
-                                                color: ColorHelper.color[3]
-                                            ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(1.0),
-                                                child: Text("15% off",style: TextStyle(color: ColorHelper.color[0]),),
-                                              ),
-                                            ),
+                                            // height: 50,
+                                            // width: 60,
+                                            // decoration: BoxDecoration(
+                                            //     borderRadius: BorderRadius.all(Radius.circular(2)),
+                                            //     color: ColorHelper.color[3]
+                                            // ),
+                                            // child: Center(
+                                            //   child: Padding(
+                                            //     padding: const EdgeInsets.all(1.0),
+                                            //     child: Text("free delivery",style: TextStyle(color: ColorHelper.color[0]),),
+                                            //   ),
+                                            // ),
                                           )
                                               : Text(
                                             "* out of stock",

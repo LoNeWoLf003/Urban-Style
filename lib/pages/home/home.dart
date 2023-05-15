@@ -7,6 +7,7 @@ import 'package:urban_style/pages/account/account.dart';
 import 'package:urban_style/widgets/all.dart';
 import 'package:urban_style/widgets/atta%20rice.dart';
 import 'package:urban_style/widgets/bakery.dart';
+import 'package:urban_style/widgets/cleaning%20essentials.dart';
 import 'package:urban_style/widgets/cold%20drinks%20juices.dart';
 import 'package:urban_style/widgets/dairy%20breakfast.dart';
 import 'package:urban_style/widgets/electronics.dart';
@@ -256,7 +257,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => makeup()));
+                              builder: (context) => cleaning_essentials()));
                         },
                         child: category_card(
                           image: assets.cleaning_essentials,
