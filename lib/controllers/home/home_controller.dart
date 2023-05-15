@@ -2,10 +2,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/widgets/chains.dart';
 
+import '../../user/user.dart';
 import '../engine/engine_controller.dart';
 
 class home_controller {
@@ -145,9 +147,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -352,9 +361,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -377,9 +393,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -403,9 +426,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -428,9 +458,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -453,9 +490,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -478,9 +522,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -503,9 +554,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -528,9 +586,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -553,9 +618,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -578,9 +650,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -603,9 +682,16 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
 
       }
@@ -618,7 +704,7 @@ class home_controller {
     QueryBuilder<ParseObject>(ParseObject('products'));
     // `whereContains` is a basic query method that checks if string field
     // contains a specific substring
-    parseQuery.whereContains('category', 'Cleaning Essentials');
+    parseQuery.whereContains('category', 'Cleaning');
 
     // The query will resolve only after calling this method, retrieving
     // an array of `ParseObjects`, if success
@@ -628,10 +714,18 @@ class home_controller {
       var product = [];
       for(var data in apiResponse.results!){
         var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-        if(int.parse(mins) < 31){
+        double distanceInMeters = await Geolocator.distanceBetween(
+          user.lat,
+          user.long,
+          double.parse(data["lat"]),
+          double.parse(data["long"]),
+        );
+        double distanceInKm = distanceInMeters / 1000;
+        bool isWithinRadius = distanceInKm <= 5;
+        if(isWithinRadius == true){
           product.add(data);
-
         }
+
 
       }
       return product;
@@ -667,18 +761,31 @@ class home_controller {
         var product = [];
         var product2 = [];
         for(var data in apiResponse.results!){
-          var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-          if(int.parse(mins) < 31){
-            product.add(data);
 
+          double distanceInMeters = await Geolocator.distanceBetween(
+            user.lat,
+            user.long,
+            double.parse(data["lat"]),
+            double.parse(data["long"]),
+          );
+          double distanceInKm = distanceInMeters / 1000;
+          bool isWithinRadius = distanceInKm <= 5;
+          if(isWithinRadius == true){
+            product.add(data);
           }
 
         }
         for(var data in apiResponse2.results!){
-          var mins = engine_controller().calculate_minute(double.parse(data["lat"]), double.parse(data["long"]));
-          if(int.parse(mins) < 31){
+          double distanceInMeters = await Geolocator.distanceBetween(
+            user.lat,
+            user.long,
+            double.parse(data["lat"]),
+            double.parse(data["long"]),
+          );
+          double distanceInKm = distanceInMeters / 1000;
+          bool isWithinRadius = distanceInKm <= 5;
+          if(isWithinRadius == true){
             product2.add(data);
-
           }
 
         }
