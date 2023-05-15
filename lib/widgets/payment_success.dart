@@ -11,7 +11,7 @@ import '../pages/my_orders/my order.dart';
 
 class payment_success extends StatelessWidget {
   payment_success({Key? key}) : super(key: key);
-  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 1800;
+  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 2400;
   @override
   Widget build(BuildContext context) {
     print("////////////////////////////////////////////////////////////////");

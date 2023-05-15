@@ -28,6 +28,7 @@ class _order_confirmation_bodyState extends State<order_confirmation_body> {
       var prevPrice = widget.price;
       widget.price = int.parse(element["price"]) * int.parse("${element["quantity"]}") + prevPrice;
     });
+    widget.price = widget.price < 199 ?( widget.price + widget.price*0.2).toInt() : widget.price;
 
   }
   var index = 0;

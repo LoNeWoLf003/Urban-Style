@@ -23,13 +23,15 @@ class cart_bottom extends StatefulWidget {
 class _cart_bottomState extends State<cart_bottom> {
   @override
   void initState() {
-    // TODO: implement initState
+    user.cart_price < 199 ?( user.cart_price + user.cart_price*0.2).toInt() : user.cart_price;
     super.initState();
-    price = user.cart_price;
+    price = user.cart_price < 199 ?( user.cart_price + user.cart_price*0.2).toInt() : user.cart_price;
+    user.cart_price < 199 ?( user.cart_price + user.cart_price*0.2).toInt() : user.cart_price;
+
   }
   update(){
     setState(() {
-      price = user.cart_price;
+      price = user.cart_price < 199 ?( user.cart_price + user.cart_price*0.2).toInt() : user.cart_price;
     });
   }
   int price = 0;
@@ -80,7 +82,7 @@ class _cart_bottomState extends State<cart_bottom> {
                 child: Row(
                   children: [
                     SizedBox(width: 48,),
-                    Text("₹${user.cart_price}",style:
+                    Text("₹${user.cart_price < 199 ?( user.cart_price + user.cart_price*0.2).toInt() : user.cart_price}",style:
                     TextStyle(fontWeight: FontWeight.bold, fontSize: 24,letterSpacing: 1),),
                     Expanded(child: Align(
                       alignment: Alignment.centerRight,

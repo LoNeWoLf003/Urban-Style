@@ -61,7 +61,7 @@ class _cart_item_cardState extends State<cart_item_card> {
       onTap: (){
         if(delete == false){
           print(widget.cat);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size, token: widget.token, open: widget.open,)));
+          // Navigator.of(context).push(MaterialPageRoute(builder: (context) => product_info(title: widget.title, price: "₹ ${widget.price}", image: widget.image, stock: widget.stock, des: widget.des, lat: widget.lat, long: widget.long , cat: widget.cat, selected_size: widget.selected_size, token: widget.token, open: widget.open,)));
         }else{
           setState(() {
             delete = false;

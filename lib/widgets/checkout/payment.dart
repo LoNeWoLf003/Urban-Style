@@ -9,6 +9,7 @@ import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/checkout/checkout_controller.dart';
 import 'package:urban_style/widgets/check_everything_assign.dart';
 import 'package:urban_style/widgets/checkout/payment_fail.dart';
+import 'package:urban_style/widgets/payment_success.dart';
 
 import '../../staful widgets/checkout/payment_options.dart';
 import '../../staful widgets/order_confirmation_body.dart';
@@ -65,7 +66,7 @@ class payment extends StatelessWidget {
                 void _handlePaymentSuccess(PaymentSuccessResponse response) {
                   print("Payment Sucessfull proceeding to process page");
                   checkout_controller.is_payment_done = true;
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => check_ok()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
                 }
 
                 void _handlePaymentError(PaymentFailureResponse response) {

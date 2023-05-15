@@ -102,7 +102,7 @@ class product_info extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8),
                           child: Text(
-                            "Product expected to be delivered under ${engine_controller().calculate_minute(double.parse(lat), double.parse(long))} minutes",
+                            "Product expected to be delivered under 39 minutes",
                             style: TextStyle(color: ColorHelper.color[1]),
                           ),
                         ))

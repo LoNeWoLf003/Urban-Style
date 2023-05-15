@@ -154,7 +154,7 @@ class _homeState extends State<home> {
                 child: Padding(
                   padding: EdgeInsets.only(left: 12),
                   child: Text(
-                    "19 minutes",
+                    "39 minutes",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
