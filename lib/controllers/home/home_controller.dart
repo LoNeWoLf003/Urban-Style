@@ -468,7 +468,7 @@ class home_controller {
     QueryBuilder<ParseObject>(ParseObject('products'));
     // `whereContains` is a basic query method that checks if string field
     // contains a specific substring
-    parseQuery.whereContains('category', 'DrinksJuices');
+    parseQuery.whereContains('category', 'Bakery');
 
     // The query will resolve only after calling this method, retrieving
     // an array of `ParseObjects`, if success
