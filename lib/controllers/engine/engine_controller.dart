@@ -29,7 +29,6 @@ class engine_controller{
     if(prefs.getString("login") == null){
       user.is_login = false;
       print("User Don't have account");
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
 
     }else{
       print("User has Account");

@@ -37,6 +37,7 @@ class home_controller {
         }
 
       }
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
       return all_item;
     }
   }
