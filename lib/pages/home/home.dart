@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/pages/account/account.dart';
+import 'package:urban_style/pages/accounts/login/login.dart';
 import 'package:urban_style/widgets/all.dart';
 import 'package:urban_style/widgets/atta%20rice.dart';
 import 'package:urban_style/widgets/bakery.dart';
@@ -23,6 +24,7 @@ import 'package:urban_style/widgets/t-shirt.dart';
 import '../../controllers/assets/assets.dart';
 import '../../controllers/home/home_controller.dart';
 import '../../staful widgets/add_btn.dart';
+import '../../user/user.dart';
 import '../../widgets/category card.dart';
 import '../../widgets/frozen food.dart';
 import '../../widgets/fruits vegetables.dart';
@@ -99,10 +101,17 @@ class _homeState extends State<home> {
               padding: const EdgeInsets.only(right: 5.0),
               child: InkWell(
                   onTap: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (context) => const account()),
-                        (route) => false);
+                    if(user.is_login == false){
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => const login()),
+                              (route) => false);
+                    }else{
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => const account()),
+                              (route) => false);
+                    }
                   },
                   child: SafeArea(
                       child: Icon(
