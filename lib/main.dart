@@ -12,7 +12,9 @@ import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/pages/splash/splash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart'; //comment
+import 'package:urban_style/user/user.dart';
 
+import 'app data/update.dart';
 import 'controllers/checkout/checkout_controller.dart';
 
 // this is main page

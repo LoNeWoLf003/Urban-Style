@@ -4,9 +4,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:urban_style/pages/app_update/app_update.dart';
 import 'package:urban_style/pages/home/home.dart';
 import 'package:urban_style/widgets/chains.dart';
 
+import '../../app data/update.dart';
 import '../../user/user.dart';
 import '../engine/engine_controller.dart';
 
@@ -37,7 +39,29 @@ class home_controller {
         }
 
       }
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+      QueryBuilder<ParseObject> queryTodo2 =
+      QueryBuilder<ParseObject>(ParseObject('update'));
+      final ParseResponse apiResponse2 = await queryTodo2.query();
+
+      if (apiResponse2.success && apiResponse2.results != null) {
+        print(apiResponse2.results![0]["update_version"]);
+        user.update_info = apiResponse2.results!;
+
+        if(apiResponse2.results![0]["update_version"] == "${app_data.app_version}"){
+          print("Update Matched !!");
+          user.app_update = false;
+        }else {
+          print("Update Didn't Matched");
+          user.app_update = true;
+        }
+      }
+      if(user.app_update == true){
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => app_update()), (route) => false);
+
+      }else{
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+
+      }
       return all_item;
     }
   }

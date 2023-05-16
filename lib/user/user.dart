@@ -21,4 +21,6 @@ class user{
   static int my_oders_price = 0;
   static int my_orders_list = 0;
   static bool new_order = false;
+  static bool app_update = false;
+  static var update_info = [];
 }
