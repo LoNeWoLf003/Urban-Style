@@ -76,7 +76,7 @@ class _cart_item_cardState extends State<cart_item_card> {
       },
       onLongPress: (){
         setState(() {
-
+          user.new_order = true;
           delete = true;
         });
       },

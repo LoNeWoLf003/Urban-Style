@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:urban_style/constrants/color.dart';
+import 'package:urban_style/controllers/account/account_controller.dart';
 import 'package:urban_style/pages/cart/cart.dart';
 import 'package:urban_style/pages/help_support/help_support.dart';
 import 'package:urban_style/pages/my_orders/my%20order.dart';
 import 'package:urban_style/pages/navigation_drawer.dart/sample.dart';
+import 'package:urban_style/pages/report%20bug/report%20bug.dart';
 import 'package:urban_style/user/user.dart';
 import '../account/account.dart';
 import '../accounts/sign up/sign up.dart';
@@ -16,7 +19,7 @@ class Navigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Color.fromARGB(255, 217, 244, 113),
+        color: ColorHelper.drawer_color,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24.0, 80, 24, 0),
           child: Column(
@@ -43,7 +46,7 @@ class Navigation extends StatelessWidget {
               ),
               DrawerItem(
                 name: 'My Account',
-                icon: Icons.people,
+                icon: Icons.account_box_rounded,
                 onPressed: () => onItemPressed(context, index: 0),
               ),
               const SizedBox(
@@ -51,21 +54,21 @@ class Navigation extends StatelessWidget {
               ),
               DrawerItem(
                   name: 'My Orders',
-                  icon: Icons.account_box_rounded,
+                  icon: Icons.history_outlined,
                   onPressed: () => onItemPressed(context, index: 1)),
               const SizedBox(
                 height: 30,
               ),
               DrawerItem(
                   name: 'Cart',
-                  icon: Icons.message_outlined,
+                  icon: Icons.favorite_outline,
                   onPressed: () => onItemPressed(context, index: 2)),
               const SizedBox(
                 height: 30,
               ),
               DrawerItem(
                   name: 'Help & Support',
-                  icon: Icons.favorite_outline,
+                  icon: Icons.message_outlined,
                   onPressed: () => onItemPressed(context, index: 3)),
               const SizedBox(
                 height: 30,
@@ -81,6 +84,15 @@ class Navigation extends StatelessWidget {
               DrawerItem(
                   name: 'Log out',
                   icon: Icons.logout,
+                  onPressed: () {
+                    account_controller.logout(context);
+                  }),
+              const SizedBox(
+                height: 30,
+              ),
+              DrawerItem(
+                  name: 'Report Bug',
+                  icon: Icons.bug_report_outlined,
                   onPressed: () => onItemPressed(context, index: 5)),
             ],
           ),
@@ -122,6 +134,10 @@ void onItemPressed(BuildContext context, {required int index}) {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => home()));
       break;
+    case 5:
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => report_bug()));
+      break;
   }
 }
 
@@ -135,12 +151,17 @@ Widget headerWidget() {
             color: Color.fromARGB(255, 10, 99, 25),
             fontWeight: FontWeight.bold),
       ),
-      Text(
-        "There !",
-        style: TextStyle(
-            fontSize: 26,
-            color: Color.fromARGB(255, 5, 77, 49),
-            fontWeight: FontWeight.bold),
+      Container(
+        width: 194,
+        child: Text(
+          "${user.is_login ? user.username : "There"} !",
+          style: TextStyle(
+              fontSize: 26,
+              color: Color.fromARGB(255, 5, 77, 49),
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis
+          ),
+        ),
       )
     ],
   );

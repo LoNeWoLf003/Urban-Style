@@ -32,6 +32,8 @@ class ColorHelper{
     Color(0xFF12c06a),
     Color(0xFFe4d5c9),
     Color(0xFF061175),
-    Color(0xFFF6F38B)
+    Color(0xFFF6F38B),
   ];
+
+  static var drawer_color = Color.fromARGB(255, 217, 244, 113);
 }
