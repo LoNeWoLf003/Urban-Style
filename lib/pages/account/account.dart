@@ -302,7 +302,7 @@ class account extends StatelessWidget {
                               desc: 'Enter new Name',
                               btnOkText: "Save",
                               btnOkOnPress: () {
-                                account_controller.change_email(context);
+                                account_controller.change_name(context);
                               },
                             ).show();
                           },

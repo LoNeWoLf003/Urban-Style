@@ -27,7 +27,7 @@ class account_controller{
   static change_name(context) async{
     EasyLoading.showProgress(0.30, status: 'Making Changes...');
 
-    if(email.text == ""){
+    if(name.text == ""){
       Get.snackbar(
           "Something went wrong !",
           "Enter email correctly"
