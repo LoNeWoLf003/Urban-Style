@@ -8,6 +8,7 @@ import 'package:urban_style/user/user.dart';
 
 import '../controllers/cart/cart controller.dart';
 import '../pages/accounts/sign up/sign up.dart';
+import 'cart icon.dart';
 
 class cart_button extends StatefulWidget {
   const cart_button(
@@ -99,6 +100,10 @@ class _cart_buttonState extends State<cart_button> {
                   };
                   user.cart.add(product);
                   var prev_price = user.cart_price;
+                  cart_button_state.setState(() {
+                    cart_button_state.number = "${user.cart.length}";
+                    cart_button_state.update();
+                  });
                   user.cart_price = prev_price + int.parse(price);
                   cart_controller.cart_update();
                 } else {
@@ -136,6 +141,10 @@ class _cart_buttonState extends State<cart_button> {
               user.cart.removeWhere(
                   (element) => element["shop_status"] == widget.open);
               user.cart_price = prev_price - int.parse(price);
+              cart_button_state.setState(() {
+                cart_button_state.number = "${user.cart.length}";
+                cart_button_state.update();
+              });
               cart_controller.cart_update();
             } else {
               Navigator.of(context)

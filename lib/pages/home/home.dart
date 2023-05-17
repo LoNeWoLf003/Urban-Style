@@ -24,6 +24,7 @@ import 'package:urban_style/widgets/t-shirt.dart';
 import '../../controllers/assets/assets.dart';
 import '../../controllers/home/home_controller.dart';
 import '../../staful widgets/add_btn.dart';
+import '../../staful widgets/cart icon.dart';
 import '../../user/user.dart';
 import '../../widgets/category card.dart';
 import '../../widgets/frozen food.dart';
@@ -99,26 +100,8 @@ class _homeState extends State<home> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
-              child: InkWell(
-                  onTap: () {
-                    if(user.is_login == false){
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (context) => const login()),
-                              (route) => false);
-                    }else{
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (context) => const account()),
-                              (route) => false);
-                    }
-                  },
-                  child: SafeArea(
-                      child: Icon(
-                    IconHelper.icons[28],
-                    size: 44,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                  ))),
+              child: SafeArea(
+                  child: CartIcon()),
             ),
           ]),
       body: Container(

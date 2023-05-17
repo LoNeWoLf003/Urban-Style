@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:urban_style/constrants/color.dart';
+import 'package:urban_style/staful%20widgets/cart%20icon.dart';
 
 import '../controllers/cart/cart controller.dart';
 import '../pages/accounts/sign up/sign up.dart';
@@ -84,6 +85,10 @@ class _cart_btnState extends State<cart_btn> {
             user.cart_price = prev_price - int.parse(widget.price);
             print(user.cart);
             print(user.cart.length);
+            cart_button_state.setState(() {
+              cart_button_state.number = "${user.cart.length}";
+              cart_button_state.update();
+            });
             cart_controller.cart_update();
           });
         } else {
@@ -136,6 +141,10 @@ class _cart_btnState extends State<cart_btn> {
                     prev_price + int.parse(widget.price);
                 print(user.cart);
                 print(user.cart.length);
+                cart_button_state.setState(() {
+                  cart_button_state.number = "${user.cart.length}";
+                  cart_button_state.update();
+                });
                 cart_controller.cart_update();
               });
             } else {

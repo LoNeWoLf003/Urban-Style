@@ -8,6 +8,7 @@ import '../constrants/color.dart';
 import '../controllers/cart/cart controller.dart';
 import '../pages/accounts/sign up/sign up.dart';
 import '../user/user.dart';
+import 'cart icon.dart';
 
 class like_btn extends StatefulWidget {
   const like_btn(
@@ -103,6 +104,10 @@ class _like_btnState extends State<like_btn> {
                         user.cart_price = prev_price - int.parse(widget.price);
                         print(user.cart);
                         print(user.cart.length);
+                        cart_button_state.setState(() {
+                          cart_button_state.number = "${user.cart.length}";
+                          cart_button_state.update();
+                        });
                         cart_controller.cart_update();
                       });
                     } else {
@@ -150,6 +155,10 @@ class _like_btnState extends State<like_btn> {
                                 prev_price + int.parse(widget.price);
                             print(user.cart);
                             print(user.cart.length);
+                            cart_button_state.setState(() {
+                              cart_button_state.number = "${user.cart.length}";
+                              cart_button_state.update();
+                            });
                             cart_controller.cart_update();
                           });
                         } else {
