@@ -297,7 +297,7 @@ class account extends StatelessWidget {
                               dialogType: DialogType.info,
                               body: Center(
                                   child: text_feild("Name", IconHelper.icons[0],
-                                      account_controller.email)),
+                                      account_controller.name)),
                               title: 'New Name',
                               desc: 'Enter new Name',
                               btnOkText: "Save",
@@ -319,40 +319,40 @@ class account extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      IconHelper.icons[5],
+                      IconHelper.icons[31],
                       color: ColorHelper.color[1],
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     Text(
-                      user.email,
+                      user.phone,
                       style: TextStyle(color: ColorHelper.color[1]),
                     ),
-                    Expanded(
-                        child: Align(
-                      alignment: Alignment.centerRight,
-                      child: InkWell(
-                          onTap: () {
-                            AwesomeDialog(
-                              context: context,
-                              animType: AnimType.scale,
-                              dialogType: DialogType.info,
-                              body: Center(
-                                  child: text_feild(
-                                      "Email",
-                                      IconHelper.icons[0],
-                                      account_controller.email)),
-                              title: 'New Email',
-                              desc: 'Enter new Email',
-                              btnOkText: "Save",
-                              btnOkOnPress: () {
-                                account_controller.change_email(context);
-                              },
-                            ).show();
-                          },
-                          child: Icon(IconHelper.icons[18])),
-                    ))
+                    // Expanded(
+                    //     child: Align(
+                    //   alignment: Alignment.centerRight,
+                    //   child: InkWell(
+                    //       onTap: () {
+                    //         AwesomeDialog(
+                    //           context: context,
+                    //           animType: AnimType.scale,
+                    //           dialogType: DialogType.info,
+                    //           body: Center(
+                    //               child: text_feild(
+                    //                   "Phone",
+                    //                   IconHelper.icons[0],
+                    //                   account_controller.email)),
+                    //           title: 'New Email',
+                    //           desc: 'Enter new Email',
+                    //           btnOkText: "Save",
+                    //           btnOkOnPress: () {
+                    //             account_controller.change_email(context);
+                    //           },
+                    //         ).show();
+                    //       },
+                    //       child: Icon(IconHelper.icons[18])),
+                    // ))
                   ],
                 ),
               ),

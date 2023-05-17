@@ -33,8 +33,8 @@ class _order_confirmation_bodyState extends State<order_confirmation_body> {
   }
   var index = 0;
   final pages = [
-    location(),
-    packging(),
+    // location(),
+    // packging(),
     payment()
   ];
   Widget build(BuildContext context) {

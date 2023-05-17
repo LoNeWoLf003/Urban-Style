@@ -28,12 +28,12 @@ final List products ;
                       Navigator.pop(context);
                     },
                     child: Icon(IconHelper.icons[7],)),
-                Text("Checkout")
+                Text("Payment")
               ],
             ),
           ),),
-          checkout_status_bar(),
-          SizedBox(height: 10,),
+          // checkout_status_bar(),
+          SizedBox(height: 30,),
           Expanded(child: order_confirmation_body(products : products))
 
         ],

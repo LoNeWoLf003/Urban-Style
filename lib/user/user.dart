@@ -3,6 +3,7 @@ class user{
   static var location  = [];
   static var lat ;
   static var long ;
+  static var phone ;
   static bool has_profile_photo = false;
   static var obj_id ;
   static var profile_photo ;

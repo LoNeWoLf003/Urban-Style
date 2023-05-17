@@ -11,6 +11,7 @@ import 'package:urban_style/staful%20widgets/verify_phone.dart';
 import '../../constrants/Icons.dart';
 import '../../constrants/color.dart';
 import '../../controllers/checkout/checkout_controller.dart';
+import '../../user/user.dart';
 
 class verify_first_page extends StatefulWidget {
   const verify_first_page({Key? key}) : super(key: key);
@@ -33,6 +34,14 @@ bool okay = false;
           setState(() {
             process = true;
           });
+          checkout_controller.name.text = "${user.username}";
+          checkout_controller.landmark.text = "NOREQUIRED";
+          checkout_controller.locality.text = "NOREQUIRED";
+          checkout_controller.pincode.text = "NOREQUIRED";
+          checkout_controller.city.text = "NOREQUIRED";
+          checkout_controller.state.text = "NOREQUIRED";
+          checkout_controller.brief_address.text = "NOREQUIRED";
+
           checkout_controller.alternate_phone.text = "999944443333";
           checkout_controller.alternate_phone_otp.text = "000333";
           final FirebaseAuth auth = FirebaseAuth.instance;
@@ -61,6 +70,7 @@ bool okay = false;
               check_status_Bar.setState(() {
                 check_status_Bar.part_1 = false;
               });
+
               checkout_bodY.setState(() {
                 checkout_bodY.index = 0;
               });

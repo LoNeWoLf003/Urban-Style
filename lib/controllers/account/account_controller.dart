@@ -30,7 +30,7 @@ class account_controller{
     if(name.text == ""){
       Get.snackbar(
           "Something went wrong !",
-          "Enter email correctly"
+          "Enter name correctly"
       );
       EasyLoading.dismiss();
     }else{

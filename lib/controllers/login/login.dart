@@ -12,7 +12,7 @@ import '../../pages/home/home.dart';
 
 class login_controller{
   static TextEditingController user_nane = new TextEditingController();
-  static TextEditingController password = new TextEditingController();
+  static TextEditingController phone = new TextEditingController();
 
   static validate(context) async{
     EasyLoading.showProgress(0.30,status: "Verifying Account");
@@ -23,10 +23,10 @@ class login_controller{
       );
       EasyLoading.dismiss();
     }else{
-      if(password.text == ""){
+      if(isValidPhoneNumber(phone.text) == false){
         Get.snackbar(
-          "Password not Valid",
-          "Please Enter Valid Password to continue",
+          "Phone Number not Valid",
+          "Please Enter Valid Phone Number to continue",
         );
         EasyLoading.dismiss();
       }else{
@@ -48,7 +48,7 @@ class login_controller{
             QueryBuilder<ParseObject>(ParseObject('users'));
             // `whereContains` is a basic query method that checks if string field
             // contains a specific substring
-            parseQuery.whereContains('password', password.text);
+            parseQuery.whereContains('phone', phone.text);
 
             // The query will resolve only after calling this method, retrieving
             // an array of `ParseObjects`, if success
@@ -58,11 +58,10 @@ class login_controller{
               for (var o in apiResponse.results!) {
                 EasyLoading.showProgress(0.80,status: "Login Account");
                   var data = apiResponse.results as List<ParseObject>;
-                  user.username = data[0]["username"];
-                  user.email = data[0]["email"];
                   user.password = data[0]["password"];
                   user.location = data[0]["location"];
                   user.cart = data[0]["cart"];
+                  user.phone = data[0]["phone"];
                   user.cart_price = data[0]["price"];
                   user.obj_id = data[0]["objectId"];
                   user.my_orders = data[0]["my_orders"];
@@ -113,6 +112,18 @@ class login_controller{
         }
 
       }
+    }
+  }
+
+  static bool isValidPhoneNumber(String phoneNumber) {
+    // Remove any non-digit characters
+    String cleanedNumber = phoneNumber.replaceAll(RegExp(r'\D'), '');
+
+    // Check if the cleaned number meets the desired format
+    if (cleanedNumber.length == 10) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

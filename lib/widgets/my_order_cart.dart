@@ -78,9 +78,7 @@ final stock ;
                         color: ColorHelper.color[3].withOpacity(0.85)
                     ),
                     child: Center(
-                        child: user.new_order
-                            ?Image.memory(base64Decode(image["base64"]),fit: BoxFit.fill,)
-                            :Image.memory(image,fit: BoxFit.fill,)
+                        child: getImageWidget()
                     ),
                   ),
                 )
@@ -109,4 +107,18 @@ final stock ;
       ),
     );
   }
+  Widget getImageWidget() {
+    try {
+      return Image.memory(
+        base64Decode(image["base64"]),
+        fit: BoxFit.fill,
+      );
+    } catch (e) {
+      return Image.memory(
+        image,
+        fit: BoxFit.fill,
+      );
+    }
+  }
+
 }

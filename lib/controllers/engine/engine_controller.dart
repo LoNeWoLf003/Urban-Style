@@ -47,10 +47,10 @@ class engine_controller{
       if (apiResponse.success && apiResponse.results != null) {
         for (var o in apiResponse.results!) {
           var data = apiResponse.results as List<ParseObject>;
-          user.email = data[0]["email"];
-          user.password = data[0]["password"];
+
           user.location = data[0]["location"];
           user.cart = data[0]["cart"];
+          user.phone = data[0]["phone"];
           user.cart_price = data[0]["price"];
           user.obj_id = data[0]["objectId"];
           user.my_orders = data[0]["my_orders"];

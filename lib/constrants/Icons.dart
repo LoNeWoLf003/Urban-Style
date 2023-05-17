@@ -32,7 +32,9 @@ class IconHelper {
     Icons.radio_button_off,
     Icons.radio_button_checked,
     Icons.account_circle_outlined,
-    Icons.timer_outlined
+    Icons.timer_outlined,
+    Icons.delivery_dining_outlined,
+    Icons.phone
   ];
 
   static var assets_image = [

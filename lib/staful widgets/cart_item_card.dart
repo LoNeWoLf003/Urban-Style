@@ -113,9 +113,7 @@ class _cart_item_cardState extends State<cart_item_card> {
                               : ColorHelper.color[4].withOpacity(0.85)
                       ),
                       child: Center(
-                          child: user.new_order
-                              ?Image.memory(base64Decode(widget.image["base64"]),fit: BoxFit.fill,)
-                              :Image.memory(widget.image,fit: BoxFit.fill,)
+                          child: getImageWidget()
                       ),
                     ),
                   )
@@ -205,5 +203,20 @@ class _cart_item_cardState extends State<cart_item_card> {
         ),
       ),
     );
+
   }
+  Widget getImageWidget() {
+    try {
+      return Image.memory(
+        base64Decode(widget.image["base64"]),
+        fit: BoxFit.fill,
+      );
+    } catch (e) {
+      return Image.memory(
+        widget.image,
+        fit: BoxFit.fill,
+      );
+    }
+  }
+
 }

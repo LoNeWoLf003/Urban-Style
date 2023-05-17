@@ -34,14 +34,7 @@ class sign_up extends StatelessWidget {
                 width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 18,right: 18),
-                  child: text_feild("Email" , IconHelper.icons[5] , sign_up_controller.email),
-                )),
-            SizedBox(height: 20,),
-            Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 18,right: 18),
-                  child: text_feild("Password" , IconHelper.icons[1] , sign_up_controller.password),
+                  child: text_feild("Phone Number" , IconHelper.icons[31] , sign_up_controller.phone),
                 )),
             SizedBox(height: 40,),
             Container(
@@ -86,20 +79,6 @@ class sign_up extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18,right: 18),
                     child: text_feild("Username" , IconHelper.icons[0] , sign_up_controller.user_nane),
-                  )),
-              SizedBox(height: 20,),
-              Container(
-                  width: MediaQuery.of(context).size.width * 1.3/4,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 18,right: 18),
-                    child: text_feild("Email" , IconHelper.icons[5] , sign_up_controller.email),
-                  )),
-              SizedBox(height: 20,),
-              Container(
-                  width: MediaQuery.of(context).size.width * 1.3/4,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 18,right: 18),
-                    child: text_feild("Password" , IconHelper.icons[1] , sign_up_controller.password),
                   )),
               SizedBox(height: 20,),
               Container(

@@ -35,9 +35,7 @@ Widget packging_product_item_card(index){
                 color: ColorHelper.color[3].withOpacity(0.85)
             ),
             child: Center(
-                child: user.new_order
-                    ?Image.memory(base64Decode(checkout_bodY.widget.products[index]["image"],),fit: BoxFit.fill,)
-                    :Image.memory(checkout_bodY.widget.products[index]["image"],fit: BoxFit.fill,)
+                child: getImageWidget(checkout_bodY.widget.products[index]["image"])
             ),
           ),
         )
@@ -64,4 +62,19 @@ Widget packging_product_item_card(index){
       ],
     ),
   );
+  
+}
+
+Widget getImageWidget(image) {
+  try {
+    return Image.memory(
+      base64Decode(image["base64"]),
+      fit: BoxFit.fill,
+    );
+  } catch (e) {
+    return Image.memory(
+      image,
+      fit: BoxFit.fill,
+    );
+  }
 }

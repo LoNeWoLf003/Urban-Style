@@ -32,9 +32,9 @@ class location extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "Name", "Enter Name", "Str", checkout_controller.name),
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "Name", "Enter Name", "Str", checkout_controller.name),
           SizedBox(height: 20,),
           Row(
             children: [
@@ -147,28 +147,28 @@ class location extends StatelessWidget {
           //       ),
           //     )
           // ),
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "Landmark(optional)", "Enter Landmark", "Str", checkout_controller.landmark),
-
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "Locality", "Enter Locality", "Str", checkout_controller.locality),
-
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "Pincode", "Enter Pincode", "Num", checkout_controller.pincode),
-
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "City", "Enter City", "Str", checkout_controller.city),
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "State", "Enter State", "Str", checkout_controller.state),
-          SizedBox(height: 20,),
-          checkout_text_feild(
-              "Brief Address", "Enter Brief Address", "Str", checkout_controller.brief_address),
-          SizedBox(height: 20,),
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "Landmark(optional)", "Enter Landmark", "Str", checkout_controller.landmark),
+          //
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "Locality", "Enter Locality", "Str", checkout_controller.locality),
+          //
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "Pincode", "Enter Pincode", "Num", checkout_controller.pincode),
+          //
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "City", "Enter City", "Str", checkout_controller.city),
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "State", "Enter State", "Str", checkout_controller.state),
+          // SizedBox(height: 20,),
+          // checkout_text_feild(
+          //     "Brief Address", "Enter Brief Address", "Str", checkout_controller.brief_address),
+          // SizedBox(height: 20,),
           verify_first_page()
         ],
       ),

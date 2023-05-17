@@ -96,6 +96,22 @@ class payment extends StatelessWidget {
               outerColor: ColorHelper.color[3]
           ),
         ),
+        SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SlideAction(
+              onSubmit: (){
+                checkout_controller.is_payment_done = true;
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+                },
+              sliderButtonIcon: Icon(IconHelper.icons[30],color: ColorHelper.color[0],),
+              borderRadius: 12,
+              text: "Cash on Delivery",
+              textStyle: TextStyle(fontSize: 16,color: ColorHelper.color[0]),
+              innerColor: ColorHelper.color[2],
+              outerColor: ColorHelper.color[8]
+          ),
+        ),
         //
         // Padding(
         //   padding: const EdgeInsets.all(18.0),

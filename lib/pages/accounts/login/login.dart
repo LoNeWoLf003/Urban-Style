@@ -35,7 +35,7 @@ class login extends StatelessWidget {
                 width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 18,right: 18),
-                  child: text_feild("Password" , IconHelper.icons[1] , login_controller.password),
+                  child: text_feild("Phone Number" , IconHelper.icons[31] , login_controller.phone),
                 )),
             SizedBox(height: 40,),
             Container(
@@ -85,7 +85,7 @@ class login extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 1.3/4,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18,right: 18),
-                    child: text_feild("Password" , IconHelper.icons[1] , login_controller.password),
+                    child: text_feild("Phone" , IconHelper.icons[1] , login_controller.phone),
                   )),
               SizedBox(height: 20,),
               Container(
