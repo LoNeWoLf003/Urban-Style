@@ -53,6 +53,7 @@ class home_controller {
         }else {
           print("Update Didn't Matched");
           user.app_update = true;
+
         }
       }
       if(user.app_update == true){

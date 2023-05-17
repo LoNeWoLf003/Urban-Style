@@ -69,7 +69,6 @@ class engine_controller{
           print("user email - " + "${user.email}");
           print("user password - " + "${user.password}");
           print("user profile - " + "${user.profile_photo}");
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
 
         }
       }else{
