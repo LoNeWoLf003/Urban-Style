@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:urban_style/pages/app_update/app_update.dart';
 import 'package:urban_style/pages/home/home.dart';
@@ -58,6 +60,7 @@ class home_controller {
         }
       }
       if(user.app_update == true){
+        Get.snackbar("New Update" , "We've got new Update for you. Kindly download it and keep using our App. Thank You");
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => app_update()), (route) => false);
 
       }else{
