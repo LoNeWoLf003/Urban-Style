@@ -39,6 +39,7 @@ class home_controller {
         }
 
       }
+      print("All Product Loaded");
       QueryBuilder<ParseObject> queryTodo2 =
       QueryBuilder<ParseObject>(ParseObject('update'));
       final ParseResponse apiResponse2 = await queryTodo2.query();
@@ -64,6 +65,9 @@ class home_controller {
 
       }
       return all_item;
+    }else{
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home()), (route) => false);
+
     }
   }
 
