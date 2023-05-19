@@ -66,7 +66,7 @@ class payment extends StatelessWidget {
                 void _handlePaymentSuccess(PaymentSuccessResponse response) {
                   print("Payment Sucessfull proceeding to process page");
                   checkout_controller.is_payment_done = true;
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => check_ok()));
                 }
 
                 void _handlePaymentError(PaymentFailureResponse response) {
@@ -102,7 +102,7 @@ class payment extends StatelessWidget {
           child: SlideAction(
               onSubmit: (){
                 checkout_controller.is_payment_done = true;
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => payment_success()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => check_ok()));
                 },
               sliderButtonIcon: Icon(IconHelper.icons[30],color: ColorHelper.color[0],),
               borderRadius: 12,

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_discord_logger/flutter_discord_logger.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
@@ -109,23 +110,68 @@ class checkout_controller {
     print("My Orders Updated");
   }
 
-  verify_all(lat, long, context) async {
+  verify_all(context) async {
     var num_ = checkout_bodY.widget.products.length;
     var numbers = 0;
     if (is_payment_done == true) {
       for (var number in checkout_bodY.widget.products) {
         print(number);
-        List loc = await get_seller_location(number["token"]);
-        print(number["token"]);
-        print(loc);
-        if (loc != null) {
-          print(loc);
-          var boy = await choose_delivery_boy(loc[0], loc[1] , number , number["price"]);
-          print(boy);
-          if (boy != null) {
-            numbers = numbers+1;
+        // List loc = await get_seller_location(number["token"]);
+        // print(number["token"]);
+        // print(loc);
+        // if (loc != null) {
+        //   print(loc);
+        //   var boy = await choose_delivery_boy(loc[0], loc[1] , number , number["price"]);
+        //   print(boy);
+        //   if (boy != null) {
+        //     numbers = numbers+1;
+        //   }
+        // }
+        final QueryBuilder<ParseObject> parseQuery =
+        QueryBuilder<ParseObject>(ParseObject('sellers'));
+        // `whereContains` is a basic query method that checks if string field
+        // contains a specific substring
+        parseQuery.whereContains('token', '${number["token"]}');
+
+        // The query will resolve only after calling this method, retrieving
+        // an array of `ParseObjects`, if success
+        final ParseResponse apiResponse = await parseQuery.query();
+
+        if (apiResponse.success && apiResponse.results != null) {
+          for (var o in apiResponse.results!) {
+
+            var todo1 = ParseObject('sellers')
+              ..objectId = o["objectId"]
+              ..set('delivery', number);
+            await todo1.save();
+
+            print((o as ParseObject).toString());
+            late final Discord discord = Discord(
+
+              appName: 'app',
+
+              webhookUrl: "https://discord.com/api/webhooks/1109051140882038825/7kO0Fggf_aQ_KC6zIJZKBQkM-vlG-2o1iHVD3U7brgWowbJb9iH7eEZ2PX7IT_x8MbXo",
+            );
+
+            discord.send(
+              message: '''
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+Hey There, New Order Recieved 
+
+
+Order Details :
+   title : ${number["title"]},
+   description : ${number["des"]},
+   price : ${number["price"]},
+   number : ${o["phone"]}
+          ''',
+            );
           }
         }
+        numbers = numbers+1;
       }
       while(numbers == num_){
         await Navigator.of(context).pushAndRemoveUntil(
@@ -133,7 +179,7 @@ class checkout_controller {
                 (route) => false);
       }
     } else {
-      verify_all(lat, long, context);
+      verify_all(context);
     }
   }
 

@@ -62,6 +62,7 @@ dependencies:
   skeletons: ^0.0.3
   url_launcher:
   flutter_badge:
+  flutter_discord_logger: ^0.0.1
 
 
 

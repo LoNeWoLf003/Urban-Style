@@ -326,6 +326,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+  flutter_discord_logger:
+    dependency: "direct main"
+    description:
+      name: flutter_discord_logger
+      sha256: dcd45f66f599a79e0c33de1afdf29f5d56dc58a2d4e65f2e5f52e5e433c320c7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   flutter_easyloading:
     dependency: "direct main"
     description:

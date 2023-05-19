@@ -1,3 +1,3 @@
 class app_data{
-  static var app_version = "1.0.2";
+  static var app_version = "1.0.3";
 }
