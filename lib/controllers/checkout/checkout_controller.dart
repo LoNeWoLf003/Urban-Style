@@ -139,12 +139,6 @@ class checkout_controller {
 
         if (apiResponse.success && apiResponse.results != null) {
           for (var o in apiResponse.results!) {
-
-            var todo1 = ParseObject('sellers')
-              ..objectId = o["objectId"]
-              ..set('delivery', number);
-            await todo1.save();
-
             print((o as ParseObject).toString());
             late final Discord discord = Discord(
 
@@ -169,6 +163,14 @@ Order Details :
    number : ${o["phone"]}
           ''',
             );
+            print("///////////////////////////////////////////////////////////////");
+
+            var todo1 = ParseObject('sellers')
+              ..objectId = o["objectId"]
+              ..set('delivery', [number]);
+            await todo1.save();
+            print("Saved !!");
+
           }
         }
         numbers = numbers+1;
