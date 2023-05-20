@@ -43,7 +43,7 @@ class engine extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
 
       ),
-      home: splash(), //splashscreen
+      home: const splash(), //splashscreen
       builder: EasyLoading.init(),
     );
   }

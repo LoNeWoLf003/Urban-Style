@@ -1,10 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:urban_style/constrants/color.dart';
 import 'package:urban_style/controllers/account/account_controller.dart';
 import 'package:urban_style/pages/cart/cart.dart';
 import 'package:urban_style/pages/help_support/help_support.dart';
 import 'package:urban_style/pages/my_orders/my%20order.dart';
-import 'package:urban_style/pages/navigation_drawer.dart/sample.dart';
 import 'package:urban_style/pages/report%20bug/report%20bug.dart';
 import 'package:urban_style/user/user.dart';
 import '../account/account.dart';
@@ -18,8 +19,10 @@ class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+        child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
       child: Material(
-        color: ColorHelper.drawer_color,
+        color: ColorHelper.drawer_color.withOpacity(0.6),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24.0, 80, 24, 0),
           child: Column(
@@ -98,7 +101,7 @@ class Navigation extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }
 
@@ -131,37 +134,62 @@ void onItemPressed(BuildContext context, {required int index}) {
           MaterialPageRoute(builder: (context) => const help_support()));
       break;
     case 4:
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => home()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
       break;
     case 5:
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => report_bug()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const report_bug()));
       break;
   }
 }
 
 Widget headerWidget() {
+  const url =
+      'https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/602ccc72b2f2e2001df1a885.png';
   return Row(
     children: [
-      const Text(
-        "Hey ",
-        style: TextStyle(
-            fontSize: 26,
-            color: Color.fromARGB(255, 10, 99, 25),
-            fontWeight: FontWeight.bold),
+      // const Text(
+      //   "Hey ",
+      //   style: TextStyle(
+      //       fontSize: 26,
+      //       color: Color.fromARGB(255, 10, 99, 25),
+      //       fontWeight: FontWeight.bold),
+      // ),
+      // Container(
+      //   width: 194,
+      //   child: Text(
+      //     "${user.is_login ? user.username : "There"} !",
+      //     style: const TextStyle(
+      //         fontSize: 26,
+      //         color: Color.fromARGB(255, 5, 77, 49),
+      //         fontWeight: FontWeight.bold,
+      //         overflow: TextOverflow.ellipsis),
+      //   ),
+      // ),
+      const CircleAvatar(
+        radius: 40,
+        backgroundImage: NetworkImage(url),
       ),
-      Container(
-        width: 194,
-        child: Text(
-          "${user.is_login ? user.username : "There"} !",
-          style: TextStyle(
-              fontSize: 26,
-              color: Color.fromARGB(255, 5, 77, 49),
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis
+      const SizedBox(
+        width: 20,
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text('Hello There!',
+              style: TextStyle(
+                  fontSize: 20, color: Color.fromARGB(255, 10, 99, 25))),
+          SizedBox(height: 10),
+          Text('Person name',
+              style: TextStyle(
+                  fontSize: 14, color: Color.fromARGB(255, 10, 99, 25))),
+          SizedBox(
+            height: 10,
           ),
-        ),
+          Text('person@email.com',
+              style: TextStyle(
+                  fontSize: 14, color: Color.fromARGB(255, 5, 77, 49)))
+        ],
       )
     ],
   );
