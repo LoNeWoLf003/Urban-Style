@@ -1,10 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:urban_style/constrants/Icons.dart';
 import 'package:urban_style/constrants/color.dart';
-import 'package:urban_style/pages/account/account.dart';
-import 'package:urban_style/pages/accounts/login/login.dart';
 import 'package:urban_style/widgets/all.dart';
 import 'package:urban_style/widgets/atta%20rice.dart';
 import 'package:urban_style/widgets/bakery.dart';
@@ -25,7 +22,6 @@ import '../../controllers/assets/assets.dart';
 import '../../controllers/home/home_controller.dart';
 import '../../staful widgets/add_btn.dart';
 import '../../staful widgets/cart icon.dart';
-import '../../user/user.dart';
 import '../../widgets/category card.dart';
 import '../../widgets/frozen food.dart';
 import '../../widgets/fruits vegetables.dart';
@@ -81,27 +77,27 @@ class _homeState extends State<home> {
     return Scaffold(
       drawer: const Navigation(),
       appBar: AppBar(
-
-          // title: const Text(
-          //   '',
-          //   style: TextStyle(color: Color.fromARGB(255, 10, 99, 25)),
-          // ),
           iconTheme: const IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
           centerTitle: true,
           // backgroundColor: Color.fromARGB(255, 255, 255, 255),
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: <Widget>[
-            SizedBox(width: 50,),
+            const SizedBox(
+              width: 50,
+            ),
             Expanded(
               child: Center(
-                child : Image.asset(assets.appbar_anim_2,height: double.infinity,width: 170,fit: BoxFit.fitWidth,)
-              ),
+                  child: Image.asset(
+                assets.appbar_anim_2,
+                height: double.infinity,
+                width: 170,
+                fit: BoxFit.fitWidth,
+              )),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
-              child: SafeArea(
-                  child: CartIcon()),
+              child: SafeArea(child: CartIcon()),
             ),
           ]),
       body: Container(
@@ -201,17 +197,17 @@ class _homeState extends State<home> {
                   ),
                 ),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 12),
+                  padding: EdgeInsets.only(top: 14, left: 12),
                   child: Text(
                     "Shop by categories",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 
@@ -222,8 +218,8 @@ class _homeState extends State<home> {
                     padding: const EdgeInsets.all(4.0),
                     child: InkWell(
                         onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => pet_care()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const pet_care()));
                         },
                         child: category_card(
                           image: assets.pet_care,
@@ -236,7 +232,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => personal_care()));
+                              builder: (context) => const personal_care()));
                         },
                         child: category_card(
                           image: assets.personal_care,
@@ -249,7 +245,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => cleaning_essentials()));
+                              builder: (context) => const cleaning_essentials()));
                         },
                         child: category_card(
                           image: assets.cleaning_essentials,
@@ -262,7 +258,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => frozen_food()));
+                              builder: (context) => const frozen_food()));
                         },
                         child: category_card(
                           image: assets.frozen_food,
@@ -279,7 +275,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => fruits_vegetables()));
+                              builder: (context) => const fruits_vegetables()));
                         },
                         child: category_card(
                           image: assets.fruits_veges,
@@ -292,7 +288,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => dairy_breakfast()));
+                              builder: (context) => const dairy_breakfast()));
                         },
                         child: category_card(
                           image: assets.dairy_breakfast,
@@ -305,7 +301,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => munchies()));
+                              builder: (context) => const munchies()));
                         },
                         child: category_card(
                           image: assets.munchies,
@@ -318,7 +314,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => cold_drinks_juices()));
+                              builder: (context) => const cold_drinks_juices()));
                         },
                         child: category_card(
                           image: assets.coldDrinks,
@@ -335,7 +331,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => bakery()));
+                              builder: (context) => const bakery()));
                         },
                         child: category_card(
                           image: assets.bakery,
@@ -348,7 +344,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => masala_dry_fruits()));
+                              builder: (context) => const masala_dry_fruits()));
                         },
                         child: category_card(
                           image: assets.masala_dry_fruits,
@@ -361,7 +357,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => sweet_tooth()));
+                              builder: (context) => const sweet_tooth()));
                         },
                         child: category_card(
                           image: assets.sweetooth,
@@ -374,7 +370,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => atta_rice()));
+                              builder: (context) => const atta_rice()));
                         },
                         child: category_card(
                           image: assets.atta,
@@ -383,9 +379,11 @@ class _homeState extends State<home> {
                   )),
                 ],
               ),
-              Divider(color: ColorHelper.color[1],),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Divider(
+                color: ColorHelper.color[1],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -399,122 +397,232 @@ class _homeState extends State<home> {
                   future: home_controller.load_summer(context),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SingleChildScrollView(
+                      return const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: home_page_loader());
                     } else if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("Something went wrong"),
                       );
                     } else {
                       return snapshot.data == null
                           ? Container(
-                        height: 300,
-                        width: 500,
-                        child: Center(
-                          child: Text("Nothing to show. Come back later !",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: ColorHelper.color[1]),),
-                        ),
-                      )
-                        :  Container(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => product_info(
-                                              token: snapshot.data[index]["token"],
-                                              title: snapshot.data[index]["title"],
-                                              price:
-                                              "₹ ${snapshot.data[index]["price"]}",
-                                              image: snapshot.data[index]["image"],
-                                              stock: snapshot.data[index]["stock"],
-                                              des: snapshot.data[index]
-                                              ["description"],
-                                              lat: snapshot.data[index]["lat"],
-                                              long: snapshot.data[index]["long"], open: snapshot.data[index]["shop_status"],
-                                            )));
-                                      },
-                                      child: Container(
-                                        height: 300,
-                                        width: 160,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 140,
-                                              width: 140,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10)),
-                                                  border: Border.all(
-                                                      color: ColorHelper.color[1]
-                                                          .withOpacity(0.40))),
-                                              child: Center(
-                                                  child : Image.memory(snapshot.data[index]["image"])
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,top: 8),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Container(
-                                                  height: 25,
-                                                  width: 74,
+                              height: 300,
+                              width: 500,
+                              child: Center(
+                                child: Text(
+                                  "Nothing to show. Come back later !",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorHelper.color[1]),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        product_info(
+                                                          token: snapshot
+                                                                  .data[index]
+                                                              ["token"],
+                                                          title: snapshot
+                                                                  .data[index]
+                                                              ["title"],
+                                                          price:
+                                                              "₹ ${snapshot.data[index]["price"]}",
+                                                          image: snapshot
+                                                                  .data[index]
+                                                              ["image"],
+                                                          stock: snapshot
+                                                                  .data[index]
+                                                              ["stock"],
+                                                          des: snapshot
+                                                                  .data[index]
+                                                              ["description"],
+                                                          lat: snapshot
+                                                                  .data[index]
+                                                              ["lat"],
+                                                          long: snapshot
+                                                                  .data[index]
+                                                              ["long"],
+                                                          open: snapshot
+                                                                  .data[index]
+                                                              ["shop_status"],
+                                                        )));
+                                          },
+                                          child: Container(
+                                            height: 300,
+                                            width: 160,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height: 140,
+                                                  width: 140,
                                                   decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                                                      color: ColorHelper.color[1].withOpacity(0.10)
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      SizedBox(width: 2,),
-                                                      Icon(IconHelper.icons[29],size: 20,),
-                                                      SizedBox(width: 3,),
-                                                      Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
-                                                    ],
+                                                      borderRadius:
+                                                          const BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      border: Border.all(
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.40))),
+                                                  child: Center(
+                                                      child: Image.memory(
+                                                          snapshot.data[index]
+                                                              ["image"])),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Container(
+                                                      height: 25,
+                                                      width: 74,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              const BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          4)),
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.10)),
+                                                      child: Row(
+                                                        children: [
+                                                          const SizedBox(
+                                                            width: 2,
+                                                          ),
+                                                          Icon(
+                                                            IconHelper
+                                                                .icons[29],
+                                                            size: 20,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          const Text(
+                                                            "20 MINS",
+                                                            style: TextStyle(
+                                                                letterSpacing:
+                                                                    0.50,
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Text(snapshot.data[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Row(
-                                                children: [
-                                                  Text("₹${snapshot.data[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
-                                                  Expanded(
-                                                      child: Align(
-                                                        alignment: Alignment.centerRight,
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["title"],
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "₹${snapshot.data[index]["price"]}",
+                                                        style: TextStyle(
+                                                            color: ColorHelper
+                                                                .color[2]),
+                                                      ),
+                                                      Expanded(
+                                                          child: Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(2.0),
-                                                          child: cart_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["des"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"], cat: null, size: null,),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(2.0),
+                                                          child: cart_btn(
+                                                            title: snapshot
+                                                                    .data[index]
+                                                                ["title"],
+                                                            des: snapshot
+                                                                    .data[index]
+                                                                ["des"],
+                                                            price: snapshot
+                                                                    .data[index]
+                                                                ["price"],
+                                                            image: snapshot
+                                                                    .data[index]
+                                                                ["image"],
+                                                            stock: snapshot
+                                                                    .data[index]
+                                                                ["stock"],
+                                                            lat: snapshot
+                                                                    .data[index]
+                                                                ["lat"],
+                                                            long: snapshot
+                                                                    .data[index]
+                                                                ["long"],
+                                                            token: snapshot
+                                                                    .data[index]
+                                                                ["token"],
+                                                            open: snapshot
+                                                                    .data[index]
+                                                                ["shop_status"],
+                                                            cat: null,
+                                                            size: null,
+                                                          ),
                                                         ),
                                                       ))
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ));
-                              }));
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  }));
                     }
                   }),
-              Divider(color: ColorHelper.color[1],),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Divider(
+                color: ColorHelper.color[1],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Fruits & Veggies for you",
                       style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     )),
               ),
 
@@ -522,122 +630,232 @@ class _homeState extends State<home> {
                   future: home_controller.load_fruits_veges(context),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SingleChildScrollView(
+                      return const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: home_page_loader());
                     } else if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("Something went wrong"),
                       );
                     } else {
                       return snapshot.data == null
                           ? Container(
-                        height: 300,
-                        width: 500,
-                        child: Center(
-                          child: Text("Nothing to show. Come back later !",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: ColorHelper.color[1]),),
-                        ),
-                      )
-                          :  Container(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => product_info(
-                                              token: snapshot.data[index]["token"],
-                                              title: snapshot.data[index]["title"],
-                                              price:
-                                              "₹ ${snapshot.data[index]["price"]}",
-                                              image: snapshot.data[index]["image"],
-                                              stock: snapshot.data[index]["stock"],
-                                              des: snapshot.data[index]
-                                              ["description"],
-                                              lat: snapshot.data[index]["lat"],
-                                              long: snapshot.data[index]["long"], open: snapshot.data[index]["shop_status"],
-                                            )));
-                                      },
-                                      child: Container(
-                                        height: 300,
-                                        width: 160,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 140,
-                                              width: 140,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10)),
-                                                  border: Border.all(
-                                                      color: ColorHelper.color[1]
-                                                          .withOpacity(0.40))),
-                                              child: Center(
-                                                  child : Image.memory(snapshot.data[index]["image"])
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,top: 8),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Container(
-                                                  height: 25,
-                                                  width: 74,
+                              height: 300,
+                              width: 500,
+                              child: Center(
+                                child: Text(
+                                  "Nothing to show. Come back later !",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorHelper.color[1]),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        product_info(
+                                                          token: snapshot
+                                                                  .data[index]
+                                                              ["token"],
+                                                          title: snapshot
+                                                                  .data[index]
+                                                              ["title"],
+                                                          price:
+                                                              "₹ ${snapshot.data[index]["price"]}",
+                                                          image: snapshot
+                                                                  .data[index]
+                                                              ["image"],
+                                                          stock: snapshot
+                                                                  .data[index]
+                                                              ["stock"],
+                                                          des: snapshot
+                                                                  .data[index]
+                                                              ["description"],
+                                                          lat: snapshot
+                                                                  .data[index]
+                                                              ["lat"],
+                                                          long: snapshot
+                                                                  .data[index]
+                                                              ["long"],
+                                                          open: snapshot
+                                                                  .data[index]
+                                                              ["shop_status"],
+                                                        )));
+                                          },
+                                          child: Container(
+                                            height: 300,
+                                            width: 160,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height: 140,
+                                                  width: 140,
                                                   decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                                                      color: ColorHelper.color[1].withOpacity(0.10)
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      SizedBox(width: 2,),
-                                                      Icon(IconHelper.icons[29],size: 20,),
-                                                      SizedBox(width: 3,),
-                                                      Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
-                                                    ],
+                                                      borderRadius:
+                                                          const BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      border: Border.all(
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.40))),
+                                                  child: Center(
+                                                      child: Image.memory(
+                                                          snapshot.data[index]
+                                                              ["image"])),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Container(
+                                                      height: 25,
+                                                      width: 74,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              const BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          4)),
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.10)),
+                                                      child: Row(
+                                                        children: [
+                                                          const SizedBox(
+                                                            width: 2,
+                                                          ),
+                                                          Icon(
+                                                            IconHelper
+                                                                .icons[29],
+                                                            size: 20,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          const Text(
+                                                            "20 MINS",
+                                                            style: TextStyle(
+                                                                letterSpacing:
+                                                                    0.50,
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Text(snapshot.data[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Row(
-                                                children: [
-                                                  Text("₹${snapshot.data[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
-                                                  Expanded(
-                                                      child: Align(
-                                                        alignment: Alignment.centerRight,
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["title"],
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "₹${snapshot.data[index]["price"]}",
+                                                        style: TextStyle(
+                                                            color: ColorHelper
+                                                                .color[2]),
+                                                      ),
+                                                      Expanded(
+                                                          child: Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(2.0),
-                                                          child: cart_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["des"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"], cat: null, size: null,),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(2.0),
+                                                          child: cart_btn(
+                                                            title: snapshot
+                                                                    .data[index]
+                                                                ["title"],
+                                                            des: snapshot
+                                                                    .data[index]
+                                                                ["des"],
+                                                            price: snapshot
+                                                                    .data[index]
+                                                                ["price"],
+                                                            image: snapshot
+                                                                    .data[index]
+                                                                ["image"],
+                                                            stock: snapshot
+                                                                    .data[index]
+                                                                ["stock"],
+                                                            lat: snapshot
+                                                                    .data[index]
+                                                                ["lat"],
+                                                            long: snapshot
+                                                                    .data[index]
+                                                                ["long"],
+                                                            token: snapshot
+                                                                    .data[index]
+                                                                ["token"],
+                                                            open: snapshot
+                                                                    .data[index]
+                                                                ["shop_status"],
+                                                            cat: null,
+                                                            size: null,
+                                                          ),
                                                         ),
                                                       ))
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ));
-                              }));
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  }));
                     }
                   }),
-              Divider(color: ColorHelper.color[1],),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Divider(
+                color: ColorHelper.color[1],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Party Special",
                       style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     )),
               ),
 
@@ -645,122 +863,232 @@ class _homeState extends State<home> {
                   future: home_controller.load_frozen(context),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SingleChildScrollView(
+                      return const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: home_page_loader());
                     } else if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("Something went wrong"),
                       );
                     } else {
                       return snapshot.data == null
                           ? Container(
-                        height: 300,
-                        width: 500,
-                        child: Center(
-                          child: Text("Nothing to show. Come back later !",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: ColorHelper.color[1]),),
-                        ),
-                      )
-                          :  Container(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => product_info(
-                                              token: snapshot.data[index]["token"],
-                                              title: snapshot.data[index]["title"],
-                                              price:
-                                              "₹ ${snapshot.data[index]["price"]}",
-                                              image: snapshot.data[index]["image"],
-                                              stock: snapshot.data[index]["stock"],
-                                              des: snapshot.data[index]
-                                              ["description"],
-                                              lat: snapshot.data[index]["lat"],
-                                              long: snapshot.data[index]["long"], open: snapshot.data[index]["shop_status"],
-                                            )));
-                                      },
-                                      child: Container(
-                                        height: 300,
-                                        width: 160,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 140,
-                                              width: 140,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10)),
-                                                  border: Border.all(
-                                                      color: ColorHelper.color[1]
-                                                          .withOpacity(0.40))),
-                                              child: Center(
-                                                  child : Image.memory(snapshot.data[index]["image"])
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,top: 8),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Container(
-                                                  height: 25,
-                                                  width: 74,
+                              height: 300,
+                              width: 500,
+                              child: Center(
+                                child: Text(
+                                  "Nothing to show. Come back later !",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorHelper.color[1]),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        product_info(
+                                                          token: snapshot
+                                                                  .data[index]
+                                                              ["token"],
+                                                          title: snapshot
+                                                                  .data[index]
+                                                              ["title"],
+                                                          price:
+                                                              "₹ ${snapshot.data[index]["price"]}",
+                                                          image: snapshot
+                                                                  .data[index]
+                                                              ["image"],
+                                                          stock: snapshot
+                                                                  .data[index]
+                                                              ["stock"],
+                                                          des: snapshot
+                                                                  .data[index]
+                                                              ["description"],
+                                                          lat: snapshot
+                                                                  .data[index]
+                                                              ["lat"],
+                                                          long: snapshot
+                                                                  .data[index]
+                                                              ["long"],
+                                                          open: snapshot
+                                                                  .data[index]
+                                                              ["shop_status"],
+                                                        )));
+                                          },
+                                          child: Container(
+                                            height: 300,
+                                            width: 160,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height: 140,
+                                                  width: 140,
                                                   decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                                                      color: ColorHelper.color[1].withOpacity(0.10)
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      SizedBox(width: 2,),
-                                                      Icon(IconHelper.icons[29],size: 20,),
-                                                      SizedBox(width: 3,),
-                                                      Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
-                                                    ],
+                                                      borderRadius:
+                                                          const BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      border: Border.all(
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.40))),
+                                                  child: Center(
+                                                      child: Image.memory(
+                                                          snapshot.data[index]
+                                                              ["image"])),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Container(
+                                                      height: 25,
+                                                      width: 74,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              const BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          4)),
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.10)),
+                                                      child: Row(
+                                                        children: [
+                                                          const SizedBox(
+                                                            width: 2,
+                                                          ),
+                                                          Icon(
+                                                            IconHelper
+                                                                .icons[29],
+                                                            size: 20,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          const Text(
+                                                            "20 MINS",
+                                                            style: TextStyle(
+                                                                letterSpacing:
+                                                                    0.50,
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Text(snapshot.data[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Row(
-                                                children: [
-                                                  Text("₹${snapshot.data[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
-                                                  Expanded(
-                                                      child: Align(
-                                                        alignment: Alignment.centerRight,
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["title"],
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "₹${snapshot.data[index]["price"]}",
+                                                        style: TextStyle(
+                                                            color: ColorHelper
+                                                                .color[2]),
+                                                      ),
+                                                      Expanded(
+                                                          child: Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(2.0),
-                                                          child: cart_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["des"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"], cat: null, size: null,),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(2.0),
+                                                          child: cart_btn(
+                                                            title: snapshot
+                                                                    .data[index]
+                                                                ["title"],
+                                                            des: snapshot
+                                                                    .data[index]
+                                                                ["des"],
+                                                            price: snapshot
+                                                                    .data[index]
+                                                                ["price"],
+                                                            image: snapshot
+                                                                    .data[index]
+                                                                ["image"],
+                                                            stock: snapshot
+                                                                    .data[index]
+                                                                ["stock"],
+                                                            lat: snapshot
+                                                                    .data[index]
+                                                                ["lat"],
+                                                            long: snapshot
+                                                                    .data[index]
+                                                                ["long"],
+                                                            token: snapshot
+                                                                    .data[index]
+                                                                ["token"],
+                                                            open: snapshot
+                                                                    .data[index]
+                                                                ["shop_status"],
+                                                            cat: null,
+                                                            size: null,
+                                                          ),
                                                         ),
                                                       ))
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ));
-                              }));
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  }));
                     }
                   }),
-              Divider(color: ColorHelper.color[1],),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Divider(
+                color: ColorHelper.color[1],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Morning Freshness",
                       style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     )),
               ),
 
@@ -768,122 +1096,232 @@ class _homeState extends State<home> {
                   future: home_controller.load_breakfast(context),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SingleChildScrollView(
+                      return const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: home_page_loader());
                     } else if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("Something went wrong"),
                       );
                     } else {
                       return snapshot.data == null
                           ? Container(
-                        height: 300,
-                        width: 500,
-                        child: Center(
-                          child: Text("Nothing to show. Come back later !",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: ColorHelper.color[1]),),
-                        ),
-                      )
-                          :  Container(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => product_info(
-                                              token: snapshot.data[index]["token"],
-                                              title: snapshot.data[index]["title"],
-                                              price:
-                                              "₹ ${snapshot.data[index]["price"]}",
-                                              image: snapshot.data[index]["image"],
-                                              stock: snapshot.data[index]["stock"],
-                                              des: snapshot.data[index]
-                                              ["description"],
-                                              lat: snapshot.data[index]["lat"],
-                                              long: snapshot.data[index]["long"], open: snapshot.data[index]["shop_status"],
-                                            )));
-                                      },
-                                      child: Container(
-                                        height: 300,
-                                        width: 160,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 140,
-                                              width: 140,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10)),
-                                                  border: Border.all(
-                                                      color: ColorHelper.color[1]
-                                                          .withOpacity(0.40))),
-                                              child: Center(
-                                                  child : Image.memory(snapshot.data[index]["image"])
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,top: 8),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Container(
-                                                  height: 25,
-                                                  width: 74,
+                              height: 300,
+                              width: 500,
+                              child: Center(
+                                child: Text(
+                                  "Nothing to show. Come back later !",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorHelper.color[1]),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        product_info(
+                                                          token: snapshot
+                                                                  .data[index]
+                                                              ["token"],
+                                                          title: snapshot
+                                                                  .data[index]
+                                                              ["title"],
+                                                          price:
+                                                              "₹ ${snapshot.data[index]["price"]}",
+                                                          image: snapshot
+                                                                  .data[index]
+                                                              ["image"],
+                                                          stock: snapshot
+                                                                  .data[index]
+                                                              ["stock"],
+                                                          des: snapshot
+                                                                  .data[index]
+                                                              ["description"],
+                                                          lat: snapshot
+                                                                  .data[index]
+                                                              ["lat"],
+                                                          long: snapshot
+                                                                  .data[index]
+                                                              ["long"],
+                                                          open: snapshot
+                                                                  .data[index]
+                                                              ["shop_status"],
+                                                        )));
+                                          },
+                                          child: Container(
+                                            height: 300,
+                                            width: 160,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height: 140,
+                                                  width: 140,
                                                   decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                                                      color: ColorHelper.color[1].withOpacity(0.10)
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      SizedBox(width: 2,),
-                                                      Icon(IconHelper.icons[29],size: 20,),
-                                                      SizedBox(width: 3,),
-                                                      Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
-                                                    ],
+                                                      borderRadius:
+                                                          const BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      border: Border.all(
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.40))),
+                                                  child: Center(
+                                                      child: Image.memory(
+                                                          snapshot.data[index]
+                                                              ["image"])),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Container(
+                                                      height: 25,
+                                                      width: 74,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              const BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          4)),
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.10)),
+                                                      child: Row(
+                                                        children: [
+                                                          const SizedBox(
+                                                            width: 2,
+                                                          ),
+                                                          Icon(
+                                                            IconHelper
+                                                                .icons[29],
+                                                            size: 20,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          const Text(
+                                                            "20 MINS",
+                                                            style: TextStyle(
+                                                                letterSpacing:
+                                                                    0.50,
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Text(snapshot.data[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Row(
-                                                children: [
-                                                  Text("₹${snapshot.data[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
-                                                  Expanded(
-                                                      child: Align(
-                                                        alignment: Alignment.centerRight,
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["title"],
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "₹${snapshot.data[index]["price"]}",
+                                                        style: TextStyle(
+                                                            color: ColorHelper
+                                                                .color[2]),
+                                                      ),
+                                                      Expanded(
+                                                          child: Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(2.0),
-                                                          child: cart_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["des"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"], cat: null, size: null,),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(2.0),
+                                                          child: cart_btn(
+                                                            title: snapshot
+                                                                    .data[index]
+                                                                ["title"],
+                                                            des: snapshot
+                                                                    .data[index]
+                                                                ["des"],
+                                                            price: snapshot
+                                                                    .data[index]
+                                                                ["price"],
+                                                            image: snapshot
+                                                                    .data[index]
+                                                                ["image"],
+                                                            stock: snapshot
+                                                                    .data[index]
+                                                                ["stock"],
+                                                            lat: snapshot
+                                                                    .data[index]
+                                                                ["lat"],
+                                                            long: snapshot
+                                                                    .data[index]
+                                                                ["long"],
+                                                            token: snapshot
+                                                                    .data[index]
+                                                                ["token"],
+                                                            open: snapshot
+                                                                    .data[index]
+                                                                ["shop_status"],
+                                                            cat: null,
+                                                            size: null,
+                                                          ),
                                                         ),
                                                       ))
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ));
-                              }));
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  }));
                     }
                   }),
-              Divider(color: ColorHelper.color[1],),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Divider(
+                color: ColorHelper.color[1],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Daily Use",
                       style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     )),
               ),
 
@@ -891,117 +1329,224 @@ class _homeState extends State<home> {
                   future: home_controller.load_daily(context),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SingleChildScrollView(
+                      return const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: home_page_loader());
                     } else if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("Something went wrong"),
                       );
                     } else {
                       return snapshot.data == null
                           ? Container(
-                        height: 300,
-                        width: 500,
-                        child: Center(
-                          child: Text("Nothing to show. Come back later !",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: ColorHelper.color[1]),),
-                        ),
-                      )
-                          :  Container(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => product_info(
-                                              token: snapshot.data[index]["token"],
-                                              title: snapshot.data[index]["title"],
-                                              price:
-                                              "₹ ${snapshot.data[index]["price"]}",
-                                              image: snapshot.data[index]["image"],
-                                              stock: snapshot.data[index]["stock"],
-                                              des: snapshot.data[index]
-                                              ["description"],
-                                              lat: snapshot.data[index]["lat"],
-                                              long: snapshot.data[index]["long"], open: snapshot.data[index]["shop_status"],
-                                            )));
-                                      },
-                                      child: Container(
-                                        height: 300,
-                                        width: 160,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 140,
-                                              width: 140,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10)),
-                                                  border: Border.all(
-                                                      color: ColorHelper.color[1]
-                                                          .withOpacity(0.40))),
-                                              child: Center(
-                                                  child : Image.memory(snapshot.data[index]["image"])
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,top: 8),
-                                              child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: Container(
-                                                  height: 25,
-                                                  width: 74,
+                              height: 300,
+                              width: 500,
+                              child: Center(
+                                child: Text(
+                                  "Nothing to show. Come back later !",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorHelper.color[1]),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        product_info(
+                                                          token: snapshot
+                                                                  .data[index]
+                                                              ["token"],
+                                                          title: snapshot
+                                                                  .data[index]
+                                                              ["title"],
+                                                          price:
+                                                              "₹ ${snapshot.data[index]["price"]}",
+                                                          image: snapshot
+                                                                  .data[index]
+                                                              ["image"],
+                                                          stock: snapshot
+                                                                  .data[index]
+                                                              ["stock"],
+                                                          des: snapshot
+                                                                  .data[index]
+                                                              ["description"],
+                                                          lat: snapshot
+                                                                  .data[index]
+                                                              ["lat"],
+                                                          long: snapshot
+                                                                  .data[index]
+                                                              ["long"],
+                                                          open: snapshot
+                                                                  .data[index]
+                                                              ["shop_status"],
+                                                        )));
+                                          },
+                                          child: Container(
+                                            height: 300,
+                                            width: 160,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height: 140,
+                                                  width: 140,
                                                   decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                                                      color: ColorHelper.color[1].withOpacity(0.10)
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      SizedBox(width: 2,),
-                                                      Icon(IconHelper.icons[29],size: 20,),
-                                                      SizedBox(width: 3,),
-                                                      Text("20 MINS",style: TextStyle(letterSpacing : 0.50,fontSize: 10,fontWeight: FontWeight.bold),),
-                                                    ],
+                                                      borderRadius:
+                                                          const BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
+                                                      border: Border.all(
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.40))),
+                                                  child: Center(
+                                                      child: Image.memory(
+                                                          snapshot.data[index]
+                                                              ["image"])),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Container(
+                                                      height: 25,
+                                                      width: 74,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              const BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          4)),
+                                                          color: ColorHelper
+                                                              .color[1]
+                                                              .withOpacity(
+                                                                  0.10)),
+                                                      child: Row(
+                                                        children: [
+                                                          const SizedBox(
+                                                            width: 2,
+                                                          ),
+                                                          Icon(
+                                                            IconHelper
+                                                                .icons[29],
+                                                            size: 20,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          const Text(
+                                                            "20 MINS",
+                                                            style: TextStyle(
+                                                                letterSpacing:
+                                                                    0.50,
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Text(snapshot.data[index]["title"],style: TextStyle(fontWeight: FontWeight.bold),maxLines: 2,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                                              child: Row(
-                                                children: [
-                                                  Text("₹${snapshot.data[index]["price"]}",style: TextStyle(color: ColorHelper.color[2]),),
-                                                  Expanded(
-                                                      child: Align(
-                                                        alignment: Alignment.centerRight,
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["title"],
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8,
+                                                          right: 8,
+                                                          top: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "₹${snapshot.data[index]["price"]}",
+                                                        style: TextStyle(
+                                                            color: ColorHelper
+                                                                .color[2]),
+                                                      ),
+                                                      Expanded(
+                                                          child: Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(2.0),
-                                                          child: cart_btn(title: snapshot.data[index]["title"], des: snapshot.data[index]["des"], price: snapshot.data[index]["price"], image: snapshot.data[index]["image"], stock: snapshot.data[index]["stock"], lat: snapshot.data[index]["lat"], long: snapshot.data[index]["long"], token: snapshot.data[index]["token"], open: snapshot.data[index]["shop_status"], cat: null, size: null,),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(2.0),
+                                                          child: cart_btn(
+                                                            title: snapshot
+                                                                    .data[index]
+                                                                ["title"],
+                                                            des: snapshot
+                                                                    .data[index]
+                                                                ["des"],
+                                                            price: snapshot
+                                                                    .data[index]
+                                                                ["price"],
+                                                            image: snapshot
+                                                                    .data[index]
+                                                                ["image"],
+                                                            stock: snapshot
+                                                                    .data[index]
+                                                                ["stock"],
+                                                            lat: snapshot
+                                                                    .data[index]
+                                                                ["lat"],
+                                                            long: snapshot
+                                                                    .data[index]
+                                                                ["long"],
+                                                            token: snapshot
+                                                                    .data[index]
+                                                                ["token"],
+                                                            open: snapshot
+                                                                    .data[index]
+                                                                ["shop_status"],
+                                                            cat: null,
+                                                            size: null,
+                                                          ),
                                                         ),
                                                       ))
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ));
-                              }));
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  }));
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
-
             ],
           ),
         ),
